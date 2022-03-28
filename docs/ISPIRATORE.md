@@ -1,0 +1,7 @@
+# ROBERT (BOB) W FLOYD
+
+Bob Floyd è nato a New York nel 1936. Era un bambino molto brillante ed è stato riconosciuto come un prodigio quando aveva 6 anni. Nonostante si sia trasferito molte volte durante i suoi anni scolastici, ha completato il liceo all'età di 14 anni ed è stato ammesso in un programma speciale per bambini dotati presso l'Università di Chicago. Ha conseguito una laurea nel 1953 quando aveva solo 17 anni. Iniziò a lavorare per mantenersi e, allo stesso tempo, completò una seconda laurea in fisica nel 1958.
+
+La sua introduzione all'informatica è nata da un primo lavoro come operatore informatico presso la Armour Research Foundation dell'Illinois Institute of Technology. La sua curiosità lo ha portato a diventare un programmatore leggendo i manuali, e rapidamente è avanzato fino a diventare un programmatore e analista senior. Allo stesso tempo ha iniziato la sua carriera di ricerca pubblicando un articolo sulle interferenze radio. Alla Armour si interessò ai compilatori che traducono linguaggi di alto livello in codice macchina. Pubblicò un articolo che descriveva una nuova notazione per i sistemi di manipolazione dei simboli che potevano essere utilizzati per costruire compilatori. Ha poi pubblicato un articolo su un nuovo metodo di scansione delle espressioni aritmetiche che si traduce in un codice macchina più efficiente.
+
+Nel 1962 divenne Senior Project Scientist presso la Computer Associates con sede nel Massachusetts. Lavorò su compilatori e pubblicò altri articoli nell'area.
