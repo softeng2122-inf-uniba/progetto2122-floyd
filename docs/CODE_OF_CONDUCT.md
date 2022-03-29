@@ -1,21 +1,21 @@
-**Scrum team member code of conduct**
+**Scrum codice di condotta per i membri del team**
 
 
-Team participation
-Fixing my team's broken builds is my highest priority.
-Participating in my team's code reviews is my second highest priority.
-Improving my team's velocity is more important than improving my individual velocity.
-I will not be late for team meetings.
-I will ask for help when I need it.
-I will provide help when asked.
-I will be honest at all times.
-If I don't believe something is possible I will say so without hesitation.
-Peer reviews
-I will be professional and tactful when providing review comments.
-I will be open to receiving feedback when others review my work.
-Writing code
-I will express myself through code.
-I will add comments to code only if I have failed to express myself through code.
-I will write code that adheres to my team's formatting and style conventions.
-I will not submit production code without thorough in-memory unit tests.
-I will not submit code that causes any tool to emit a warning.
+Partecipazione di squadra.
+Riparare le build danneggiate della mia squadra è la mia massima priorità.
+La partecipazione alle revisioni del codice del mio team è la mia seconda priorità più alta.
+Migliorare la velocità della mia squadra è più importante che migliorare la mia velocità individuale.
+Non farò tardi alle riunioni di squadra.
+Chiederò aiuto quando ne avrò bisogno.
+Fornirò aiuto quando richiesto.
+Sarò onesto in ogni momento.
+Se non credo che qualcosa sia possibile lo dirò senza esitazione.
+Revisioni dei pari
+Sarò professionale e discreto quando fornirò commenti di recensione.
+Sarò disponibile a ricevere feedback quando altri esamineranno il mio lavoro.
+Scrittura del codice
+Mi esprimerò attraverso il codice.
+Aggiungerò commenti al codice solo se non sono riuscito a esprimermi attraverso il codice.
+Scriverò codice che aderisce alle convenzioni di formattazione e stile del mio team.
+Non invierò il codice di produzione senza test approfonditi dell'unità in memoria.
+Non invierò codice che provoca l'emissione di un avviso da parte di qualsiasi strumento.
