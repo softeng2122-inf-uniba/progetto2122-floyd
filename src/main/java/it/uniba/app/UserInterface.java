@@ -7,6 +7,11 @@ import it.uniba.user.Wordsmith;
  * < < Boundary > > Gestisce l'interfaccia utente
  */
 public class UserInterface {
+    /**
+     * Gestisce i comandi dati in input fuori dalla partita
+     * 
+     * @param user
+     */
     public void getCommands(Player user) {
         while (true) {
             String userInput = UserInput.get();
