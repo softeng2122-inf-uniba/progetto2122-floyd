@@ -1,5 +1,7 @@
 package it.uniba.app;
 
+import it.uniba.user.Wordsmith;
+
 /**
  * Main class of the application.
  */
