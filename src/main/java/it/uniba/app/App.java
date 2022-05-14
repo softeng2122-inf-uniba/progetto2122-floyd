@@ -25,8 +25,7 @@ public final class App {
        } 
 
        while (true){
-           Scanner in = new Scanner(System.in);
-           String userInput = in.nextLine();
+            String userInput = UserInput.get();
         
            switch (userInput){
                case "/help":{
