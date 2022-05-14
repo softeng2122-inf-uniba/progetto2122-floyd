@@ -1,18 +1,13 @@
 package it.uniba.app;
 
+import java.util.Scanner;
+
 /**
  * Main class of the application.
  */
 public final class App {
-
-    /**
-     * Get a greeting sentence.
-     *
-     * @return the "Hello World!" string.
-     */
-    public String getGreeting() {
-        return "Hello World!";
-    }
+    
+   
 
     /**
      * Entrypoint of the application.
@@ -20,6 +15,29 @@ public final class App {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
-        System.out.println(new App().getGreeting());
+        Wordsmith user = new Wordsmith();
+
+       // Diamo per scontato che gli argomenti possibili siano esclusivamente 1 di numero e che sia esattamente o uno o l'altro
+       if (args.length == 1){
+           if (args[0].equals("--help") || args[0].equals("-h")){
+               Wordsmith.showHelp();
+           }
+       } 
+
+       while (true){
+           Scanner in = new Scanner(System.in);
+           String userInput = in.nextLine();
+        
+           switch (userInput){
+               case "/help":{
+                   Wordsmith.showHelp();
+                   break;
+               }
+               default: {
+                   System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
+                   break;
+               }
+           }
+       }
     }
 }
