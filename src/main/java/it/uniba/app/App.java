@@ -16,6 +16,7 @@ public final class App {
      */
     public static void main(final String[] args) {
         Wordsmith user = new Wordsmith();
+        UserInterface ui = new UserInterface();
 
         for (String arg : args) {
             if (arg.equals("--help") || arg.equals("-h")) {
@@ -23,19 +24,6 @@ public final class App {
             }
         }
 
-        while (true) {
-            String userInput = UserInput.get();
-
-            switch (userInput) {
-                case "/help": {
-                    Wordsmith.showHelp();
-                    break;
-                }
-                default: {
-                    System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
-                    break;
-                }
-            }
-        }
+        ui.getCommands(user);
     }
 }
