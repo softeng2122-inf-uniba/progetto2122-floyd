@@ -32,4 +32,15 @@ public class UserInterface {
             }
         }
     }
+
+     /**
+     * Prende lo user input per la parola segreta
+     */
+    public String inputSecretWord() {
+        while (true) {
+            String inputString = UserInput.get();
+            return inputString;
+
+        }
+    }
 }
