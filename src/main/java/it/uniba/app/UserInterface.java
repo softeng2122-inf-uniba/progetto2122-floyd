@@ -7,7 +7,10 @@ import it.uniba.user.Wordsmith;
  * < < Boundary > > Gestisce l'interfaccia utente
  */
 public class UserInterface {
-
+    
+    private static final int NUM_OF_GUESSES = 6;
+    private static final int NUM_OF_CELLS = 5;
+    
     Match match;
     String lastSecretWord = null;
 
@@ -124,8 +127,8 @@ public class UserInterface {
      * Si occupa del disegno della griglia
      */
     void drawMatrix() {
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < NUM_OF_GUESSES; i++) {
+            for (int j = 0; j < NUM_OF_CELLS; j++) {
                 System.out.print("| %s |");
             }
             System.out.println();
