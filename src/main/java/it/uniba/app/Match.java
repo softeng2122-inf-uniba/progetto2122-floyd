@@ -45,12 +45,23 @@ public class Match {
     public void setSecretWord(String secretWord) {
         this.secretWord = secretWord;
     }
-    
+
     public boolean getIsInProgress() {
         return isInProgress;
     }
 
     public void setIsInProgress(boolean value) {
         isInProgress = value;
+    }
+
+    /**
+     * Inizia la partita
+     */
+    public void start() {
+        isInProgress = true;
+
+        ui.drawMatrix();
+
+        String userInput = UserInput.get();
     }
 }
