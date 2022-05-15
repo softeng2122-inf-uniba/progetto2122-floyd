@@ -37,4 +37,12 @@ public class Match {
         this.isWordsmith = isWordsmith;
         this.ui = ui;
     }
+
+    public String getSecretWord() {
+        return secretWord;
+    }
+
+    public void setSecretWord(String secretWord) {
+        this.secretWord = secretWord;
+    }
 }
