@@ -43,4 +43,16 @@ public class UserInterface {
 
         }
     }
+
+     /**
+     * Si occupa del disegno della griglia
+     */
+    void drawMatrix() {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.print("| %s |");
+            }
+            System.out.println();
+        }
+    }
 }
