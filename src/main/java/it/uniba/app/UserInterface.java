@@ -21,6 +21,10 @@ public class UserInterface {
                     Wordsmith.showHelp();
                     break;
                 }
+                case "/gioca": {
+
+                    break;
+                }
                 default: {
                     System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
                     break;
