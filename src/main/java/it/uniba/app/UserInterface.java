@@ -7,6 +7,10 @@ import it.uniba.user.Wordsmith;
  * < < Boundary > > Gestisce l'interfaccia utente
  */
 public class UserInterface {
+
+    Match match;
+    String lastSecretWord = null;
+
     /**
      * Gestisce i comandi dati in input fuori dalla partita
      * 
@@ -22,7 +26,79 @@ public class UserInterface {
                     break;
                 }
                 case "/gioca": {
+                    if (lastSecretWord == null) {
+                        match = new Match(user.getIsWordsmith(), this);
 
+                        // Supponiamo in questa versione che il giocatore sia a prescindere un paroliere
+                        System.out.print("Inserire la parola segreta: ");
+                        lastSecretWord = inputSecretWord();
+                        match.setSecretWord(lastSecretWord);
+                    } else {
+                        match = new Match(user.getIsWordsmith(), lastSecretWord, this);
+                    }
+                    match.start();
+                    lastSecretWord = match.getSecretWord();
+                    break;
+                    
+                }
+                default: {
+                    System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
+                    break;
+                }
+            }
+        }
+    }
+
+     /**
+     * Si occupa dell'utilizzo dei comandi durante la partita in base all'input dato
+     * 
+     * @param userInput
+     * @param isWordsmith
+     */
+    public void inGameCommands(String userInput, boolean isWordsmith) {
+        if (isWordsmith) {
+            switch (userInput) {
+                case "/help": {
+                    Wordsmith.showHelp();
+                    break;
+                }
+                case "/gioca": {
+                    System.out.println("La partita è già in corso!");
+                    break;
+                }
+                case "/abbandona": {
+                    
+                    break;
+                }
+                case "/esci": {
+                    
+                    break;
+                }
+                case "/mostra": {
+                   
+                    break;
+                }
+                default: {
+                    System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
+                    break;
+                }
+            }
+        } else {
+            switch (userInput) {
+                case "/help": {
+                    Player.showHelp();
+                    break;
+                }
+                case "/gioca": {
+                    System.out.println("La partita è già in corso!");
+                    break;
+                }
+                case "/abbandona": {
+                
+                    break;
+                }
+                case "/esci": {
+               
                     break;
                 }
                 default: {

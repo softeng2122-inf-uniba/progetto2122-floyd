@@ -63,5 +63,6 @@ public class Match {
         ui.drawMatrix();
 
         String userInput = UserInput.get();
+        ui.inGameCommands(userInput, isWordsmith);
     }
 }
