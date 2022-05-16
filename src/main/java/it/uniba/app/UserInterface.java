@@ -44,6 +44,17 @@ public class UserInterface {
                     break;
                     
                 }
+                case "/esci" : {
+                    System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
+                    String answer = UserInput.get();
+                    if (answer.equals("y")) {
+                        System.exit(0);
+                    } else if (answer.equals("n")) {
+                    } else {
+                        System.out.println("Inserire un'opzione valida!");
+                    }
+                    break;
+                } 
                 default: {
                     System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
                     break;
@@ -74,7 +85,14 @@ public class UserInterface {
                     break;
                 }
                 case "/esci": {
-                    
+                    System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
+                    String answer = UserInput.get();
+                    if (answer.equals("y")) {
+                        System.exit(0);
+                    } else if (answer.equals("n")) {
+                    } else {
+                        System.out.println("Inserire un'opzione valida!");
+                    }
                     break;
                 }
                 case "/mostra": {
@@ -82,6 +100,7 @@ public class UserInterface {
                     
                     break;
                 }
+            
                 default: {
                     Matcher matcher = Pattern.compile("(/nuova) ([A-Za-z]*)").matcher(userInput);
                     if (matcher.matches()) {
@@ -123,7 +142,14 @@ public class UserInterface {
                     break;
                 }
                 case "/esci": {
-               
+                    System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
+                    String answer = UserInput.get();
+                    if (answer.equals("y")) {
+                        System.exit(0);
+                    } else if (answer.equals("n")) {
+                    } else {
+                        System.out.println("Inserire un'opzione valida!");
+                    }
                     break;
                 }
                 default: {
