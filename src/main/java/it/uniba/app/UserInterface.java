@@ -78,7 +78,8 @@ public class UserInterface {
                     break;
                 }
                 case "/mostra": {
-                   
+                    System.out.println("La parola segreta è: " + match.getSecretWord());
+                    
                     break;
                 }
                 default: {
