@@ -15,7 +15,7 @@ public class UserInput {
     }
 
     public static boolean isValidAsWord(String input) {
-        if (input.length() == 5) {
+        if (input.length() == Match.NUM_OF_CELLS) {
             Matcher matcher = Pattern.compile("[A-Za-z]*").matcher(input);
             return matcher.matches();
         } else

@@ -10,10 +10,7 @@ import it.uniba.user.Wordsmith;
  * < < Boundary > > Gestisce l'interfaccia utente
  */
 public class UserInterface {
-    
-    private static final int NUM_OF_GUESSES = 6;
-    private static final int NUM_OF_CELLS = 5;
-    
+  
     Match match;
     String lastSecretWord = null;
 
@@ -94,9 +91,9 @@ public class UserInterface {
                                 match.setSecretWord(matcher.group(gc));
                                 System.out.println("OK");
                             } else {
-                                if (matcher.group(gc).length() < 5) {
+                                if (matcher.group(gc).length() < Match.NUM_OF_CELLS) {
                                     System.out.println("Parola segreta troppo corta");
-                                } else if (matcher.group(gc).length() > 5) {
+                                } else if (matcher.group(gc).length() > Match.NUM_OF_CELLS) {
                                     System.out.println("Parola segreta troppo lunga");
                                 } else {
                                     System.out.println("Parola segreta non valida!");
@@ -153,8 +150,8 @@ public class UserInterface {
      * Si occupa del disegno della griglia
      */
     void drawMatrix() {
-        for (int i = 0; i < NUM_OF_GUESSES; i++) {
-            for (int j = 0; j < NUM_OF_CELLS; j++) {
+        for (int i = 0; i < Match.NUM_OF_GUESSES; i++) {
+            for (int j = 0; j < Match.NUM_OF_CELLS; j++) {
                 System.out.print("| %s |");
             }
             System.out.println();
