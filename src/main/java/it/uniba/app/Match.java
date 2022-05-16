@@ -6,6 +6,10 @@ package it.uniba.app;
  */
 
 public class Match {
+        
+    public static final int NUM_OF_GUESSES = 6;
+    public static final int NUM_OF_CELLS = 5;
+
     private String secretWord;
     private boolean isInProgress;
 
@@ -61,8 +65,17 @@ public class Match {
         isInProgress = true;
 
         ui.drawMatrix();
+        update();
+    }
 
-        String userInput = UserInput.get();
-        ui.inGameCommands(userInput, isWordsmith);
+    private void update() {
+        while (isInProgress) {
+            String userInput = UserInput.get();
+            ui.inGameCommands(userInput, isWordsmith);
+            
+            ui.drawMatrix();
+        }
+
+
     }
 }

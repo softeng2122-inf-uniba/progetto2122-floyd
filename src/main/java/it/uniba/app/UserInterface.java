@@ -1,5 +1,8 @@
 package it.uniba.app;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import it.uniba.user.Player;
 import it.uniba.user.Wordsmith;
 
@@ -7,10 +10,7 @@ import it.uniba.user.Wordsmith;
  * < < Boundary > > Gestisce l'interfaccia utente
  */
 public class UserInterface {
-    
-    private static final int NUM_OF_GUESSES = 6;
-    private static final int NUM_OF_CELLS = 5;
-    
+  
     Match match;
     String lastSecretWord = null;
 
@@ -82,7 +82,28 @@ public class UserInterface {
                     break;
                 }
                 default: {
-                    System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
+                    Matcher matcher = Pattern.compile("(/nuova) ([A-Za-z]*)").matcher(userInput);
+                    if (matcher.matches()) {
+                        matcher.reset();
+                        while (matcher.find()) {
+                            int gc = matcher.groupCount();
+                            if (UserInput.isValidAsWord(matcher.group(gc))) {
+                                match.setSecretWord(matcher.group(gc));
+                                System.out.println("OK");
+                            } else {
+                                if (matcher.group(gc).length() < Match.NUM_OF_CELLS) {
+                                    System.out.println("Parola segreta troppo corta");
+                                } else if (matcher.group(gc).length() > Match.NUM_OF_CELLS) {
+                                    System.out.println("Parola segreta troppo lunga");
+                                } else {
+                                    System.out.println("Parola segreta non valida!");
+                                }
+
+                            }
+                        }
+                    } else {
+                        System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
+                    }
                     break;
                 }
             }
@@ -118,8 +139,10 @@ public class UserInterface {
     public String inputSecretWord() {
         while (true) {
             String inputString = UserInput.get();
-            return inputString;
 
+            if (UserInput.isValidAsWord(inputString)) {
+                return inputString;
+            }
         }
     }
 
@@ -127,8 +150,8 @@ public class UserInterface {
      * Si occupa del disegno della griglia
      */
     void drawMatrix() {
-        for (int i = 0; i < NUM_OF_GUESSES; i++) {
-            for (int j = 0; j < NUM_OF_CELLS; j++) {
+        for (int i = 0; i < Match.NUM_OF_GUESSES; i++) {
+            for (int j = 0; j < Match.NUM_OF_CELLS; j++) {
                 System.out.print("| %s |");
             }
             System.out.println();
