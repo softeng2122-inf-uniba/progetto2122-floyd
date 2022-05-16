@@ -142,8 +142,10 @@ public class UserInterface {
     public String inputSecretWord() {
         while (true) {
             String inputString = UserInput.get();
-            return inputString;
 
+            if (UserInput.isValidAsWord(inputString)) {
+                return inputString;
+            }
         }
     }
 
