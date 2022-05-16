@@ -1,5 +1,8 @@
 package it.uniba.app;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import it.uniba.user.Player;
 import it.uniba.user.Wordsmith;
 
@@ -82,7 +85,28 @@ public class UserInterface {
                     break;
                 }
                 default: {
-                    System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
+                    Matcher matcher = Pattern.compile("(/nuova) ([A-Za-z]*)").matcher(userInput);
+                    if (matcher.matches()) {
+                        matcher.reset();
+                        while (matcher.find()) {
+                            int gc = matcher.groupCount();
+                            if (UserInput.isValidAsWord(matcher.group(gc))) {
+                                match.setSecretWord(matcher.group(gc));
+                                System.out.println("OK");
+                            } else {
+                                if (matcher.group(gc).length() < 5) {
+                                    System.out.println("Parola segreta troppo corta");
+                                } else if (matcher.group(gc).length() > 5) {
+                                    System.out.println("Parola segreta troppo lunga");
+                                } else {
+                                    System.out.println("Parola segreta non valida!");
+                                }
+
+                            }
+                        }
+                    } else {
+                        System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
+                    }
                     break;
                 }
             }

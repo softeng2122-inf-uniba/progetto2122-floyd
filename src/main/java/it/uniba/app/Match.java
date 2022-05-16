@@ -61,8 +61,17 @@ public class Match {
         isInProgress = true;
 
         ui.drawMatrix();
+        update();
+    }
 
-        String userInput = UserInput.get();
-        ui.inGameCommands(userInput, isWordsmith);
+    private void update() {
+        while (isInProgress) {
+            String userInput = UserInput.get();
+            ui.inGameCommands(userInput, isWordsmith);
+            
+            ui.drawMatrix();
+        }
+
+
     }
 }
