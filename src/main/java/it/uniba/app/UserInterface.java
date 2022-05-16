@@ -81,7 +81,14 @@ public class UserInterface {
                     break;
                 }
                 case "/abbandona": {
-                    
+                    System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
+                    String answer = UserInput.get().toLowerCase();
+                    if (answer.equals("y")) {
+                        match.setIsInProgress(false);
+                    } else if (answer.equals("n")) {
+                    } else {
+                        System.out.println("Inserire un'opzione valida!");
+                    }
                     break;
                 }
                 case "/esci": {
@@ -138,7 +145,14 @@ public class UserInterface {
                     break;
                 }
                 case "/abbandona": {
-                
+                    System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
+                    String answer = UserInput.get().toLowerCase();
+                    if (answer.equals("y")) {
+                        match.setIsInProgress(false);
+                    } else if (answer.equals("n")) {
+                    } else {
+                        System.out.println("Inserire un'opzione valida!");
+                    }
                     break;
                 }
                 case "/esci": {
