@@ -3,7 +3,7 @@ package it.uniba.app;
 import it.uniba.utils.Colors;
 
 /**
- * < < Entity > > Elemento composto da un colore e una lettera
+ * <<Entity>> Elemento composto da un colore e una lettera.
  */
 class Cell {
     private String color;

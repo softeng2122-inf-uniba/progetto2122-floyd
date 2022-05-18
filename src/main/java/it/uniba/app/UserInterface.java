@@ -177,6 +177,8 @@ public class UserInterface {
 
     /**
      * Prende lo user input per la parola segreta
+     * 
+     * @return restituisce l'input dato se è valido
      */
     public String inputSecretWord() {
         while (true) {
