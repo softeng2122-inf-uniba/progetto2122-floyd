@@ -6,17 +6,17 @@ package it.uniba.app;
  */
 
 public class Match {
-        
+
     public static final int NUM_OF_GUESSES = 6;
     public static final int NUM_OF_CELLS = 5;
 
-    private String secretWord;
+    private Word secretWord;
     private boolean isInProgress;
 
     UserInterface ui;
 
     private boolean isWordsmith; // utilizzato per capire quali comandi accettare durante il match
-    
+
     /**
      * Istanzia un match, senza assegnazione diretta della parola segreta
      * 
@@ -37,17 +37,17 @@ public class Match {
      */
     public Match(boolean isWordsmith, String secretWord, UserInterface ui) {
         isInProgress = false;
-        this.secretWord = secretWord;
+        this.secretWord = new Word(secretWord);
         this.isWordsmith = isWordsmith;
         this.ui = ui;
     }
 
     public String getSecretWord() {
-        return secretWord;
+        return secretWord.getWord();
     }
 
     public void setSecretWord(String secretWord) {
-        this.secretWord = secretWord;
+        this.secretWord = new Word(secretWord);
     }
 
     public boolean getIsInProgress() {
@@ -72,7 +72,7 @@ public class Match {
         while (isInProgress) {
             String userInput = UserInput.get();
             ui.inGameCommands(userInput, isWordsmith);
-            
+
             ui.drawMatrix();
         }
 

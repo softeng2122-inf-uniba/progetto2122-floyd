@@ -14,7 +14,7 @@ class Guess {
         this.chosenWord = " ";
         this.isCorrect = false;
 
-        this.cell = new Cell[5];
+        this.cell = new Cell[Match.NUM_OF_CELLS];
         for (int i = 0; i < cell.length; i++) {
             cell[i] = new Cell();
         }
