@@ -171,4 +171,11 @@ Diagramma di sequenza se viene invocato /help dentro alla partita
 
 ---
 
-### Come
+### Come paroliere voglio impostare una parola segreta manualmente (#18)
+
+![ClassDiag3](./img/class_issue%2318.png)
+![SeqDiag3](./img/seq_issue%2318.png)
+
+---
+
+### Come 
