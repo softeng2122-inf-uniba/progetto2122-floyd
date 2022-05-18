@@ -43,6 +43,7 @@ public class Match {
      * 
      * @param isWordsmith
      * @param secretWord
+     * @param ui
      */
     public Match(boolean isWordsmith, String secretWord, UserInterface ui) {
         isInProgress = false;

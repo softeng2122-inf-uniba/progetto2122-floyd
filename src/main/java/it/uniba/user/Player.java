@@ -1,7 +1,7 @@
 package it.uniba.user;
 
 /**
- * < < Entity > > Gestisce i diritti del giocatore
+ * < < noECB > > Gestisce i diritti del giocatore
  */
 public class Player {
     protected boolean isWordsmith;

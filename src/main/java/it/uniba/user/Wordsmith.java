@@ -1,7 +1,7 @@
 package it.uniba.user;
 
 /**
- * < < Entity > > Gestisce i diritti del paroliere
+ * < < noECB > > Gestisce i diritti del paroliere
  */
 public class Wordsmith extends Player {
     public Wordsmith() {
