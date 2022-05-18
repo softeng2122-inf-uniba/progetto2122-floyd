@@ -78,6 +78,30 @@ l'app chiede conferma<br>
 Al comando **/esci**<br>
 
 l'applicazione chiede conferma<br>
-• se la conferma è positiva, l'app si chiude restituendo un zero exit code<br>
+• se la conferma è positiva, l'app si chiude restituendo un _zero exit code_<br>
 • se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi<br></p></li>
 
+<li> <p><strong>Come giocatore voglio effettuare un tentativo per indovinare la parola segreta</strong><br>
+
+**_Criteri di accettazione_**<br>
+Digitando caratteri sulla tastiera e invio l’applicazione risponde:<br>
+• _Tentativo incompleto_ se i caratteri sono inferiori a quelli della parola segreta<br>
+• _Tentativo eccessivo_ se i caratteri sono superiori a quelli della parola segreta<br>
+• _Tentativo non valido_ se ci sono caratteri che non corrispondono a lettere dell’alfabeto<br>
+
+altrimenti
+
+riempiendo la prima riga libera della matrice dei tentativi con i caratteri inseriti e colorando lo sfondo di verde se la lettera è nella parola segreta e nel posto giusto, di giallo se la lettera è nella parola segreta ma nel posto sbagliato e di grigio se la lettera non è nella parola segreta.<br>
+
+Se le lettere sono tutte verdi l’applicazione risponde<br>
+• _Parola segreta indovinata_<br>
+_Numero tentativi: <…>_<br>
+e si predispone a nuovi comandi
+
+Se il tentativo fallito è l’ultimo possibile , l’applicazione risponde<br>
+• _Hai raggiunto il numero massimo di tentativi._<br>
+_La parola segreta è <…>_ <br>
+e si predispone a nuovi comandi
+
+Se la parola segreta non è stata impostata l’applicazione risponde<br>
+_Parola segreta mancante_<br></p></li>
