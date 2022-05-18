@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import it.uniba.user.Player;
 import it.uniba.user.Wordsmith;
+import it.uniba.utils.Colors;
 
 /**
  * < < Boundary > > Gestisce l'interfaccia utente
@@ -188,12 +189,12 @@ public class UserInterface {
     }
 
     /**
-     * Si occupa del disegno della griglia
+     * Si occupa del disegno della griglia con i relativi caratteri e colori
      */
-    void drawMatrix() {
-        for (int i = 0; i < Match.NUM_OF_GUESSES; i++) {
-            for (int j = 0; j < Match.NUM_OF_CELLS; j++) {
-                System.out.print("| %s |");
+    void drawMatrix(Guess[] guesses) {
+        for (int i = 0; i < guesses.length; i++) {
+            for (int j = 0; j < guesses[i].cell.length; j++) {
+                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + guesses[i].cell[j].getCharacter() + Colors.ANSI_RESET));
             }
             System.out.println();
         }

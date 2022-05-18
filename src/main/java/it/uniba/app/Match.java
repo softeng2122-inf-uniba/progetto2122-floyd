@@ -31,6 +31,11 @@ public class Match {
         secretWord = new Word(null);
         this.isWordsmith = isWordsmith;
         this.ui = ui;
+
+        guesses = new Guess[6];
+        for (int i = 0; i < guesses.length; i++) {
+            guesses[i] = new Guess();
+        }
     }
 
     /**
@@ -44,6 +49,11 @@ public class Match {
         this.secretWord = new Word(secretWord);
         this.isWordsmith = isWordsmith;
         this.ui = ui;
+
+        guesses = new Guess[6];
+        for (int i = 0; i < guesses.length; i++) {
+            guesses[i] = new Guess();
+        }
     }
 
     public int getCurrentGuess() {
@@ -72,7 +82,7 @@ public class Match {
     public void start() {
         isInProgress = true;
 
-        ui.drawMatrix();
+        ui.drawMatrix(guesses);
 
         update();
     }
@@ -89,7 +99,7 @@ public class Match {
             } else {
                 ui.inGameCommands(userInput, isWordsmith);
             }
-            ui.drawMatrix();
+            ui.drawMatrix(guesses);
         }
         if (currentGuess == 6 && isInProgress) {
             ui.maxGuesses();
