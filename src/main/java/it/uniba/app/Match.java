@@ -120,6 +120,8 @@ public class Match {
             ui.incompleteGuess();
         } else if (chosenWord.length() > 5) {
             ui.excessiveGuess();
+        } else {
+            ui.invalidGuess();
         }
     }
 }

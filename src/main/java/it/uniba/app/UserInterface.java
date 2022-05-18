@@ -220,4 +220,8 @@ public class UserInterface {
     public void excessiveGuess() {
         System.out.println("Tentativo eccessivo");
     }
+
+    public void invalidGuess() {
+        System.out.println("Tentativo non valido");
+    }
 }
