@@ -40,3 +40,20 @@ Wordle è un gioco di parole:
 
 ---
 
+## Requisiti specifici
+
+### Requisiti funzionali
+
+<ul>
+<li> <p><strong>Come giocatore voglio mostrare l'help con elenco comandi</strong><br>
+
+**_Criteri di accettazione_**<br>
+Al comando **/help**<br> 
+o invocando l'app con flag _--help_ o _-h_
+
+il risultato è una descrizione concisa, che normalmente appare all'avvio del programma, seguita dalla lista di comandi disponibili, uno per riga, come da esempio successivo:<br>
+•	gioca<br>
+•	esci<br>
+•	...<br></p></li>
+
+<li> <p>
