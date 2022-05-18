@@ -208,4 +208,8 @@ public class UserInterface {
         System.out.println("Parola segreta indovinata");
         System.out.println("Numero tentativi: " + (match.getCurrentGuess() + 1));
     }
+
+    public void leave() {
+        System.out.println("Hai abbandonato correttamente la partita!");
+    }
 }

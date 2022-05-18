@@ -95,8 +95,9 @@ public class Match {
             ui.maxGuesses();
         } else if (guesses[currentGuess].getIsCorrect()) {
             ui.correctGuess();
+        } else {
+            ui.leave();
         }
-
 
     }
 
