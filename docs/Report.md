@@ -122,3 +122,11 @@ l’applicazione risponde con _OK_ e memorizza la parola fino a chiusura applica
 
 È possibile cambiare la parola durante una sessione di gioco anche senza uscire dall’applicazione.<br></p></li>
 
+<li> <p><strong>Come paroliere voglio mostrare la parola segreta</strong><br>
+
+**_Criteri di accettazione_**<br>
+Al comando **/mostra**
+
+l’applicazione risponde visualizzando la parola segreta<br></p></li>
+</ul>
+
