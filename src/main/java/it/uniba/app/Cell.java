@@ -1,5 +1,7 @@
 package it.uniba.app;
 
+import it.uniba.utils.Colors;
+
 /**
  * < < Entity > > Elemento composto da un colore e una lettera
  */
@@ -9,7 +11,7 @@ class Cell {
     private char character;
 
     public Cell() {
-        this.setColor("color");
+        this.setColor(Colors.ANSI_WHITE_BACKGROUND);
         this.setCharacter(' ');
     }
 
