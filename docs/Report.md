@@ -178,4 +178,9 @@ Diagramma di sequenza se viene invocato /help dentro alla partita
 
 ---
 
-### Come 
+### Come giocatore voglio effettuare un tentativo per indovinare la parola segreta (#24)
+
+![ClassDiag4](./img/class_issue%2324.png)
+![SeqDiag4](./img/seq_issue%2324.png)
+
+---
