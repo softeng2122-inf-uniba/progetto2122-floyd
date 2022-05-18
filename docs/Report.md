@@ -105,3 +105,20 @@ e si predispone a nuovi comandi
 
 Se la parola segreta non è stata impostata l’applicazione risponde<br>
 _Parola segreta mancante_<br></p></li>
+
+<li> <p><strong>Come paroliere voglio impostare una parola segreta manualmente</strong><br>
+
+**_Criteri di accettazione_**<br>
+Al comando **/nuova** _\<parola>_
+
+l’applicazione risponde:<br>
+• _Parola segreta troppo corta_ se i caratteri sono inferiori a quelli del gioco<br>
+• _Parola segreta troppo lunga_ se i caratteri sono superiori a quelli del gioco<br>
+• _Parola segreta non valida_ se ci sono caratteri che non corrispondono a lettere dell’alfabeto<br>
+
+altrimenti
+
+l’applicazione risponde con _OK_ e memorizza la parola fino a chiusura applicazione.
+
+È possibile cambiare la parola durante una sessione di gioco anche senza uscire dall’applicazione.<br></p></li>
+
