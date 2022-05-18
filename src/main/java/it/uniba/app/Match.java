@@ -91,6 +91,9 @@ public class Match {
             }
             ui.drawMatrix();
         }
+        if (currentGuess == 6 && isInProgress) {
+            ui.maxGuesses();
+        }
 
 
     }

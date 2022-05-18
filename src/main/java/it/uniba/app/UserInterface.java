@@ -10,7 +10,7 @@ import it.uniba.user.Wordsmith;
  * < < Boundary > > Gestisce l'interfaccia utente
  */
 public class UserInterface {
-  
+
     Match match;
     String lastSecretWord = null;
 
@@ -42,9 +42,9 @@ public class UserInterface {
                     match.start();
                     lastSecretWord = match.getSecretWord();
                     break;
-                    
+
                 }
-                case "/esci" : {
+                case "/esci": {
                     System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
                     String answer = UserInput.get();
                     if (answer.equals("y")) {
@@ -54,7 +54,7 @@ public class UserInterface {
                         System.out.println("Inserire un'opzione valida!");
                     }
                     break;
-                } 
+                }
                 default: {
                     System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
                     break;
@@ -63,7 +63,7 @@ public class UserInterface {
         }
     }
 
-     /**
+    /**
      * Si occupa dell'utilizzo dei comandi durante la partita in base all'input dato
      * 
      * @param userInput
@@ -104,10 +104,10 @@ public class UserInterface {
                 }
                 case "/mostra": {
                     System.out.println("La parola segreta è: " + match.getSecretWord());
-                    
+
                     break;
                 }
-            
+
                 default: {
                     Matcher matcher = Pattern.compile("(/nuova) ([A-Za-z]*)").matcher(userInput);
                     if (matcher.matches()) {
@@ -174,7 +174,7 @@ public class UserInterface {
         }
     }
 
-     /**
+    /**
      * Prende lo user input per la parola segreta
      */
     public String inputSecretWord() {
@@ -187,7 +187,7 @@ public class UserInterface {
         }
     }
 
-     /**
+    /**
      * Si occupa del disegno della griglia
      */
     void drawMatrix() {
@@ -197,5 +197,10 @@ public class UserInterface {
             }
             System.out.println();
         }
+    }
+
+    public void maxGuesses() {
+        System.out.println("Hai raggiunto il numero massimo di tentativi");
+        System.out.println("La parola segreta è " + match.getSecretWord());
     }
 }
