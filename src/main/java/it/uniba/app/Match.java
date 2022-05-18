@@ -116,6 +116,8 @@ public class Match {
                 secretWord.resetMarked();
                 Colors.clearScreen();
             }
+        } else if (chosenWord.length() < 5) {
+            ui.incompleteGuess();
         }
     }
 }

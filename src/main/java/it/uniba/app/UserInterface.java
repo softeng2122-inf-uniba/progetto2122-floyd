@@ -212,4 +212,8 @@ public class UserInterface {
     public void leave() {
         System.out.println("Hai abbandonato correttamente la partita!");
     }
+
+    public void incompleteGuess() {
+        System.out.println("Tentantivo incompleto");
+    }
 }
