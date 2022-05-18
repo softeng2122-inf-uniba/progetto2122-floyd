@@ -10,7 +10,7 @@ class Word {
 
     public Word(String word) {
         this.word = word;
-        this.isMarked = new boolean[5];
+        this.isMarked = new boolean[Match.NUM_OF_CELLS];
     }
 
     public String getWord() {
