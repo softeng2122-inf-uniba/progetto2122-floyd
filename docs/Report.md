@@ -149,3 +149,8 @@ Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il coma
 
 </p></li>
 </ul>
+
+---
+
+## OO Design
+
