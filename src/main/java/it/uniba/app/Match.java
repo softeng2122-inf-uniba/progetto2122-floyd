@@ -12,6 +12,9 @@ public class Match {
 
     private Word secretWord;
     private boolean isInProgress;
+    private Guess[] guesses;
+
+    private int currentGuess = 0;
 
     UserInterface ui;
 
@@ -24,7 +27,7 @@ public class Match {
      */
     public Match(boolean isWordsmith, UserInterface ui) {
         isInProgress = false;
-        secretWord = null;
+        secretWord = new Word(null);
         this.isWordsmith = isWordsmith;
         this.ui = ui;
     }
@@ -40,6 +43,10 @@ public class Match {
         this.secretWord = new Word(secretWord);
         this.isWordsmith = isWordsmith;
         this.ui = ui;
+    }
+
+    public int getCurrentGuess() {
+        return currentGuess;
     }
 
     public String getSecretWord() {
@@ -65,11 +72,15 @@ public class Match {
         isInProgress = true;
 
         ui.drawMatrix();
+
         update();
     }
 
+    /**
+     * Si occupa dell'aggiornamento della partita ad ogni input
+     */
     private void update() {
-        while (isInProgress) {
+        while (currentGuess < 6 && isInProgress) {
             String userInput = UserInput.get();
             ui.inGameCommands(userInput, isWordsmith);
 
