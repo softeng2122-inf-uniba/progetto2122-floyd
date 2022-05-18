@@ -194,7 +194,7 @@ public class UserInterface {
     void drawMatrix(Guess[] guesses) {
         for (int i = 0; i < guesses.length; i++) {
             for (int j = 0; j < guesses[i].cell.length; j++) {
-                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + guesses[i].cell[j].getCharacter() + Colors.ANSI_RESET));
+                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + Colors.ANSI_BLACK + guesses[i].cell[j].getCharacter() + Colors.ANSI_RESET));
             }
             System.out.println();
         }
