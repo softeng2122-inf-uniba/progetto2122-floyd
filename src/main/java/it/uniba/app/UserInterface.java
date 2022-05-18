@@ -216,4 +216,8 @@ public class UserInterface {
     public void incompleteGuess() {
         System.out.println("Tentantivo incompleto");
     }
+
+    public void excessiveGuess() {
+        System.out.println("Tentativo eccessivo");
+    }
 }

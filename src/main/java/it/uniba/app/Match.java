@@ -118,6 +118,8 @@ public class Match {
             }
         } else if (chosenWord.length() < 5) {
             ui.incompleteGuess();
+        } else if (chosenWord.length() > 5) {
+            ui.excessiveGuess();
         }
     }
 }
