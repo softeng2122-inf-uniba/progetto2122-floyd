@@ -161,3 +161,14 @@ Diagramma di sequenza se viene invocato /help fuori dalla partita
 ![SeqDiag1](./img/seq_issue%2320.png)
 Diagramma di sequenza se viene invocato /help dentro alla partita
 ![SeqDiag1.2](./img/seq_issue%2320%20n2.png)
+
+---
+
+### Come giocatore voglio iniziare una nuova partita (#21)
+
+![ClassDiag2](./img/class_issue%2321.png)
+![SeqDiag2](./img/seq_issue%2321.png)
+
+---
+
+### Come
