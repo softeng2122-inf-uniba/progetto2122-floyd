@@ -56,4 +56,11 @@ il risultato è una descrizione concisa, che normalmente appare all'avvio del pr
 •	esci<br>
 •	...<br></p></li>
 
-<li> <p>
+<li> <p><strong>Come giocatore voglio iniziare una nuova partita</strong><br>
+
+**_Criteri di accettazione_**<br>
+Al comando **/gioca**<br>
+
+se nessuna partita è in corso l'app mostra la matrice dei tentativi vuota, ma senza mostrare la tastiera, e si predispone a ricevere il primo tentativo o altri comandi.</p></li>
+
+
