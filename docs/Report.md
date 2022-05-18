@@ -130,3 +130,22 @@ Al comando **/mostra**
 l’applicazione risponde visualizzando la parola segreta<br></p></li>
 </ul>
 
+### Requisiti non funzionali
+<ul>
+<li> <p><strong>Il container docker dell'app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16</strong><br>
+Elenco di terminali supportati<br>
+Linux:<br>
+- terminal<br>
+Mac OS<br>
+- terminal<br>
+Windows<br>
+- Powershell<br>
+- Git Bash (in questo caso il comando Docker ha come prefisso winpty; es: winpty docker -it ....)<br>
+
+Comando per l’esecuzione del container<br>
+Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il comando Docker da usare per eseguire il container contenente l’applicazione è:<br>
+
+`docker run --rm -it ghcr.io/softeng2122-inf-uniba/wordle-floyd:latest`
+
+</p></li>
+</ul>
