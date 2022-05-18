@@ -66,9 +66,18 @@ se nessuna partita è in corso l'app mostra la matrice dei tentativi vuota, ma s
 <li> <p><strong>Come giocatore voglio abbandonare la partita</strong><br>
 
 **_Criteri di accettazione_**<br>
-Al comando /abbandona<br>
+Al comando **/abbandona**<br>
 
 l'app chiede conferma<br>
 • se la conferma è positiva, l'app comunica l’abbandono<br>
 • se la conferma è negativa, l'app si predispone a ricevere un altro tentativo o altri comandi<br></p></li>
+
+<li> <p><strong>Come giocatore voglio chiudere il gioco</strong><br>
+
+**_Criteri di accettazione_**<br>
+Al comando **/esci**<br>
+
+l'applicazione chiede conferma<br>
+• se la conferma è positiva, l'app si chiude restituendo un zero exit code<br>
+• se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi<br></p></li>
 
