@@ -1,5 +1,6 @@
 package it.uniba.app;
 
+import it.uniba.utils.Colors;
 
 /**
  * < < Control > > Gestisce la partita e tutti i suoi componenti
@@ -91,5 +92,22 @@ public class Match {
         }
 
 
+    }
+
+    /**
+     * Si occupa di verificare il tentativo corrente
+     * 
+     * @param chosenWord parola scelta per il tentativo corrente
+     */
+    private void tryGuess(String chosenWord) {
+        if (UserInput.isValidAsWord(chosenWord)) {
+            guesses[currentGuess].setChosenWord(chosenWord);
+            if (guesses[currentGuess].checkGuess(secretWord)) {
+                isInProgress = false;
+            } else {
+                currentGuess++;
+                secretWord.resetMarked();
+                Colors.clearScreen();
+            }
     }
 }
