@@ -110,5 +110,6 @@ public class Match {
                 secretWord.resetMarked();
                 Colors.clearScreen();
             }
+        }
     }
 }
