@@ -93,6 +93,8 @@ public class Match {
         }
         if (currentGuess == 6 && isInProgress) {
             ui.maxGuesses();
+        } else if (guesses[currentGuess].getIsCorrect()) {
+            ui.correctGuess();
         }
 
 

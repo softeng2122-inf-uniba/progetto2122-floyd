@@ -203,4 +203,9 @@ public class UserInterface {
         System.out.println("Hai raggiunto il numero massimo di tentativi");
         System.out.println("La parola segreta è " + match.getSecretWord());
     }
+
+    public void correctGuess() {
+        System.out.println("Parola segreta indovinata");
+        System.out.println("Numero tentativi: " + (match.getCurrentGuess() + 1));
+    }
 }
