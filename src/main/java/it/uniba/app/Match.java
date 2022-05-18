@@ -82,7 +82,10 @@ public class Match {
     private void update() {
         while (currentGuess < 6 && isInProgress) {
             String userInput = UserInput.get();
-            ui.inGameCommands(userInput, isWordsmith);
+
+            if (UserInput.isCommand(userInput)) {
+                ui.inGameCommands(userInput, isWordsmith);
+            }
 
             ui.drawMatrix();
         }
