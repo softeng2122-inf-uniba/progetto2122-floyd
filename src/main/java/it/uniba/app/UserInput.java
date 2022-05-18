@@ -15,7 +15,7 @@ public class UserInput {
     }
 
     public static boolean isCommand(String input) {
-        Matcher matcher = Pattern.compile("/[A-Za-z]* *[A-Za-z]*").matcher(input);
+        Matcher matcher = Pattern.compile("/.+").matcher(input);
         return matcher.matches();
     }
 

@@ -110,7 +110,7 @@ public class UserInterface {
                 }
 
                 default: {
-                    Matcher matcher = Pattern.compile("(/nuova) ([A-Za-z]*)").matcher(userInput);
+                    Matcher matcher = Pattern.compile("(/nuova) (.+)").matcher(userInput);
                     if (matcher.matches()) {
                         matcher.reset();
                         while (matcher.find()) {
