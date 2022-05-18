@@ -63,4 +63,12 @@ Al comando **/gioca**<br>
 
 se nessuna partita è in corso l'app mostra la matrice dei tentativi vuota, ma senza mostrare la tastiera, e si predispone a ricevere il primo tentativo o altri comandi.</p></li>
 
+<li> <p><strong>Come giocatore voglio abbandonare la partita</strong><br>
+
+**_Criteri di accettazione_**<br>
+Al comando /abbandona<br>
+
+l'app chiede conferma<br>
+• se la conferma è positiva, l'app comunica l’abbandono<br>
+• se la conferma è negativa, l'app si predispone a ricevere un altro tentativo o altri comandi<br></p></li>
 
