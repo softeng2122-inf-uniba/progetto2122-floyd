@@ -154,3 +154,10 @@ Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, il coma
 
 ## OO Design
 
+### Come giocatore voglio mostrare l'help con elenco comandi (#20)
+
+![ClassDiag1](./img/class_issue%2320.png)
+Diagramma di sequenza se viene invocato /help fuori dalla partita
+![SeqDiag1](./img/seq_issue%2320.png)
+Diagramma di sequenza se viene invocato /help dentro alla partita
+![SeqDiag1.2](./img/seq_issue%2320%20n2.png)
