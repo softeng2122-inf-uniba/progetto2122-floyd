@@ -34,3 +34,9 @@ Wordle è un gioco di parole:
 
 ---
 
+## Modello di dominio
+
+![ModelloDiDominio](./img/modelloDiDominio.png)
+
+---
+
