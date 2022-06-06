@@ -59,7 +59,7 @@ public class Match {
     public void start() {
         isInProgress = true;
 
-        ui.drawMatrix(guesses);
+        UserInterface.printer.getGrid(guesses);
 
         update();
     }
@@ -76,14 +76,14 @@ public class Match {
             } else {
                 ui.getCommands(userInput);
             }
-            ui.drawMatrix(guesses);
+            UserInterface.printer.getGrid(guesses);
         }
         if (currentGuessCtr == 6 && isInProgress) {
-            ui.maxGuesses();
+            UserInterface.printer.getMaxTriesReached(secretWord.getWord());
         } else if (guesses[currentGuessCtr].getIsCorrect()) {
-            ui.correctGuess();
+            UserInterface.printer.getCorrectGuessNotification(currentGuessCtr);
         } else {
-            ui.leave();
+            UserInterface.printer.getLeftCorrectlyNotification();
         }
 
     }
@@ -104,11 +104,11 @@ public class Match {
                 Colors.clearScreen();
             }
         } else if (chosenWord.length() < 5) {
-            ui.incompleteGuess();
+            UserInterface.printer.getIncompleteGuess();
         } else if (chosenWord.length() > 5) {
-            ui.excessiveGuess();
+            UserInterface.printer.getExcessiveGuess();
         } else {
-            ui.invalidGuess();
+            UserInterface.printer.getInvalidGuess();
         }
     }
 }

@@ -18,7 +18,7 @@ public final class App {
         Wordsmith user = new Wordsmith();
         UserInterface ui = new UserInterface(user);
 
-        ui.drawWelcome();
+        UserInterface.printer.getWelcome();
 
         for (String arg : args) {
             if (arg.equals("--help") || arg.equals("-h")) {
