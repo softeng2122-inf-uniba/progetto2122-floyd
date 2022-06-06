@@ -33,7 +33,6 @@ public class MatchController {
         while (match.getCurrentGuessCtr() < Match.NUM_OF_GUESSES && match.isInProgress()) {
             dispatchInput(UserInput.get());
         }
-        UserInterface.printer.getEndGameMessage(match);
     }
 
     private void dispatchInput(String userInput) {

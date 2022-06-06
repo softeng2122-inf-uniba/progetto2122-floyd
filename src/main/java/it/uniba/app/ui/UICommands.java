@@ -2,6 +2,7 @@ package it.uniba.app.ui;
 
 import it.uniba.app.match.Match;
 import it.uniba.app.user.Player;
+import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.InputChecker;
 import it.uniba.app.utils.UserInput;
 
@@ -16,8 +17,11 @@ public class UICommands {
             if (lastSecretWord == null) {
                 UserInterface.printer.getSecretWordMissing();
             } else {
+                ConsoleUtils.clearScreen();
                 match.setSecretWord(lastSecretWord);
                 match.getController().start();
+                UserInterface.printer.getEndGameMessage(match);
+                match.reset();
             }
         }
     }
