@@ -50,7 +50,7 @@ public class MatchController {
         } else {
 
             if (InputChecker.isValidAsWord(userInput)) {
-                guessAttempt(userInput);
+                updateMatchStatus(guessAttempt(userInput));
                 ConsoleUtils.clearScreen();
                 UserInterface.printer.getGrid(match.getGuesses());
             } else if (userInput.length() < 5) {
@@ -68,5 +68,13 @@ public class MatchController {
         Guess guess = match.getGuess(match.getCurrentGuessCtr());
         guess.getController().examineGuessAttempt(userInput, match.getSecretWord());
         return guess.isCorrect();
+    }
+
+    private void updateMatchStatus(boolean guessCorrect) {
+        if (guessCorrect) {
+            match.setInProgress(false);
+        } else {
+            match.incrementCurrentGuessCtr();
+        }
     }
 }
