@@ -2,7 +2,7 @@ package it.uniba.app.match;
 
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.UserInput;
-import it.uniba.app.utils.Colors;
+import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.InputChecker;
 
 /**
@@ -102,7 +102,7 @@ public class Match {
             } else {
                 currentGuessCtr++;
                 secretWord.resetMarked();
-                Colors.clearScreen();
+                ConsoleUtils.clearScreen();
             }
         } else if (chosenWord.length() < 5) {
             UserInterface.printer.getIncompleteGuess();

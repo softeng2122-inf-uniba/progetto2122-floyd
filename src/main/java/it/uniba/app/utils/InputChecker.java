@@ -18,8 +18,9 @@ public class InputChecker {
         if (input.length() == Match.NUM_OF_CELLS) {
             Matcher matcher = Pattern.compile("[A-Za-z]*").matcher(input);
             return matcher.matches();
-        } else
+        } else {
             return false;
+        }
     }
 
 }

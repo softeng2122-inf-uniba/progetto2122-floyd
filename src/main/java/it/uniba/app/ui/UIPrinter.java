@@ -1,8 +1,10 @@
 package it.uniba.app.ui;
 
+import static it.uniba.app.utils.ConsoleUtils.ANSI_BLACK;
+import static it.uniba.app.utils.ConsoleUtils.ANSI_RESET;
+
 import it.uniba.app.match.Guess;
 import it.uniba.app.user.Player;
-import it.uniba.app.utils.Colors;
 
 public class UIPrinter {
     public UIPrinter() {
@@ -14,8 +16,8 @@ public class UIPrinter {
     public void getGrid(Guess[] guesses) {
         for (int i = 0; i < guesses.length; i++) {
             for (int j = 0; j < guesses[i].cell.length; j++) {
-                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + Colors.ANSI_BLACK
-                        + guesses[i].cell[j].getCharacter() + Colors.ANSI_RESET));
+                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + ANSI_BLACK
+                        + guesses[i].cell[j].getCharacter() + ANSI_RESET));
             }
             System.out.println();
         }
