@@ -52,4 +52,11 @@ public class UICommands {
         }
     }
 
+    public void showSecretWord(String lastSecretWord) {
+        if (lastSecretWord == null)
+            System.out.println("Non è stata ancora impostata una parola segreta.");
+        else
+            System.out.println("La parola segreta è: " + lastSecretWord);
+    }
+
 }
