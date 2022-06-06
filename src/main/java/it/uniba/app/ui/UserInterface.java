@@ -15,6 +15,8 @@ import it.uniba.app.utils.Colors;
  */
 public class UserInterface {
 
+    private static final UICommands commands = new UICommands();
+
     private Match match;
     private final Player user;
     private String lastSecretWord = null;
