@@ -4,12 +4,23 @@ package it.uniba.app.user;
  * < < noECB > > Gestisce i diritti del paroliere
  */
 public class Wordsmith extends Player {
+    private static final String[] COMMANDS = {
+            "/help",
+            "/gioca",
+            "/abbandona",
+            "/esci",
+            "/nuova <parola>",
+            "/mostra"
+    };
+
     public Wordsmith() {
-        isWordsmith = true;
+        super();
+        setWordsmith(true);
     }
 
-    public static void showHelp() {
-        System.out.println("\n/help\n/gioca\n/abbandona\n/esci\n/nuova <parola>\n/mostra\n\n");
+    @Override
+    public String[] getHelpCommands() {
+        return COMMANDS;
     }
 
 }

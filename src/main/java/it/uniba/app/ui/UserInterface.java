@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 import it.uniba.app.match.Match;
 import it.uniba.app.user.Player;
-import it.uniba.app.utils.UserInput;
 
 /**
  * < < Boundary > > Gestisce l'interfaccia utente
@@ -28,7 +27,7 @@ public class UserInterface {
      * Gestisce i comandi dati in input fuori dalla partita
      */
     public void getCommands(String userInput) {
-        if (user.getIsWordsmith()) {
+        if (user.isWordsmith()) {
             switch (userInput) {
                 case "/help": {
                     commands.help(user);

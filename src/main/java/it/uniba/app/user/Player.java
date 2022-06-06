@@ -4,18 +4,29 @@ package it.uniba.app.user;
  * < < noECB > > Gestisce i diritti del giocatore
  */
 public class Player {
-    protected boolean isWordsmith;
+    private static final String[] COMMANDS = {
+            "/help",
+            "/gioca",
+            "/abbandona",
+            "/esci"
+    };
+
+    private boolean wordsmith;
 
     public Player() {
-        isWordsmith = false;
+        wordsmith = false;
     }
 
-    public static void showHelp() {
-        System.out.println("\n/help\n/gioca\n/abbandona\n/esci\n\n");
+    public String[] getHelpCommands() {
+        return COMMANDS;
     }
 
-    public boolean getIsWordsmith() {
-        return isWordsmith;
+    public boolean isWordsmith() {
+        return wordsmith;
+    }
+
+    protected void setWordsmith(final boolean value) {
+        wordsmith = value;
     }
 
 }
