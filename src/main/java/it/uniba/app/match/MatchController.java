@@ -33,15 +33,7 @@ public class MatchController {
         while (match.getCurrentGuessCtr() < Match.NUM_OF_GUESSES && match.isInProgress()) {
             dispatchInput(UserInput.get());
         }
-
-        if (match.getCurrentGuessCtr() == 6 && match.isInProgress()) {
-            UserInterface.printer.getMaxTriesReached(match.getSecretWord().getString());
-        } else if (match.getGuess(match.getCurrentGuessCtr()).isCorrect()) {
-            UserInterface.printer.getCorrectGuessNotification(match.getCurrentGuessCtr());
-        } else {
-            UserInterface.printer.getLeftCorrectlyNotification();
-        }
-
+        UserInterface.printer.getEndGameMessage(match);
     }
 
     private void dispatchInput(String userInput) {

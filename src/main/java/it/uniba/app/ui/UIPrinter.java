@@ -131,4 +131,14 @@ public class UIPrinter {
             getInvalidGuess();
         }
     }
+
+    public void getEndGameMessage(final Match match) {
+        if (match.getCurrentGuessCtr() == Match.NUM_OF_GUESSES && match.isInProgress()) {
+            getMaxTriesReached(match.getSecretWord().getString());
+        } else if (match.getGuesses()[match.getCurrentGuessCtr()].isCorrect()) {
+            getCorrectGuessNotification(match.getCurrentGuessCtr());
+        } else {
+            getLeftCorrectlyNotification();
+        }
+    }
 }
