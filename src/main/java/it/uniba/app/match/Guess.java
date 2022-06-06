@@ -1,5 +1,7 @@
 package it.uniba.app.match;
 
+import it.uniba.app.match.controller.GuessController;
+
 /**
  * < < Entity > > Si occupa di controllare la validità del tentativo
  */

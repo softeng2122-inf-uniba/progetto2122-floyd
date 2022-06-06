@@ -1,5 +1,6 @@
 package it.uniba.app.match;
 
+import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 
 /**
