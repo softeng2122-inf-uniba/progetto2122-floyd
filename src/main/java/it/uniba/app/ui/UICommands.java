@@ -59,4 +59,23 @@ public class UICommands {
             System.out.println("La parola segreta è: " + lastSecretWord);
     }
 
+    public void newSecretWord(UserInterface ui, String secretWord, Match match) {
+        if (UserInput.isValidAsWord(secretWord)) {
+            if (match.getIsInProgress()) {
+                match.setSecretWord(secretWord);
+            }
+            ui.setLastSecretWord(secretWord);
+            System.out.println("OK");
+        } else {
+            if (secretWord.length() < Match.NUM_OF_CELLS) {
+                System.out.println("Parola segreta troppo corta");
+            } else if (secretWord.length() > Match.NUM_OF_CELLS) {
+                System.out.println("Parola segreta troppo lunga");
+            } else {
+                System.out.println("Parola segreta non valida!");
+            }
+
+        }
+    }
+
 }
