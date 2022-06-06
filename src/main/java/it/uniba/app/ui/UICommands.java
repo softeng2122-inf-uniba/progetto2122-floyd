@@ -17,7 +17,7 @@ public class UICommands {
                 UserInterface.printer.getSecretWordMissing();
             } else {
                 match.setSecretWord(lastSecretWord);
-                match.start();
+                match.getController().start();
             }
         }
     }

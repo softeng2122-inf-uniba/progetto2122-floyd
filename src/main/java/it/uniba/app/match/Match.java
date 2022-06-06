@@ -17,15 +17,22 @@ public class Match {
 
     private int currentGuessCtr;
 
+    private final MatchController controller;
+
     public Match(UserInterface ui) {
         this.isInProgress = false;
         this.currentGuessCtr = 0;
         this.secretWord = new Word(null);
+        this.controller = new MatchController(ui, this);
 
-        guesses = new Guess[6];
+        guesses = new Guess[NUM_OF_GUESSES];
         for (int i = 0; i < guesses.length; i++) {
             guesses[i] = new Guess();
         }
+    }
+
+    public MatchController getController() {
+        return controller;
     }
 
     public Guess[] getGuesses() {
