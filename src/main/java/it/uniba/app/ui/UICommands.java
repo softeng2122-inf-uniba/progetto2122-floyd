@@ -8,10 +8,6 @@ public class UICommands {
     public UICommands() {
     }
 
-    public void help(Player user) {
-        UserInterface.printer.getHelp(user);
-    }
-
     public void play(String lastSecretWord, Match match) {
         if (match.getIsInProgress()) {
             UserInterface.printer.getMatchAlreadyStarted();
@@ -28,34 +24,43 @@ public class UICommands {
     public void leave(Match match) {
         if (match.getIsInProgress()) {
             UserInterface.printer.getLeaveRequestConfirmation();
-            String answer = UserInput.get();
-            if (answer.equals("y")) {
+            if (getConfirmation()) {
                 match.setIsInProgress(false);
-            } else if (answer.equals("n")) {
-            } else {
-                UserInterface.printer.getInvalidOption();
             }
         } else {
             UserInterface.printer.getNoMatchToLeave();
         }
     }
 
-    public void exit() {
-        UserInterface.printer.getExitRequestConfirmation();
+    private boolean getConfirmation() {
         String answer = UserInput.get();
         if (answer.equals("y")) {
-            System.exit(0);
+            return true;
         } else if (answer.equals("n")) {
+            return false;
         } else {
             UserInterface.printer.getInvalidOption();
+            return false;
+        }
+    }
+
+    public void exit() {
+        UserInterface.printer.getExitRequestConfirmation();
+        if (getConfirmation()) {
+            System.exit(0);
         }
     }
 
     public void showSecretWord(String lastSecretWord) {
-        if (lastSecretWord == null)
+        if (lastSecretWord == null) {
             UserInterface.printer.getSecretWordMissing();
-        else
+        } else {
             UserInterface.printer.getShowSecretWord(lastSecretWord);
+        }
+    }
+
+    public void help(Player user) {
+        UserInterface.printer.getHelp(user);
     }
 
     public void newSecretWord(UserInterface ui, String secretWord, Match match) {
