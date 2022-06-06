@@ -61,7 +61,7 @@ public class MatchController {
     private void tryGuess(String chosenWord) {
         if (InputChecker.isValidAsWord(chosenWord)) {
             match.getGuess(match.getCurrentGuessCtr()).setChosenWord(chosenWord);
-            if (match.getGuess(match.getCurrentGuessCtr()).checkGuess(match.getSecretWord())) {
+            if (match.getGuess(match.getCurrentGuessCtr()).getController().checkGuess(match.getSecretWord())) {
                 match.setInProgress(false);
             } else {
                 match.incrementCurrentGuessCtr();
