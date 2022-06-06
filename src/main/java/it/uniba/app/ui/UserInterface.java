@@ -40,23 +40,7 @@ public class UserInterface {
                     break;
                 }
                 case "/abbandona": {
-                    try {
-                        if (match.getIsInProgress()) {
-                            System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
-                            String answer = UserInput.get();
-                            if (answer.equals("y")) {
-                                match.setIsInProgress(false);
-                            } else if (answer.equals("n")) {
-                            } else {
-                                System.out.println("Inserire un'opzione valida!");
-                            }
-                        } else {
-                            System.out.println("Non è in corso alcuna partita da abbandonare.");
-                        }
-                    } catch (NullPointerException e) {
-                        System.out.println("Non è in corso alcuna partita da abbandonare.");
-                    }
-
+                    commands.leave(match);
                     break;
                 }
                 case "/esci": {
