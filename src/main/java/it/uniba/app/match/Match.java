@@ -39,7 +39,7 @@ public class Match {
     }
 
     public String getSecretWord() {
-        return secretWord.getWord();
+        return secretWord.getString();
     }
 
     public void setSecretWord(String secretWord) {
@@ -80,7 +80,7 @@ public class Match {
             UserInterface.printer.getGrid(guesses);
         }
         if (currentGuessCtr == 6 && isInProgress) {
-            UserInterface.printer.getMaxTriesReached(secretWord.getWord());
+            UserInterface.printer.getMaxTriesReached(secretWord.getString());
         } else if (guesses[currentGuessCtr].getIsCorrect()) {
             UserInterface.printer.getCorrectGuessNotification(currentGuessCtr);
         } else {

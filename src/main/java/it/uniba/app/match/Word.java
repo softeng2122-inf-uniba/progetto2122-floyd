@@ -6,28 +6,28 @@ package it.uniba.app.match;
 public class Word {
     private String word;
 
-    private boolean[] isMarked;
+    private boolean[] marked;
 
     public Word(String word) {
         this.word = word;
-        this.isMarked = new boolean[Match.NUM_OF_CELLS];
+        this.marked = new boolean[Match.NUM_OF_CELLS];
     }
 
-    public String getWord() {
+    public String getString() {
         return word;
     }
 
-    public boolean getIsMarked(int index) {
-        return isMarked[index];
+    public boolean isMarked(int index) {
+        return marked[index];
     }
 
-    public void setAsMarked(int index) {
-        isMarked[index] = true;
+    public void setMarked(int index) {
+        marked[index] = true;
     }
 
     public void resetMarked() {
-        for (int i = 0; i < isMarked.length; i++) {
-            isMarked[i] = false;
+        for (int i = 0; i < marked.length; i++) {
+            marked[i] = false;
         }
     }
 

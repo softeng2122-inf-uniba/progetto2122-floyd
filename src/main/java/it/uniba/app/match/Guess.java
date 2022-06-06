@@ -43,27 +43,27 @@ public class Guess {
         // Prima controlla tutte le lettere nelle posizioni corrette
         for (int i = 0; i < chosenWord.length(); i++) {
             cell[i].setCharacter(chosenWord.charAt(i));
-            if (cell[i].getCharacter() == secretWord.getWord().charAt(i)) {
+            if (cell[i].getCharacter() == secretWord.getString().charAt(i)) {
                 cell[i].setColor(ANSI_GREEN_BACKGROUND);
-                secretWord.setAsMarked(i);
+                secretWord.setMarked(i);
             }
         }
         // Poi controlla tutte le altre
         for (int i = 0; i < chosenWord.length(); i++) {
-            for (int j = 0; j < secretWord.getWord().length(); j++) {
+            for (int j = 0; j < secretWord.getString().length(); j++) {
                 // Consideriamo per efficienza solo le celle non colorate
                 if (cell[i].getColor() == ANSI_WHITE_BACKGROUND) {
-                    if (!secretWord.getIsMarked(j)) {
-                        if (cell[i].getCharacter() == secretWord.getWord().charAt(j)) {
+                    if (!secretWord.isMarked(j)) {
+                        if (cell[i].getCharacter() == secretWord.getString().charAt(j)) {
                             cell[i].setColor(ANSI_YELLOW_BACKGROUND);
-                            secretWord.setAsMarked(j);
+                            secretWord.setMarked(j);
                         }
                     }
                 }
             }
         }
 
-        if (chosenWord.equals(secretWord.getWord())) {
+        if (chosenWord.equals(secretWord.getString())) {
             isCorrect = true;
             return true;
         } else
