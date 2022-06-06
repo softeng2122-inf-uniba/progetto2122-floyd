@@ -1,7 +1,9 @@
-package it.uniba.app;
+package it.uniba.app.match;
 
-import it.uniba.user.Player;
-import it.uniba.utils.Colors;
+import it.uniba.app.ui.UserInterface;
+import it.uniba.app.user.Player;
+import it.uniba.app.utils.UserInput;
+import it.uniba.app.utils.Colors;
 
 /**
  * < < Control > > Gestisce la partita e tutti i suoi componenti
@@ -21,8 +23,7 @@ public class Match {
     UserInterface ui;
     private Player user;
 
-
-     /**
+    /**
      * Istanzia un match, assegnando direttamente la parola segreta
      * 
      * @param isWordsmith

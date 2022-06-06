@@ -1,16 +1,16 @@
-package it.uniba.app;
+package it.uniba.app.match;
 
-import it.uniba.utils.Colors;
+import it.uniba.app.utils.Colors;
 
 /**
  * < < Entity > > Si occupa di controllare la validità del tentativo
  */
-class Guess {
+public class Guess {
     private String chosenWord;
 
     private boolean isCorrect;
 
-    Cell[] cell;
+    public Cell[] cell;
 
     public Guess() {
         this.chosenWord = " ";
@@ -31,7 +31,8 @@ class Guess {
     }
 
     /**
-     * Si occupa di controllare lettera per lettera nella griglia la parola appena inserita
+     * Si occupa di controllare lettera per lettera nella griglia la parola appena
+     * inserita
      * 
      * @param secretWord Parola segreta della partita
      * @return

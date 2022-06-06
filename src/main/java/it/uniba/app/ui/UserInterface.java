@@ -1,11 +1,14 @@
-package it.uniba.app;
+package it.uniba.app.ui;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import it.uniba.user.Player;
-import it.uniba.user.Wordsmith;
-import it.uniba.utils.Colors;
+import it.uniba.app.match.Guess;
+import it.uniba.app.match.Match;
+import it.uniba.app.user.Player;
+import it.uniba.app.user.Wordsmith;
+import it.uniba.app.utils.UserInput;
+import it.uniba.app.utils.Colors;
 
 /**
  * < < Boundary > > Gestisce l'interfaccia utente
@@ -188,7 +191,6 @@ public class UserInterface {
         }
     }
 
-   
     /**
      * Prende lo user input per la parola segreta
      * 
@@ -207,10 +209,11 @@ public class UserInterface {
     /**
      * Si occupa del disegno della griglia con i relativi caratteri e colori
      */
-    void drawMatrix(Guess[] guesses) {
+    public void drawMatrix(Guess[] guesses) {
         for (int i = 0; i < guesses.length; i++) {
             for (int j = 0; j < guesses[i].cell.length; j++) {
-                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + Colors.ANSI_BLACK + guesses[i].cell[j].getCharacter() + Colors.ANSI_RESET));
+                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + Colors.ANSI_BLACK
+                        + guesses[i].cell[j].getCharacter() + Colors.ANSI_RESET));
             }
             System.out.println();
         }
@@ -230,7 +233,7 @@ public class UserInterface {
         System.out.println("Digitare /help per la lista dei comandi.");
         System.out.println();
     }
-    
+
     public void maxGuesses() {
         System.out.println("Hai raggiunto il numero massimo di tentativi");
         System.out.println("La parola segreta è " + match.getSecretWord());

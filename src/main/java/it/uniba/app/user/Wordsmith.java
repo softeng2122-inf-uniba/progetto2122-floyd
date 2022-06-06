@@ -1,4 +1,4 @@
-package it.uniba.user;
+package it.uniba.app.user;
 
 /**
  * < < noECB > > Gestisce i diritti del paroliere

@@ -1,11 +1,11 @@
-package it.uniba.app;
+package it.uniba.app.match;
 
-import it.uniba.utils.Colors;
+import it.uniba.app.utils.Colors;
 
 /**
  * <<Entity>> Elemento composto da un colore e una lettera.
  */
-class Cell {
+public class Cell {
     private String color;
 
     private char character;

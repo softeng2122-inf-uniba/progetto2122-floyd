@@ -1,8 +1,10 @@
-package it.uniba.app;
+package it.uniba.app.utils;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import it.uniba.app.match.Match;
 
 /**
  * < < noECB > > Gestisce gli input da tastiera

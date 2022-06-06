@@ -1,9 +1,9 @@
-package it.uniba.app;
+package it.uniba.app.match;
 
 /**
  * < < Entity > > Tipo composto da una stringa e un booleano per ogni carattere
  */
-class Word {
+public class Word {
     private String word;
 
     private boolean[] isMarked;

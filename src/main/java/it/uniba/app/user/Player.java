@@ -1,4 +1,4 @@
-package it.uniba.user;
+package it.uniba.app.user;
 
 /**
  * < < noECB > > Gestisce i diritti del giocatore
@@ -17,6 +17,5 @@ public class Player {
     public boolean getIsWordsmith() {
         return isWordsmith;
     }
-
 
 }
