@@ -23,8 +23,30 @@ public class Guess {
         }
     }
 
+    public Guess(final Guess guess) {
+        this.chosenWord = guess.chosenWord;
+        this.correct = guess.correct;
+        this.cells = new Cell[Match.NUM_OF_CELLS];
+        for (int i = 0; i < cells.length; i++) {
+            this.cells[i] = guess.cells[i];
+        }
+        this.controller = new GuessController(this);
+    }
+
     public Cell[] getCells() {
-        return cells;
+        Cell[] cellsCopy = new Cell[Match.NUM_OF_CELLS];
+        for (int i = 0; i < cellsCopy.length; i++) {
+            cellsCopy[i] = new Cell(this.cells[i]);
+        }
+        return cellsCopy;
+    }
+
+    public void setCells(final Cell[] newCells) {
+        Cell[] cellsCopy = new Cell[Match.NUM_OF_CELLS];
+        for (int i = 0; i < cellsCopy.length; i++) {
+            cellsCopy[i] = new Cell(newCells[i]);
+            this.cells[i] = cellsCopy[i];
+        }
     }
 
     public String getCellColor(int idx) {
@@ -43,12 +65,12 @@ public class Guess {
         this.correct = value;
     }
 
-    public void setChosenWord(String chosenWord) {
-        this.chosenWord = chosenWord;
-    }
-
     public String getChosenWord() {
         return chosenWord;
+    }
+
+    public void setChosenWord(String chosenWord) {
+        this.chosenWord = chosenWord;
     }
 
     public GuessController getController() {

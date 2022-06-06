@@ -14,6 +14,11 @@ public class Cell {
         initCell();
     }
 
+    public Cell(final Cell cell) {
+        this.color = cell.color;
+        this.character = cell.character;
+    }
+
     public String getColor() {
         return color;
     }

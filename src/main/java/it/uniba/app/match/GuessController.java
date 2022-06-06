@@ -31,6 +31,7 @@ public class GuessController {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
                 guessCells[i].setCharacter(guess.getChosenWord().charAt(i));
             }
+            guess.setCells(guessCells);
         }
     }
 
@@ -57,6 +58,8 @@ public class GuessController {
                 }
             }
         }
+
+        guess.setCells(cells);
     }
 
     private void updateGuessStatus(String secretWordString) {
