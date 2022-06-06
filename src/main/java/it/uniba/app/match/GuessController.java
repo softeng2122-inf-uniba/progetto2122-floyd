@@ -18,35 +18,50 @@ public class GuessController {
      * @param secretWord Parola segreta della partita
      * @return
      */
-    public boolean checkGuess(Word secretWord) {
-        // Prima controlla tutte le lettere nelle posizioni corrette
-        for (int i = 0; i < guess.getChosenWord().length(); i++) {
-            guess.getCells()[i].setCharacter(guess.getChosenWord().charAt(i));
-            if (guess.getCells()[i].getCharacter() == secretWord.getString().charAt(i)) {
-                guess.getCells()[i].setColor(ANSI_GREEN_BACKGROUND);
+    public void examineGuessAttempt(String userInput, Word matchSecretWord) {
+        guess.setChosenWord(userInput);
+        updateCellsCharacters();
+        updateCellsColor(matchSecretWord);
+        updateGuessStatus(matchSecretWord.getString());
+    }
+
+    private void updateCellsCharacters() {
+        if (!guess.getChosenWord().equals(" ")) {
+            Cell[] guessCells = guess.getCells();
+            for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
+                guessCells[i].setCharacter(guess.getChosenWord().charAt(i));
+            }
+        }
+    }
+
+    private void updateCellsColor(Word secretWord) {
+        Cell[] cells = guess.getCells();
+
+        for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
+            if (cells[i].getCharacter() == secretWord.getString().charAt(i)) {
+                cells[i].setColor(ANSI_GREEN_BACKGROUND);
                 secretWord.setMarked(i);
             }
         }
-        // Poi controlla tutte le altre
-        for (int i = 0; i < guess.getChosenWord().length(); i++) {
-            for (int j = 0; j < secretWord.getString().length(); j++) {
-                // Consideriamo per efficienza solo le celle non colorate
-                if (guess.getCells()[i].getColor() == ANSI_WHITE_BACKGROUND) {
+
+        for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
+            if (cells[i].getColor().equals(ANSI_WHITE_BACKGROUND)) {
+                for (int j = 0; j < Match.NUM_OF_CELLS; j++) {
                     if (!secretWord.isMarked(j)) {
-                        if (guess.getCells()[i].getCharacter() == secretWord.getString().charAt(j)) {
-                            guess.getCells()[i].setColor(ANSI_YELLOW_BACKGROUND);
+                        if (cells[i].getCharacter() == secretWord.getString().charAt(j)) {
+                            cells[i].setColor(ANSI_YELLOW_BACKGROUND);
                             secretWord.setMarked(j);
+                            break;
                         }
                     }
                 }
             }
         }
-
-        if (guess.getChosenWord().equals(secretWord.getString())) {
-            guess.setCorrect(true);
-            return true;
-        } else
-            return false;
     }
 
+    private void updateGuessStatus(String secretWordString) {
+        if (guess.getChosenWord().equals(secretWordString)) {
+            guess.setCorrect(true);
+        }
+    }
 }

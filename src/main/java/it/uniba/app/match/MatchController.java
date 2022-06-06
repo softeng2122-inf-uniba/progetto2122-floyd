@@ -48,32 +48,25 @@ public class MatchController {
         if (InputChecker.isCommand(userInput)) {
             ui.getCommands(userInput);
         } else {
-            tryGuess(userInput);
+
+            if (InputChecker.isValidAsWord(userInput)) {
+                guessAttempt(userInput);
+                ConsoleUtils.clearScreen();
+                UserInterface.printer.getGrid(match.getGuesses());
+            } else if (userInput.length() < 5) {
+                UserInterface.printer.getIncompleteGuess();
+            } else if (userInput.length() > 5) {
+                UserInterface.printer.getExcessiveGuess();
+            } else {
+                UserInterface.printer.getInvalidGuess();
+            }
         }
-        UserInterface.printer.getGrid(match.getGuesses());
+
     }
 
-    /**
-     * Si occupa di verificare il tentativo corrente
-     * 
-     * @param chosenWord parola scelta per il tentativo corrente
-     */
-    private void tryGuess(String chosenWord) {
-        if (InputChecker.isValidAsWord(chosenWord)) {
-            match.getGuess(match.getCurrentGuessCtr()).setChosenWord(chosenWord);
-            if (match.getGuess(match.getCurrentGuessCtr()).getController().checkGuess(match.getSecretWord())) {
-                match.setInProgress(false);
-            } else {
-                match.incrementCurrentGuessCtr();
-                match.getSecretWord().resetMarked();
-                ConsoleUtils.clearScreen();
-            }
-        } else if (chosenWord.length() < 5) {
-            UserInterface.printer.getIncompleteGuess();
-        } else if (chosenWord.length() > 5) {
-            UserInterface.printer.getExcessiveGuess();
-        } else {
-            UserInterface.printer.getInvalidGuess();
-        }
+    private boolean guessAttempt(String userInput) {
+        Guess guess = match.getGuess(match.getCurrentGuessCtr());
+        guess.getController().examineGuessAttempt(userInput, match.getSecretWord());
+        return guess.isCorrect();
     }
 }
