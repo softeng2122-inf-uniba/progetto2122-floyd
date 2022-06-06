@@ -114,4 +114,8 @@ public class UIPrinter {
     public void getInvalidSecretWord() {
         System.out.println("Parola segreta non valida!");
     }
+
+    public void getInvalidCommand() {
+        System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
+    }
 }

@@ -23,34 +23,32 @@ public class UserInterface {
         this.match = new Match(this);
     }
 
+    public void setLastSecretWord(String str) {
+        this.lastSecretWord = str;
+    }
+
     /**
-     * Gestisce i comandi dati in input fuori dalla partita
+     * Gestisce i comandi dati in input
      */
     public void getCommands(String userInput) {
         if (user.isWordsmith()) {
             switch (userInput) {
-                case "/help": {
+                case "/help":
                     commands.help(user);
                     break;
-                }
-                case "/gioca": {
+                case "/gioca":
                     commands.play(lastSecretWord, match);
                     break;
-                }
-                case "/abbandona": {
+                case "/abbandona":
                     commands.leave(match);
                     break;
-                }
-                case "/esci": {
+                case "/esci":
                     commands.exit();
                     break;
-                }
-                case "/mostra": {
+                case "/mostra":
                     commands.showSecretWord(lastSecretWord);
                     break;
-                }
-
-                default: {
+                default:
                     Matcher matcher = Pattern.compile("(/nuova) (.+)").matcher(userInput);
                     if (matcher.matches()) {
                         matcher.reset();
@@ -59,39 +57,29 @@ public class UserInterface {
                             commands.newSecretWord(this, matcher.group(gc), match);
                         }
                     } else {
-                        System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
+                        printer.getInvalidCommand();
                     }
                     break;
-                }
             }
         } else {
             switch (userInput) {
-                case "/help": {
+                case "/help":
                     commands.help(user);
                     break;
-                }
-                case "/gioca": {
+                case "/gioca":
                     commands.play(lastSecretWord, match);
                     break;
-                }
-                case "/abbandona": {
+                case "/abbandona":
                     commands.leave(match);
                     break;
-                }
-                case "/esci": {
+                case "/esci":
                     commands.exit();
                     break;
-                }
-                default: {
-                    System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
+                default:
+                    printer.getInvalidCommand();
                     break;
-                }
             }
         }
-    }
-
-    public void setLastSecretWord(String str) {
-        this.lastSecretWord = str;
     }
 
     //
