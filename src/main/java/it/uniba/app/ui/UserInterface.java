@@ -36,26 +36,7 @@ public class UserInterface {
                     break;
                 }
                 case "/gioca": {
-                    try {
-                        if (match.getIsInProgress()) {
-                            System.out.println("La partita è già in corso!");
-                        } else {
-                            if (lastSecretWord == null) {
-                                System.out.println("Parola segreta mancante");
-                            } else {
-                                match = new Match(user, lastSecretWord, this);
-                                match.start();
-                            }
-                        }
-                    } catch (NullPointerException e) {
-                        if (lastSecretWord == null) {
-                            System.out.println("Parola segreta mancante");
-                        } else {
-                            match = new Match(user, lastSecretWord, this);
-                            match.start();
-                        }
-
-                    }
+                    commands.play(user, lastSecretWord, match);
                     break;
                 }
                 case "/abbandona": {
