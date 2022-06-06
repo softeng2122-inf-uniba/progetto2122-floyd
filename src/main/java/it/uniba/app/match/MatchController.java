@@ -19,7 +19,7 @@ public class MatchController {
      * Inizia la partita
      */
     public void start() {
-        match.setIsInProgress(true);
+        match.setInProgress(true);
 
         UserInterface.printer.getGrid(match.getGuesses());
 
@@ -30,7 +30,7 @@ public class MatchController {
      * Si occupa dell'aggiornamento della partita ad ogni input
      */
     private void update() {
-        while (match.getCurrentGuessCtr() < 6 && match.getIsInProgress()) {
+        while (match.getCurrentGuessCtr() < 6 && match.isInProgress()) {
             String userInput = UserInput.get();
 
             if (!InputChecker.isCommand(userInput)) {
@@ -40,7 +40,7 @@ public class MatchController {
             }
             UserInterface.printer.getGrid(match.getGuesses());
         }
-        if (match.getCurrentGuessCtr() == 6 && match.getIsInProgress()) {
+        if (match.getCurrentGuessCtr() == 6 && match.isInProgress()) {
             UserInterface.printer.getMaxTriesReached(match.getSecretWord().getString());
         } else if (match.getGuess(match.getCurrentGuessCtr()).getIsCorrect()) {
             UserInterface.printer.getCorrectGuessNotification(match.getCurrentGuessCtr());
@@ -59,7 +59,7 @@ public class MatchController {
         if (InputChecker.isValidAsWord(chosenWord)) {
             match.getGuess(match.getCurrentGuessCtr()).setChosenWord(chosenWord);
             if (match.getGuess(match.getCurrentGuessCtr()).checkGuess(match.getSecretWord())) {
-                match.setIsInProgress(false);
+                match.setInProgress(false);
             } else {
                 match.incrementCurrentGuessCtr();
                 match.getSecretWord().resetMarked();

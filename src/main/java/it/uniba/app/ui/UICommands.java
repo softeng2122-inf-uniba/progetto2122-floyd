@@ -10,7 +10,7 @@ public class UICommands {
     }
 
     public void play(String lastSecretWord, Match match) {
-        if (match.getIsInProgress()) {
+        if (match.isInProgress()) {
             UserInterface.printer.getMatchAlreadyStarted();
         } else {
             if (lastSecretWord == null) {
@@ -23,10 +23,10 @@ public class UICommands {
     }
 
     public void leave(Match match) {
-        if (match.getIsInProgress()) {
+        if (match.isInProgress()) {
             UserInterface.printer.getLeaveRequestConfirmation();
             if (getConfirmation()) {
-                match.setIsInProgress(false);
+                match.setInProgress(false);
             }
         } else {
             UserInterface.printer.getNoMatchToLeave();
@@ -66,7 +66,7 @@ public class UICommands {
 
     public void newSecretWord(UserInterface ui, String secretWord, Match match) {
         if (InputChecker.isValidAsWord(secretWord)) {
-            if (match.getIsInProgress()) {
+            if (match.isInProgress()) {
                 match.setSecretWord(secretWord);
             }
             ui.setLastSecretWord(secretWord);

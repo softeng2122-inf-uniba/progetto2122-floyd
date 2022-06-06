@@ -12,7 +12,7 @@ public class Match {
     public static final int NUM_OF_CELLS = 5;
 
     private Word secretWord;
-    private boolean isInProgress;
+    private boolean inProgress;
     private Guess[] guesses;
 
     private int currentGuessCtr;
@@ -20,7 +20,7 @@ public class Match {
     private final MatchController controller;
 
     public Match(UserInterface ui) {
-        this.isInProgress = false;
+        this.inProgress = false;
         this.currentGuessCtr = 0;
         this.secretWord = new Word(null);
         this.controller = new MatchController(ui, this);
@@ -55,16 +55,16 @@ public class Match {
         return secretWord;
     }
 
-    public void setSecretWord(String secretWord) {
-        this.secretWord = new Word(secretWord);
+    public void setSecretWord(String newSecretWord) {
+        this.secretWord = new Word(newSecretWord);
     }
 
-    public boolean getIsInProgress() {
-        return isInProgress;
+    public boolean isInProgress() {
+        return inProgress;
     }
 
-    public void setIsInProgress(boolean value) {
-        isInProgress = value;
+    public void setInProgress(boolean value) {
+        inProgress = value;
     }
 
 }
