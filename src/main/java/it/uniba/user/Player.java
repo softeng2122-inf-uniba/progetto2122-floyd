@@ -11,7 +11,7 @@ public class Player {
     }
 
     public static void showHelp() {
-        System.out.println("\n/help\n/gioca\n/abbandona (disponibile solo durante la partita)\n/esci\n\n");
+        System.out.println("\n/help\n/gioca\n/abbandona\n/esci\n\n");
     }
 
     public boolean getIsWordsmith() {
