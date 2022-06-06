@@ -11,8 +11,7 @@ public class Cell {
     private char character;
 
     public Cell() {
-        this.setColor(ANSI_WHITE_BACKGROUND);
-        this.setCharacter(' ');
+        initCell();
     }
 
     public String getColor() {
@@ -29,5 +28,10 @@ public class Cell {
 
     public void setCharacter(char character) {
         this.character = character;
+    }
+
+    public void initCell() {
+        this.setColor(ANSI_WHITE_BACKGROUND);
+        this.setCharacter(' ');
     }
 }

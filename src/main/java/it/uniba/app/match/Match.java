@@ -67,4 +67,13 @@ public class Match {
         inProgress = value;
     }
 
+    public void reset() {
+        this.currentGuessCtr = 0;
+        this.inProgress = false;
+
+        for (Guess guess : guesses) {
+            guess.initGuess();
+        }
+    }
+
 }

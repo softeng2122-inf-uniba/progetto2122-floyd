@@ -54,4 +54,13 @@ public class Guess {
     public GuessController getController() {
         return controller;
     }
+
+    public void initGuess() {
+        this.chosenWord = " ";
+        this.correct = false;
+
+        for (Cell cell : cells) {
+            cell.initCell();
+        }
+    }
 }
