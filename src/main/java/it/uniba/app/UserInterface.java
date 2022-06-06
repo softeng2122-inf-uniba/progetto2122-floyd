@@ -56,8 +56,48 @@ public class UserInterface {
                     }
                     break;
                 }
+                case "/mostra": {
+                    if(lastSecretWord == null){
+                        System.out.println("Non è stata ancora impostata una parola segreta.");
+                    }
+                    else{
+                        System.out.println("La parola segreta è: " + lastSecretWord);
+                    }
+                    break;
+                }
+                
                 default: {
-                    System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
+                    Matcher matcher = Pattern.compile("(/nuova) (.+)").matcher(userInput);
+                    if (matcher.matches()) {
+                        matcher.reset();
+                        while (matcher.find()) {
+                            int gc = matcher.groupCount();
+                            if (UserInput.isValidAsWord(matcher.group(gc))) {
+                                try {
+                                    if(match.getIsInProgress()){
+                                        match.setSecretWord(matcher.group(gc));
+                                    } 
+                                } catch(NullPointerException e) {
+                                    
+                                }
+                                finally{
+                                    lastSecretWord = matcher.group(gc);
+                                    System.out.println("OK");
+                                }
+                            } else {
+                                if (matcher.group(gc).length() < Match.NUM_OF_CELLS) {
+                                    System.out.println("Parola segreta troppo corta");
+                                } else if (matcher.group(gc).length() > Match.NUM_OF_CELLS) {
+                                    System.out.println("Parola segreta troppo lunga");
+                                } else {
+                                    System.out.println("Parola segreta non valida!");
+                                }
+
+                            }
+                        }
+                    } else {
+                        System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
+                    }
                     break;
                 }
             }
