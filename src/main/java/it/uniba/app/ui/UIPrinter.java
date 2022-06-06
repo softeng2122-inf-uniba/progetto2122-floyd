@@ -4,6 +4,7 @@ import static it.uniba.app.utils.ConsoleUtils.ANSI_BLACK;
 import static it.uniba.app.utils.ConsoleUtils.ANSI_RESET;
 
 import it.uniba.app.match.Guess;
+import it.uniba.app.match.Match;
 import it.uniba.app.user.Player;
 
 public class UIPrinter {
@@ -119,5 +120,15 @@ public class UIPrinter {
 
     public void getInvalidCommand() {
         System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
+    }
+
+    public void getGuessError(final String chosenWord) {
+        if (chosenWord.length() < Match.NUM_OF_CELLS) {
+            getIncompleteGuess();
+        } else if (chosenWord.length() > Match.NUM_OF_CELLS) {
+            getExcessiveGuess();
+        } else {
+            getInvalidGuess();
+        }
     }
 }

@@ -53,12 +53,8 @@ public class MatchController {
                 updateMatchStatus(guessAttempt(userInput));
                 ConsoleUtils.clearScreen();
                 UserInterface.printer.getGrid(match.getGuesses());
-            } else if (userInput.length() < 5) {
-                UserInterface.printer.getIncompleteGuess();
-            } else if (userInput.length() > 5) {
-                UserInterface.printer.getExcessiveGuess();
             } else {
-                UserInterface.printer.getInvalidGuess();
+                UserInterface.printer.getGuessError(userInput);
             }
         }
 
