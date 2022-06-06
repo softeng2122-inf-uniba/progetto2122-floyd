@@ -1,6 +1,6 @@
 package it.uniba.app.match;
 
-import it.uniba.app.utils.Colors;
+import static it.uniba.app.utils.ConsoleUtils.ANSI_WHITE_BACKGROUND;
 
 /**
  * <<Entity>> Elemento composto da un colore e una lettera.
@@ -11,7 +11,7 @@ public class Cell {
     private char character;
 
     public Cell() {
-        this.setColor(Colors.ANSI_WHITE_BACKGROUND);
+        this.setColor(ANSI_WHITE_BACKGROUND);
         this.setCharacter(' ');
     }
 

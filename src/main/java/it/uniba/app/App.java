@@ -1,6 +1,7 @@
 package it.uniba.app;
 
 import it.uniba.app.ui.UserInterface;
+import it.uniba.app.user.Player;
 import it.uniba.app.user.Wordsmith;
 import it.uniba.app.utils.UserInput;
 
@@ -15,7 +16,7 @@ public final class App {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
-        Wordsmith user = new Wordsmith();
+        Player user = new Wordsmith();
         UserInterface ui = new UserInterface(user);
 
         UserInterface.printer.getWelcome();

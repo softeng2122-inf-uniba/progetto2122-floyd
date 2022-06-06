@@ -1,6 +1,8 @@
 package it.uniba.app.match;
 
-import it.uniba.app.utils.Colors;
+import static it.uniba.app.utils.ConsoleUtils.ANSI_GREEN_BACKGROUND;
+import static it.uniba.app.utils.ConsoleUtils.ANSI_WHITE_BACKGROUND;
+import static it.uniba.app.utils.ConsoleUtils.ANSI_YELLOW_BACKGROUND;
 
 /**
  * < < Entity > > Si occupa di controllare la validità del tentativo
@@ -42,7 +44,7 @@ public class Guess {
         for (int i = 0; i < chosenWord.length(); i++) {
             cell[i].setCharacter(chosenWord.charAt(i));
             if (cell[i].getCharacter() == secretWord.getWord().charAt(i)) {
-                cell[i].setColor(Colors.ANSI_GREEN_BACKGROUND);
+                cell[i].setColor(ANSI_GREEN_BACKGROUND);
                 secretWord.setAsMarked(i);
             }
         }
@@ -50,10 +52,10 @@ public class Guess {
         for (int i = 0; i < chosenWord.length(); i++) {
             for (int j = 0; j < secretWord.getWord().length(); j++) {
                 // Consideriamo per efficienza solo le celle non colorate
-                if (cell[i].getColor() == Colors.ANSI_WHITE_BACKGROUND) {
+                if (cell[i].getColor() == ANSI_WHITE_BACKGROUND) {
                     if (!secretWord.getIsMarked(j)) {
                         if (cell[i].getCharacter() == secretWord.getWord().charAt(j)) {
-                            cell[i].setColor(Colors.ANSI_YELLOW_BACKGROUND);
+                            cell[i].setColor(ANSI_YELLOW_BACKGROUND);
                             secretWord.setAsMarked(j);
                         }
                     }
