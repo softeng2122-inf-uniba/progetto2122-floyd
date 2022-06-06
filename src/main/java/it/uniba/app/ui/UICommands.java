@@ -2,6 +2,7 @@ package it.uniba.app.ui;
 
 import it.uniba.app.match.Match;
 import it.uniba.app.user.Player;
+import it.uniba.app.utils.InputChecker;
 import it.uniba.app.utils.UserInput;
 
 public class UICommands {
@@ -64,7 +65,7 @@ public class UICommands {
     }
 
     public void newSecretWord(UserInterface ui, String secretWord, Match match) {
-        if (UserInput.isValidAsWord(secretWord)) {
+        if (InputChecker.isValidAsWord(secretWord)) {
             if (match.getIsInProgress()) {
                 match.setSecretWord(secretWord);
             }

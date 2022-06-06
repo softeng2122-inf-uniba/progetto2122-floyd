@@ -3,6 +3,7 @@ package it.uniba.app.match;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.UserInput;
 import it.uniba.app.utils.Colors;
+import it.uniba.app.utils.InputChecker;
 
 /**
  * < < Control > > Gestisce la partita e tutti i suoi componenti
@@ -71,7 +72,7 @@ public class Match {
         while (currentGuessCtr < 6 && isInProgress) {
             String userInput = UserInput.get();
 
-            if (!UserInput.isCommand(userInput)) {
+            if (!InputChecker.isCommand(userInput)) {
                 tryGuess(userInput);
             } else {
                 ui.getCommands(userInput);
@@ -94,7 +95,7 @@ public class Match {
      * @param chosenWord parola scelta per il tentativo corrente
      */
     private void tryGuess(String chosenWord) {
-        if (UserInput.isValidAsWord(chosenWord)) {
+        if (InputChecker.isValidAsWord(chosenWord)) {
             guesses[currentGuessCtr].setChosenWord(chosenWord);
             if (guesses[currentGuessCtr].checkGuess(secretWord)) {
                 isInProgress = false;
