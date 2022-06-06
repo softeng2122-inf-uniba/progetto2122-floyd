@@ -20,30 +20,55 @@ public class UserInterface {
      * 
      * @param user
      */
-    public void getCommands(Player user) {
-        while (true) {
-            String userInput = UserInput.get();
-
+    public void getCommands(String userInput, Player user) {
+        if (user.getIsWordsmith()) {
             switch (userInput) {
                 case "/help": {
                     Wordsmith.showHelp();
                     break;
                 }
                 case "/gioca": {
-                    if (lastSecretWord == null) {
-                        match = new Match(user.getIsWordsmith(), this);
+                    try {
+                        if (match.getIsInProgress()) {
+                            System.out.println("La partita è già in corso!");
+                        } else {
+                            if (lastSecretWord == null) {
+                                System.out.println("Parola segreta mancante");
+                            } else {
+                                match = new Match(user, lastSecretWord, this);
+                                match.start();
+                            }
+                        }
+                    } catch (NullPointerException e) {
+                        if (lastSecretWord == null) {
+                            System.out.println("Parola segreta mancante");
+                        } else {
+                            match = new Match(user, lastSecretWord, this);
+                            match.start();
+                        }
 
-                        // Supponiamo in questa versione che il giocatore sia a prescindere un paroliere
-                        System.out.print("Inserire la parola segreta: ");
-                        lastSecretWord = inputSecretWord();
-                        match.setSecretWord(lastSecretWord);
-                    } else {
-                        match = new Match(user.getIsWordsmith(), lastSecretWord, this);
                     }
-                    match.start();
-                    lastSecretWord = match.getSecretWord();
                     break;
+                }
+                case "/abbandona": {
+                    try {
+                        if (match.getIsInProgress()) {
+                            System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
+                            String answer = UserInput.get();
+                            if (answer.equals("y")) {
+                                match.setIsInProgress(false);
+                            } else if (answer.equals("n")) {
+                            } else {
+                                System.out.println("Inserire un'opzione valida!");
+                            }
+                        } else {
+                            System.out.println("Non è in corso alcuna partita da abbandonare.");
+                        }
+                    } catch (NullPointerException e) {
+                        System.out.println("Non è in corso alcuna partita da abbandonare.");
+                    }
 
+                    break;
                 }
                 case "/esci": {
                     System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
@@ -57,15 +82,13 @@ public class UserInterface {
                     break;
                 }
                 case "/mostra": {
-                    if(lastSecretWord == null){
+                    if (lastSecretWord == null)
                         System.out.println("Non è stata ancora impostata una parola segreta.");
-                    }
-                    else{
+                    else
                         System.out.println("La parola segreta è: " + lastSecretWord);
-                    }
                     break;
                 }
-                
+
                 default: {
                     Matcher matcher = Pattern.compile("(/nuova) (.+)").matcher(userInput);
                     if (matcher.matches()) {
@@ -74,90 +97,13 @@ public class UserInterface {
                             int gc = matcher.groupCount();
                             if (UserInput.isValidAsWord(matcher.group(gc))) {
                                 try {
-                                    if(match.getIsInProgress()){
+                                    if (match.getIsInProgress())
                                         match.setSecretWord(matcher.group(gc));
-                                    } 
-                                } catch(NullPointerException e) {
-                                    
-                                }
-                                finally{
+                                } catch (NullPointerException e) {
+                                } finally {
                                     lastSecretWord = matcher.group(gc);
                                     System.out.println("OK");
                                 }
-                            } else {
-                                if (matcher.group(gc).length() < Match.NUM_OF_CELLS) {
-                                    System.out.println("Parola segreta troppo corta");
-                                } else if (matcher.group(gc).length() > Match.NUM_OF_CELLS) {
-                                    System.out.println("Parola segreta troppo lunga");
-                                } else {
-                                    System.out.println("Parola segreta non valida!");
-                                }
-
-                            }
-                        }
-                    } else {
-                        System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
-                    }
-                    break;
-                }
-            }
-        }
-    }
-
-    /**
-     * Si occupa dell'utilizzo dei comandi durante la partita in base all'input dato
-     * 
-     * @param userInput
-     * @param isWordsmith
-     */
-    public void inGameCommands(String userInput, boolean isWordsmith) {
-        if (isWordsmith) {
-            switch (userInput) {
-                case "/help": {
-                    Wordsmith.showHelp();
-                    break;
-                }
-                case "/gioca": {
-                    System.out.println("La partita è già in corso!");
-                    break;
-                }
-                case "/abbandona": {
-                    System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
-                    String answer = UserInput.get().toLowerCase();
-                    if (answer.equals("y")) {
-                        match.setIsInProgress(false);
-                    } else if (answer.equals("n")) {
-                    } else {
-                        System.out.println("Inserire un'opzione valida!");
-                    }
-                    break;
-                }
-                case "/esci": {
-                    System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
-                    String answer = UserInput.get();
-                    if (answer.equals("y")) {
-                        System.exit(0);
-                    } else if (answer.equals("n")) {
-                    } else {
-                        System.out.println("Inserire un'opzione valida!");
-                    }
-                    break;
-                }
-                case "/mostra": {
-                    System.out.println("La parola segreta è: " + match.getSecretWord());
-
-                    break;
-                }
-
-                default: {
-                    Matcher matcher = Pattern.compile("(/nuova) (.+)").matcher(userInput);
-                    if (matcher.matches()) {
-                        matcher.reset();
-                        while (matcher.find()) {
-                            int gc = matcher.groupCount();
-                            if (UserInput.isValidAsWord(matcher.group(gc))) {
-                                match.setSecretWord(matcher.group(gc));
-                                System.out.println("OK");
                             } else {
                                 if (matcher.group(gc).length() < Match.NUM_OF_CELLS) {
                                     System.out.println("Parola segreta troppo corta");
@@ -182,18 +128,45 @@ public class UserInterface {
                     break;
                 }
                 case "/gioca": {
-                    System.out.println("La partita è già in corso!");
+                    try {
+                        if (match.getIsInProgress()) {
+                            System.out.println("La partita è già in corso!");
+                        } else {
+                            if (lastSecretWord == null) {
+                                System.out.println("Parola segreta mancante");
+                            } else {
+                                match = new Match(user, lastSecretWord, this);
+                                match.start();
+                            }
+                        }
+                    } catch (NullPointerException e) {
+                        if (lastSecretWord == null) {
+                            System.out.println("Parola segreta mancante");
+                        } else {
+                            match = new Match(user, lastSecretWord, this);
+                            match.start();
+                        }
+                    }
                     break;
                 }
                 case "/abbandona": {
-                    System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
-                    String answer = UserInput.get().toLowerCase();
-                    if (answer.equals("y")) {
-                        match.setIsInProgress(false);
-                    } else if (answer.equals("n")) {
-                    } else {
-                        System.out.println("Inserire un'opzione valida!");
+                    try {
+                        if (match.getIsInProgress()) {
+                            System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
+                            String answer = UserInput.get();
+                            if (answer.equals("y")) {
+                                match.setIsInProgress(false);
+                            } else if (answer.equals("n")) {
+                            } else {
+                                System.out.println("Inserire un'opzione valida!");
+                            }
+                        } else {
+                            System.out.println("Non è in corso alcuna partita da abbandonare.");
+                        }
+                    } catch (NullPointerException e) {
+                        System.out.println("Non è in corso alcuna partita da abbandonare.");
                     }
+
                     break;
                 }
                 case "/esci": {
@@ -208,13 +181,14 @@ public class UserInterface {
                     break;
                 }
                 default: {
-                    System.out.println("Comando non riconosciuto o attualmente non disponibile. /help per visualizzare la lista dei comandi.");
+                    System.out.println("Comando non riconosciuto. /help per visualizzare la lista dei comandi.");
                     break;
                 }
             }
         }
     }
 
+   
     /**
      * Prende lo user input per la parola segreta
      * 

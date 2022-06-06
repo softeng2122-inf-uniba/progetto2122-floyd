@@ -26,7 +26,9 @@ public final class App {
             }
         }
 
-        ui.getCommands(user);
+        while (true) {
+            ui.getCommands(UserInput.get(), user);
+        }
 
     }
 }

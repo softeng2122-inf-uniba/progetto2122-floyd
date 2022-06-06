@@ -1,5 +1,6 @@
 package it.uniba.app;
 
+import it.uniba.user.Player;
 import it.uniba.utils.Colors;
 
 /**
@@ -18,37 +19,20 @@ public class Match {
     private int currentGuess = 0;
 
     UserInterface ui;
+    private Player user;
 
-    private boolean isWordsmith; // utilizzato per capire quali comandi accettare durante il match
 
-    /**
-     * Istanzia un match, senza assegnazione diretta della parola segreta
-     * 
-     * @param isWordsmith
-     */
-    public Match(boolean isWordsmith, UserInterface ui) {
-        isInProgress = false;
-        secretWord = new Word(null);
-        this.isWordsmith = isWordsmith;
-        this.ui = ui;
-
-        guesses = new Guess[6];
-        for (int i = 0; i < guesses.length; i++) {
-            guesses[i] = new Guess();
-        }
-    }
-
-    /**
+     /**
      * Istanzia un match, assegnando direttamente la parola segreta
      * 
      * @param isWordsmith
      * @param secretWord
      * @param ui
      */
-    public Match(boolean isWordsmith, String secretWord, UserInterface ui) {
+    public Match(Player user, String secretWord, UserInterface ui) {
         isInProgress = false;
         this.secretWord = new Word(secretWord);
-        this.isWordsmith = isWordsmith;
+        this.user = user;
         this.ui = ui;
 
         guesses = new Guess[6];
@@ -98,7 +82,7 @@ public class Match {
             if (!UserInput.isCommand(userInput)) {
                 tryGuess(userInput);
             } else {
-                ui.inGameCommands(userInput, isWordsmith);
+                ui.getCommands(userInput, user);
             }
             ui.drawMatrix(guesses);
         }
