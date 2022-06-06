@@ -27,14 +27,12 @@ public class UserInterface {
 
     /**
      * Gestisce i comandi dati in input fuori dalla partita
-     * 
-     * @param user
      */
     public void getCommands(String userInput) {
         if (user.getIsWordsmith()) {
             switch (userInput) {
                 case "/help": {
-                    Wordsmith.showHelp();
+                    commands.help(user);
                     break;
                 }
                 case "/gioca": {
