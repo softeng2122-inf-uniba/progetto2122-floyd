@@ -15,10 +15,10 @@ public class UICommands {
 
     public void play(String lastSecretWord, Match match) {
         if (match.getIsInProgress()) {
-            System.out.println("La partita è già in corso!");
+            UserInterface.printer.getMatchAlreadyStarted();
         } else {
             if (lastSecretWord == null) {
-                System.out.println("Parola segreta mancante");
+                UserInterface.printer.getSecretWordMissing();
             } else {
                 match.setSecretWord(lastSecretWord);
                 match.start();
@@ -28,35 +28,35 @@ public class UICommands {
 
     public void leave(Match match) {
         if (match.getIsInProgress()) {
-            System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
+            UserInterface.printer.getLeaveRequestConfirmation();
             String answer = UserInput.get();
             if (answer.equals("y")) {
                 match.setIsInProgress(false);
             } else if (answer.equals("n")) {
             } else {
-                System.out.println("Inserire un'opzione valida!");
+                UserInterface.printer.getInvalidOption();
             }
         } else {
-            System.out.println("Non è in corso alcuna partita da abbandonare.");
+            UserInterface.printer.getNoMatchToLeave();
         }
     }
 
     public void exit() {
-        System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
+        UserInterface.printer.getExitRequestConfirmation();
         String answer = UserInput.get();
         if (answer.equals("y")) {
             System.exit(0);
         } else if (answer.equals("n")) {
         } else {
-            System.out.println("Inserire un'opzione valida!");
+            UserInterface.printer.getInvalidOption();
         }
     }
 
     public void showSecretWord(String lastSecretWord) {
         if (lastSecretWord == null)
-            System.out.println("Non è stata ancora impostata una parola segreta.");
+            UserInterface.printer.getSecretWordMissing();
         else
-            System.out.println("La parola segreta è: " + lastSecretWord);
+            UserInterface.printer.getShowSecretWord(lastSecretWord);
     }
 
     public void newSecretWord(UserInterface ui, String secretWord, Match match) {
@@ -65,14 +65,14 @@ public class UICommands {
                 match.setSecretWord(secretWord);
             }
             ui.setLastSecretWord(secretWord);
-            System.out.println("OK");
+            UserInterface.printer.getOk();
         } else {
             if (secretWord.length() < Match.NUM_OF_CELLS) {
-                System.out.println("Parola segreta troppo corta");
+                UserInterface.printer.getSecretWordTooShort();
             } else if (secretWord.length() > Match.NUM_OF_CELLS) {
-                System.out.println("Parola segreta troppo lunga");
+                UserInterface.printer.getSecretWordTooLong();
             } else {
-                System.out.println("Parola segreta non valida!");
+                UserInterface.printer.getInvalidSecretWord();
             }
 
         }

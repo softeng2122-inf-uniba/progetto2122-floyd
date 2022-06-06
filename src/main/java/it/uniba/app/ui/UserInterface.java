@@ -3,11 +3,9 @@ package it.uniba.app.ui;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
 import it.uniba.app.user.Player;
 import it.uniba.app.utils.UserInput;
-import it.uniba.app.utils.Colors;
 
 /**
  * < < Boundary > > Gestisce l'interfaccia utente
@@ -97,19 +95,19 @@ public class UserInterface {
         this.lastSecretWord = str;
     }
 
-    /**
-     * Prende lo user input per la parola segreta
-     * 
-     * @return restituisce l'input dato se è valido
-     */
-    public String inputSecretWord() {
-        while (true) {
-            String inputString = UserInput.get();
+    //
+    // Prende lo user input per la parola segreta
+    //
+    // @return restituisce l'input dato se è valido
+    //
+    // public String inputSecretWord() {
+    // while (true) {
+    // String inputString = UserInput.get();
 
-            if (UserInput.isValidAsWord(inputString)) {
-                return inputString;
-            }
-        }
-    }
+    // if (UserInput.isValidAsWord(inputString)) {
+    // return inputString;
+    // }
+    // }
+    // }
 
 }

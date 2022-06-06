@@ -60,4 +60,48 @@ public class UIPrinter {
     public void getInvalidGuess() {
         System.out.println("Tentativo non valido");
     }
+
+    public void getMatchAlreadyStarted() {
+        System.out.println("La partita è già in corso!");
+    }
+
+    public void getSecretWordMissing() {
+        System.out.println("Parola segreta mancante");
+    }
+
+    public void getLeaveRequestConfirmation() {
+        System.out.print("Sicuro di voler abbandonare la partita? Y/N: ");
+    }
+
+    public void getExitRequestConfirmation() {
+        System.out.print("Sicuro di voler uscire dal gioco? Y/N: ");
+    }
+
+    public void getInvalidOption() {
+        System.out.println("Opzione non valida!");
+    }
+
+    public void getNoMatchToLeave() {
+        System.out.println("Non è in corso alcuna partita da abbandonare.");
+    }
+
+    public void getShowSecretWord(String secretWord) {
+        System.out.println("La parola segreta è: " + secretWord);
+    }
+
+    public void getOk() {
+        System.out.println("OK");
+    }
+
+    public void getSecretWordTooShort() {
+        System.out.println("Parola segreta troppo corta");
+    }
+
+    public void getSecretWordTooLong() {
+        System.out.println("Parola segreta troppo lunga");
+    }
+
+    public void getInvalidSecretWord() {
+        System.out.println("Parola segreta non valida!");
+    }
 }
