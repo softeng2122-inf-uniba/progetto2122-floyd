@@ -61,6 +61,10 @@ public class UIPrinter {
         System.out.println("Numero tentativi: " + (currentGuess + 1));
     }
 
+    public void getShowSecretWord(String secretWord) {
+        System.out.println("La parola segreta è: " + secretWord);
+    }
+
     public void getLeftCorrectlyNotification() {
         System.out.println("Hai abbandonato correttamente la partita!");
     }
@@ -99,10 +103,6 @@ public class UIPrinter {
 
     public void getNoMatchToLeave() {
         System.out.println("Non è in corso alcuna partita da abbandonare.");
-    }
-
-    public void getShowSecretWord(String secretWord) {
-        System.out.println("La parola segreta è: " + secretWord);
     }
 
     public void getOk() {
