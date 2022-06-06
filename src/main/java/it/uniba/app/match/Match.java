@@ -22,7 +22,7 @@ public class Match {
     public Match(UserInterface ui) {
         this.inProgress = false;
         this.currentGuessCtr = 0;
-        this.secretWord = new Word(null);
+        this.secretWord = new Word();
         this.controller = new MatchController(ui, this);
 
         guesses = new Guess[NUM_OF_GUESSES];
@@ -56,7 +56,7 @@ public class Match {
     }
 
     public void setSecretWord(String newSecretWord) {
-        this.secretWord = new Word(newSecretWord);
+        this.secretWord.setString(newSecretWord);
     }
 
     public boolean isInProgress() {

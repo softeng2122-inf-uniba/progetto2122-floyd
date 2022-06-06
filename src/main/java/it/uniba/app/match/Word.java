@@ -8,13 +8,17 @@ public class Word {
 
     private boolean[] marked;
 
-    public Word(String word) {
-        this.word = word;
+    public Word() {
+        this.word = null;
         this.marked = new boolean[Match.NUM_OF_CELLS];
     }
 
     public String getString() {
         return word;
+    }
+
+    public void setString(String str) {
+        this.word = str;
     }
 
     public boolean isMarked(int index) {
