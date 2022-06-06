@@ -30,16 +30,10 @@ public class MatchController {
      * Si occupa dell'aggiornamento della partita ad ogni input
      */
     private void update() {
-        while (match.getCurrentGuessCtr() < 6 && match.isInProgress()) {
-            String userInput = UserInput.get();
-
-            if (!InputChecker.isCommand(userInput)) {
-                tryGuess(userInput);
-            } else {
-                ui.getCommands(userInput);
-            }
-            UserInterface.printer.getGrid(match.getGuesses());
+        while (match.getCurrentGuessCtr() < Match.NUM_OF_GUESSES && match.isInProgress()) {
+            dispatchInput(UserInput.get());
         }
+
         if (match.getCurrentGuessCtr() == 6 && match.isInProgress()) {
             UserInterface.printer.getMaxTriesReached(match.getSecretWord().getString());
         } else if (match.getGuess(match.getCurrentGuessCtr()).getIsCorrect()) {
@@ -48,6 +42,15 @@ public class MatchController {
             UserInterface.printer.getLeftCorrectlyNotification();
         }
 
+    }
+
+    private void dispatchInput(String userInput) {
+        if (InputChecker.isCommand(userInput)) {
+            ui.getCommands(userInput);
+        } else {
+            tryGuess(userInput);
+        }
+        UserInterface.printer.getGrid(match.getGuesses());
     }
 
     /**
