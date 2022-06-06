@@ -14,11 +14,14 @@ public class UIPrinter {
     /**
      * Si occupa del disegno della griglia con i relativi caratteri e colori
      */
-    public void getGrid(Guess[] guesses) {
-        for (int i = 0; i < guesses.length; i++) {
-            for (int j = 0; j < guesses[i].cells.length; j++) {
-                System.out.print(String.format("| %s |", guesses[i].cells[j].getColor() + ANSI_BLACK
-                        + guesses[i].cells[j].getCharacter() + ANSI_RESET));
+    public void getGrid(final Guess[] guesses) {
+        for (int i = 0; i < Match.NUM_OF_GUESSES; i++) {
+            for (int j = 0; j < Match.NUM_OF_CELLS; j++) {
+                System.out.print(String.format("[ %s ]",
+                        guesses[i].getCellColor(j)
+                                + ANSI_BLACK
+                                + guesses[i].getCellCharacter(j)
+                                + ANSI_RESET));
             }
             System.out.println();
         }
