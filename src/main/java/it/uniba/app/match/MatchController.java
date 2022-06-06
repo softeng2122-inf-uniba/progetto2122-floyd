@@ -54,6 +54,7 @@ public class MatchController {
     private boolean guessAttempt(String userInput) {
         Guess guess = match.getGuess(match.getCurrentGuessCtr());
         guess.getController().examineGuessAttempt(userInput, match.getSecretWord());
+        match.setGuess(guess, match.getCurrentGuessCtr());
         return guess.isCorrect();
     }
 

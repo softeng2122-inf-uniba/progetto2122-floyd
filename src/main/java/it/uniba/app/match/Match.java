@@ -36,11 +36,31 @@ public class Match {
     }
 
     public Guess[] getGuesses() {
-        return guesses;
+        Guess[] guessesCopy = new Guess[NUM_OF_GUESSES];
+        for (int i = 0; i < guessesCopy.length; i++) {
+            guessesCopy[i] = new Guess(this.guesses[i]);
+        }
+        return guessesCopy;
+    }
+
+    public void setGuesses(final Guess[] newGuesses) {
+        Guess[] guessesCopy = new Guess[NUM_OF_GUESSES];
+        for (int i = 0; i < NUM_OF_GUESSES; i++) {
+            guessesCopy[i] = new Guess(newGuesses[i]);
+            this.guesses[i] = guessesCopy[i];
+        }
     }
 
     public Guess getGuess(int idx) {
-        return guesses[idx];
+        if (idx < NUM_OF_GUESSES) {
+            return new Guess(this.guesses[idx]);
+        }
+        return null;
+    }
+
+    public void setGuess(final Guess guess, final int idx) {
+        Guess guessCopy = new Guess(guess);
+        this.guesses[idx] = guessCopy;
     }
 
     public int getCurrentGuessCtr() {
