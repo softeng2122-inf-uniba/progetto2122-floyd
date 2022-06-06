@@ -13,6 +13,15 @@ public class Word {
         this.marked = new boolean[Match.NUM_OF_CELLS];
     }
 
+    /** Costruttore copia. Per evitare effetti collaterali. */
+    public Word(final Word wordObj) {
+        this.word = wordObj.word;
+        this.marked = new boolean[Match.NUM_OF_CELLS];
+        for (int i = 0; i < this.marked.length; i++) {
+            this.marked[i] = wordObj.marked[i];
+        }
+    }
+
     public String getString() {
         return word;
     }

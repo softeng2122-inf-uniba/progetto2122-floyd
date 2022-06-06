@@ -52,7 +52,7 @@ public class Match {
     }
 
     public Word getSecretWord() {
-        return secretWord;
+        return new Word(this.secretWord);
     }
 
     public void setSecretWord(String newSecretWord) {
