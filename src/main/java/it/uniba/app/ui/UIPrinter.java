@@ -15,9 +15,9 @@ public class UIPrinter {
      */
     public void getGrid(Guess[] guesses) {
         for (int i = 0; i < guesses.length; i++) {
-            for (int j = 0; j < guesses[i].cell.length; j++) {
-                System.out.print(String.format("| %s |", guesses[i].cell[j].getColor() + ANSI_BLACK
-                        + guesses[i].cell[j].getCharacter() + ANSI_RESET));
+            for (int j = 0; j < guesses[i].cells.length; j++) {
+                System.out.print(String.format("| %s |", guesses[i].cells[j].getColor() + ANSI_BLACK
+                        + guesses[i].cells[j].getCharacter() + ANSI_RESET));
             }
             System.out.println();
         }

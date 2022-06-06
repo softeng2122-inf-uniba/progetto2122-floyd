@@ -36,7 +36,7 @@ public class MatchController {
 
         if (match.getCurrentGuessCtr() == 6 && match.isInProgress()) {
             UserInterface.printer.getMaxTriesReached(match.getSecretWord().getString());
-        } else if (match.getGuess(match.getCurrentGuessCtr()).getIsCorrect()) {
+        } else if (match.getGuess(match.getCurrentGuessCtr()).isCorrect()) {
             UserInterface.printer.getCorrectGuessNotification(match.getCurrentGuessCtr());
         } else {
             UserInterface.printer.getLeftCorrectlyNotification();

@@ -10,22 +10,22 @@ import static it.uniba.app.utils.ConsoleUtils.ANSI_YELLOW_BACKGROUND;
 public class Guess {
     private String chosenWord;
 
-    private boolean isCorrect;
+    private boolean correct;
 
-    public Cell[] cell;
+    public Cell[] cells;
 
     public Guess() {
         this.chosenWord = " ";
-        this.isCorrect = false;
+        this.correct = false;
 
-        this.cell = new Cell[Match.NUM_OF_CELLS];
-        for (int i = 0; i < cell.length; i++) {
-            cell[i] = new Cell();
+        this.cells = new Cell[Match.NUM_OF_CELLS];
+        for (int i = 0; i < cells.length; i++) {
+            cells[i] = new Cell();
         }
     }
 
-    public boolean getIsCorrect() {
-        return isCorrect;
+    public boolean isCorrect() {
+        return correct;
     }
 
     public void setChosenWord(String chosenWord) {
@@ -42,9 +42,9 @@ public class Guess {
     public boolean checkGuess(Word secretWord) {
         // Prima controlla tutte le lettere nelle posizioni corrette
         for (int i = 0; i < chosenWord.length(); i++) {
-            cell[i].setCharacter(chosenWord.charAt(i));
-            if (cell[i].getCharacter() == secretWord.getString().charAt(i)) {
-                cell[i].setColor(ANSI_GREEN_BACKGROUND);
+            cells[i].setCharacter(chosenWord.charAt(i));
+            if (cells[i].getCharacter() == secretWord.getString().charAt(i)) {
+                cells[i].setColor(ANSI_GREEN_BACKGROUND);
                 secretWord.setMarked(i);
             }
         }
@@ -52,10 +52,10 @@ public class Guess {
         for (int i = 0; i < chosenWord.length(); i++) {
             for (int j = 0; j < secretWord.getString().length(); j++) {
                 // Consideriamo per efficienza solo le celle non colorate
-                if (cell[i].getColor() == ANSI_WHITE_BACKGROUND) {
+                if (cells[i].getColor() == ANSI_WHITE_BACKGROUND) {
                     if (!secretWord.isMarked(j)) {
-                        if (cell[i].getCharacter() == secretWord.getString().charAt(j)) {
-                            cell[i].setColor(ANSI_YELLOW_BACKGROUND);
+                        if (cells[i].getCharacter() == secretWord.getString().charAt(j)) {
+                            cells[i].setColor(ANSI_YELLOW_BACKGROUND);
                             secretWord.setMarked(j);
                         }
                     }
@@ -64,7 +64,7 @@ public class Guess {
         }
 
         if (chosenWord.equals(secretWord.getString())) {
-            isCorrect = true;
+            correct = true;
             return true;
         } else
             return false;
