@@ -202,6 +202,21 @@ public class UserInterface {
         }
     }
 
+    public void drawWelcome() {
+        System.out.println(" __      __                .___.__          ");
+        System.out.println("/  \\    /  \\___________  __| _/|  |   ____  ");
+        System.out.println("\\   \\/\\/   /  _ \\_  __ \\/ __ | |  | _/ __ \\ ");
+        System.out.println(" \\        (  <_> )  | \\/ /_/ | |  |_\\  ___/ ");
+        System.out.println("  \\__/\\  / \\____/|__|  \\____ | |____/\\___  >");
+        System.out.println("       \\/                   \\/           \\/ |");
+        System.out.println();
+        System.out.println("--------------------------------------------");
+        System.out.println();
+        System.out.println("Benvenuto su Wordle!");
+        System.out.println("Digitare /help per la lista dei comandi.");
+        System.out.println();
+    }
+    
     public void maxGuesses() {
         System.out.println("Hai raggiunto il numero massimo di tentativi");
         System.out.println("La parola segreta è " + match.getSecretWord());
