@@ -16,7 +16,7 @@ public final class App {
      */
     public static void main(final String[] args) {
         Wordsmith user = new Wordsmith();
-        UserInterface ui = new UserInterface();
+        UserInterface ui = new UserInterface(user);
 
         ui.drawWelcome();
 
@@ -27,7 +27,7 @@ public final class App {
         }
 
         while (true) {
-            ui.getCommands(UserInput.get(), user);
+            ui.getCommands(UserInput.get());
         }
 
     }

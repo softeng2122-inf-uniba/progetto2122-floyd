@@ -15,15 +15,20 @@ import it.uniba.app.utils.Colors;
  */
 public class UserInterface {
 
-    Match match;
-    String lastSecretWord = null;
+    private Match match;
+    private final Player user;
+    private String lastSecretWord = null;
+
+    public UserInterface(final Player userObj) {
+        this.user = userObj;
+    }
 
     /**
      * Gestisce i comandi dati in input fuori dalla partita
      * 
      * @param user
      */
-    public void getCommands(String userInput, Player user) {
+    public void getCommands(String userInput) {
         if (user.getIsWordsmith()) {
             switch (userInput) {
                 case "/help": {

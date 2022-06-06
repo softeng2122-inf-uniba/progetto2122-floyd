@@ -21,7 +21,6 @@ public class Match {
     private int currentGuess = 0;
 
     UserInterface ui;
-    private Player user;
 
     /**
      * Istanzia un match, assegnando direttamente la parola segreta
@@ -33,7 +32,6 @@ public class Match {
     public Match(Player user, String secretWord, UserInterface ui) {
         isInProgress = false;
         this.secretWord = new Word(secretWord);
-        this.user = user;
         this.ui = ui;
 
         guesses = new Guess[6];
@@ -83,7 +81,7 @@ public class Match {
             if (!UserInput.isCommand(userInput)) {
                 tryGuess(userInput);
             } else {
-                ui.getCommands(userInput, user);
+                ui.getCommands(userInput);
             }
             ui.drawMatrix(guesses);
         }
