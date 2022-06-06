@@ -14,6 +14,7 @@ import it.uniba.app.utils.Colors;
  */
 public class UserInterface {
 
+    public static final UIPrinter printer = new UIPrinter();
     private static final UICommands commands = new UICommands();
 
     private final Match match;
