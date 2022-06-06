@@ -67,7 +67,7 @@ public class UserInterface {
         } else {
             switch (userInput) {
                 case "/help": {
-                    Player.showHelp();
+                    commands.help(user);
                     break;
                 }
                 case "/gioca": {

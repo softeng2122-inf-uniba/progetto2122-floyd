@@ -1,6 +1,7 @@
 package it.uniba.app.ui;
 
 import it.uniba.app.match.Guess;
+import it.uniba.app.user.Player;
 import it.uniba.app.utils.Colors;
 
 public class UIPrinter {
@@ -32,6 +33,15 @@ public class UIPrinter {
         System.out.println();
         System.out.println("Benvenuto su Wordle!");
         System.out.println("Digitare /help per la lista dei comandi.");
+        System.out.println();
+    }
+
+    public void getHelp(final Player user) {
+        System.out.println();
+        for (String command : user.getHelpCommands()) {
+            System.out.println(command);
+        }
+        System.out.println();
         System.out.println();
     }
 

@@ -22,7 +22,7 @@ public final class App {
 
         for (String arg : args) {
             if (arg.equals("--help") || arg.equals("-h")) {
-                Wordsmith.showHelp();
+                UserInterface.printer.getHelp(user);
             }
         }
 

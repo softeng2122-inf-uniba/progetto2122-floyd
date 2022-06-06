@@ -2,7 +2,6 @@ package it.uniba.app.ui;
 
 import it.uniba.app.match.Match;
 import it.uniba.app.user.Player;
-import it.uniba.app.user.Wordsmith;
 import it.uniba.app.utils.UserInput;
 
 public class UICommands {
@@ -10,7 +9,7 @@ public class UICommands {
     }
 
     public void help(Player user) {
-        Wordsmith.showHelp();
+        UserInterface.printer.getHelp(user);
     }
 
     public void play(String lastSecretWord, Match match) {
