@@ -18,6 +18,8 @@ public final class App {
         Wordsmith user = new Wordsmith();
         UserInterface ui = new UserInterface();
 
+        ui.drawWelcome();
+
         for (String arg : args) {
             if (arg.equals("--help") || arg.equals("-h")) {
                 Wordsmith.showHelp();
@@ -25,5 +27,6 @@ public final class App {
         }
 
         ui.getCommands(user);
+
     }
 }
