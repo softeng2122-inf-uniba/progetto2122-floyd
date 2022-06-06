@@ -12,26 +12,16 @@ public class UICommands {
         Wordsmith.showHelp();
     }
 
-    public void play(Player user, String lastSecretWord, Match match) {
-        try {
-            if (match.getIsInProgress()) {
-                System.out.println("La partita è già in corso!");
-            } else {
-                if (lastSecretWord == null) {
-                    System.out.println("Parola segreta mancante");
-                } else {
-                    match = new Match(user, lastSecretWord, this);
-                    match.start();
-                }
-            }
-        } catch (NullPointerException e) {
+    public void play(String lastSecretWord, Match match) {
+        if (match.getIsInProgress()) {
+            System.out.println("La partita è già in corso!");
+        } else {
             if (lastSecretWord == null) {
                 System.out.println("Parola segreta mancante");
             } else {
-                match = new Match(user, lastSecretWord, this);
+                match.setSecretWord(lastSecretWord);
                 match.start();
             }
-
         }
     }
 

@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
 import it.uniba.app.user.Player;
-import it.uniba.app.user.Wordsmith;
 import it.uniba.app.utils.UserInput;
 import it.uniba.app.utils.Colors;
 
@@ -17,12 +16,13 @@ public class UserInterface {
 
     private static final UICommands commands = new UICommands();
 
-    private Match match;
+    private final Match match;
     private final Player user;
     private String lastSecretWord = null;
 
     public UserInterface(final Player userObj) {
         this.user = userObj;
+        this.match = new Match(this);
     }
 
     /**
@@ -36,7 +36,7 @@ public class UserInterface {
                     break;
                 }
                 case "/gioca": {
-                    commands.play(user, lastSecretWord, match);
+                    commands.play(lastSecretWord, match);
                     break;
                 }
                 case "/abbandona": {
@@ -117,25 +117,7 @@ public class UserInterface {
                     break;
                 }
                 case "/gioca": {
-                    try {
-                        if (match.getIsInProgress()) {
-                            System.out.println("La partita è già in corso!");
-                        } else {
-                            if (lastSecretWord == null) {
-                                System.out.println("Parola segreta mancante");
-                            } else {
-                                match = new Match(user, lastSecretWord, this);
-                                match.start();
-                            }
-                        }
-                    } catch (NullPointerException e) {
-                        if (lastSecretWord == null) {
-                            System.out.println("Parola segreta mancante");
-                        } else {
-                            match = new Match(user, lastSecretWord, this);
-                            match.start();
-                        }
-                    }
+                    commands.play(lastSecretWord, match);
                     break;
                 }
                 case "/abbandona": {
@@ -227,7 +209,7 @@ public class UserInterface {
 
     public void correctGuess() {
         System.out.println("Parola segreta indovinata");
-        System.out.println("Numero tentativi: " + (match.getCurrentGuess() + 1));
+        System.out.println("Numero tentativi: " + (match.getCurrentGuessCtr() + 1));
     }
 
     public void leave() {
