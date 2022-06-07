@@ -1,6 +1,7 @@
 package it.uniba.app.ui;
 
 import it.uniba.app.match.Match;
+import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.user.Player;
 import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.InputChecker;
@@ -10,8 +11,8 @@ public class UICommands {
     public UICommands() {
     }
 
-    public void play(String lastSecretWord, Match match) {
-        if (match.isInProgress()) {
+    public void play(String lastSecretWord, MatchController matchController) {
+        if (matchController.isInProgress()) {
             UserInterface.printer.getMatchAlreadyStarted();
         } else {
             if (lastSecretWord == null) {
@@ -19,18 +20,18 @@ public class UICommands {
             } else {
                 ConsoleUtils.clearScreen();
                 match.setSecretWord(lastSecretWord);
-                match.getController().start();
-                UserInterface.printer.getEndGameMessage(match);
+                matchController.start();
+                UserInterface.printer.getEndGameMessage(matchController);
                 match.reset();
             }
         }
     }
 
-    public void leave(Match match) {
-        if (match.isInProgress()) {
+    public void leave(MatchController matchController) {
+        if (matchController.isInProgress()) {
             UserInterface.printer.getLeaveRequestConfirmation();
             if (getConfirmation()) {
-                match.setInProgress(false);
+                matchController.endMatch();
             }
         } else {
             UserInterface.printer.getNoMatchToLeave();
@@ -68,9 +69,9 @@ public class UICommands {
         UserInterface.printer.getHelp(user);
     }
 
-    public void newSecretWord(UserInterface ui, String secretWord, Match match) {
+    public void newSecretWord(UserInterface ui, String secretWord, MatchController matchController) {
         if (InputChecker.isValidAsWord(secretWord)) {
-            if (match.isInProgress()) {
+            if (matchController.isInProgress()) {
                 match.setSecretWord(secretWord);
             }
             ui.setLastSecretWord(secretWord);

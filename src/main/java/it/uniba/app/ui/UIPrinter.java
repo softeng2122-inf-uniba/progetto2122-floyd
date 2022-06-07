@@ -5,6 +5,7 @@ import static it.uniba.app.utils.ConsoleUtils.ANSI_RESET;
 
 import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
+import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.user.Player;
 
 public class UIPrinter {
@@ -135,11 +136,11 @@ public class UIPrinter {
         }
     }
 
-    public void getEndGameMessage(final Match match) {
-        if (match.getCurrentGuessCtr() == Match.NUM_OF_GUESSES && match.isInProgress()) {
-            getMaxTriesReached(match.getSecretWord().getString());
-        } else if (match.getGuesses()[match.getCurrentGuessCtr()].isCorrect()) {
-            getCorrectGuessNotification(match.getCurrentGuessCtr());
+    public void getEndGameMessage(final MatchController matchController) {
+        if (matchController.getCurrentGuessNumber() == Match.NUM_OF_GUESSES && matchController.isInProgress()) {
+            getMaxTriesReached(matchController.getSecretWord());
+        } else if (matchController.isCurrentGuessCorrect()) {
+            getCorrectGuessNotification(matchController.getCurrentGuessNumber());
         } else {
             getLeftCorrectlyNotification();
         }

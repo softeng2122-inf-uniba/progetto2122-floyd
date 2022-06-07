@@ -17,9 +17,29 @@ public class MatchController {
 
     private final Match match;
 
-    public MatchController(UserInterface uiObj, Match matchObj) {
-        this.match = matchObj;
+    public MatchController(UserInterface uiObj) {
+        this.match = new Match(uiObj);
         this.ui = uiObj;
+    }
+
+    public void endMatch() {
+        match.setInProgress(false);
+    }
+
+    public boolean isInProgress() {
+        return match.isInProgress();
+    }
+
+    public boolean isCurrentGuessCorrect() {
+        return match.getGuess(match.getCurrentGuessCtr()).isCorrect();
+    }
+
+    public int getCurrentGuessNumber() {
+        return match.getCurrentGuessCtr();
+    }
+
+    public String getSecretWord() {
+        return match.getSecretWord().getString();
     }
 
     /**

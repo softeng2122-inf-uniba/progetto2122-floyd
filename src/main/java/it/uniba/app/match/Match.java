@@ -1,6 +1,5 @@
 package it.uniba.app.match;
 
-import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 
 /**
@@ -18,22 +17,15 @@ public class Match {
 
     private int currentGuessCtr;
 
-    private final MatchController controller;
-
     public Match(UserInterface ui) {
         this.inProgress = false;
         this.currentGuessCtr = 0;
         this.secretWord = new Word();
-        this.controller = new MatchController(ui, this);
 
         guesses = new Guess[NUM_OF_GUESSES];
         for (int i = 0; i < guesses.length; i++) {
             guesses[i] = new Guess();
         }
-    }
-
-    public MatchController getController() {
-        return controller;
     }
 
     /**

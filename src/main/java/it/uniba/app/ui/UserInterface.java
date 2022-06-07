@@ -3,7 +3,7 @@ package it.uniba.app.ui;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import it.uniba.app.match.Match;
+import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.user.Player;
 
 /**
@@ -14,13 +14,13 @@ public class UserInterface {
     public static final UIPrinter printer = new UIPrinter();
     private static final UICommands commands = new UICommands();
 
-    private final Match match;
+    private final MatchController matchController;
     private final Player user;
     private String lastSecretWord = null;
 
     public UserInterface(final Player userObj) {
         this.user = userObj;
-        this.match = new Match(this);
+        this.matchController = new MatchController(this);
     }
 
     public void setLastSecretWord(String str) {
@@ -37,10 +37,10 @@ public class UserInterface {
                     commands.help(user);
                     break;
                 case "/gioca":
-                    commands.play(lastSecretWord, match);
+                    commands.play(lastSecretWord, matchController);
                     break;
                 case "/abbandona":
-                    commands.leave(match);
+                    commands.leave(matchController);
                     break;
                 case "/esci":
                     commands.exit();
@@ -54,7 +54,7 @@ public class UserInterface {
                         matcher.reset();
                         while (matcher.find()) {
                             int gc = matcher.groupCount();
-                            commands.newSecretWord(this, matcher.group(gc), match);
+                            commands.newSecretWord(this, matcher.group(gc), matchController);
                         }
                     } else {
                         printer.getInvalidCommand();
@@ -67,10 +67,10 @@ public class UserInterface {
                     commands.help(user);
                     break;
                 case "/gioca":
-                    commands.play(lastSecretWord, match);
+                    commands.play(lastSecretWord, matchController);
                     break;
                 case "/abbandona":
-                    commands.leave(match);
+                    commands.leave(matchController);
                     break;
                 case "/esci":
                     commands.exit();
