@@ -1,6 +1,7 @@
 package it.uniba.app;
 
 import it.uniba.app.ui.UserInterface;
+import it.uniba.app.ui.control.HelpRequestProcessor;
 import it.uniba.app.user.UserController;
 import it.uniba.app.user.Wordsmith;
 import it.uniba.app.utils.UserInput;
@@ -23,7 +24,7 @@ public final class App {
 
         for (String arg : args) {
             if (arg.equals("--help") || arg.equals("-h")) {
-                UserInterface.printer.getHelp(userController);
+                new HelpRequestProcessor(userController).execute();
                 break;
             }
         }
