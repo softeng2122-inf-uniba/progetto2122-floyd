@@ -1,7 +1,5 @@
 package it.uniba.app.match;
 
-import it.uniba.app.match.controller.GuessController;
-
 /**
  * < < Entity > > Si occupa di controllare la validità del tentativo
  */
@@ -12,12 +10,9 @@ public class Guess {
 
     public Cell[] cells;
 
-    private final GuessController controller;
-
     public Guess() {
         this.chosenWord = " ";
         this.correct = false;
-        this.controller = new GuessController(this);
 
         this.cells = new Cell[Match.NUM_OF_CELLS];
         for (int i = 0; i < cells.length; i++) {
@@ -32,7 +27,6 @@ public class Guess {
         for (int i = 0; i < cells.length; i++) {
             this.cells[i] = guess.cells[i];
         }
-        this.controller = new GuessController(this);
     }
 
     /**
@@ -89,10 +83,6 @@ public class Guess {
 
     public void setChosenWord(String chosenWord) {
         this.chosenWord = chosenWord;
-    }
-
-    public GuessController getController() {
-        return controller;
     }
 
     public void initGuess() {

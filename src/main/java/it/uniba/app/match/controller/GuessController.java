@@ -15,9 +15,16 @@ import it.uniba.app.match.Word;
  */
 public class GuessController {
     private final Guess guess;
+    private final Word secretWordToGuess;
 
-    public GuessController(final Guess guessObj) {
-        this.guess = guessObj;
+    public GuessController() {
+        this.guess = new Guess();
+        this.secretWordToGuess = new Word();
+    }
+
+    public GuessController(final GuessController gc) {
+        this.guess = new Guess(gc.guess);
+        this.secretWordToGuess = new Word(gc.secretWordToGuess);
     }
 
     /**
@@ -75,5 +82,25 @@ public class GuessController {
         if (guess.getChosenWord().equals(secretWordString)) {
             guess.setCorrect(true);
         }
+    }
+
+    public void setSecretWordToGuess(final String str) {
+        secretWordToGuess.setString(str);
+    }
+
+    public boolean isCorrect() {
+        return guess.isCorrect();
+    }
+
+    public String getCellColor(final int idx) {
+        return guess.getCellColor(idx);
+    }
+
+    public char getCellCharacter(final int idx) {
+        return guess.getCellCharacter(idx);
+    }
+
+    public void reset() {
+        guess.initGuess();
     }
 }

@@ -1,6 +1,5 @@
 package it.uniba.app.match.controller;
 
-import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ConsoleUtils;
@@ -95,8 +94,8 @@ public class MatchController {
      * guess examination and updates on the attempt.
      */
     private boolean guessAttempt(String userInput) {
-        Guess guess = match.getGuess(match.getCurrentGuessCtr());
-        guess.getController().examineGuessAttempt(userInput, match.getSecretWord());
+        GuessController guess = match.getGuess(match.getCurrentGuessCtr());
+        guess.examineGuessAttempt(userInput, match.getSecretWord());
         match.setGuess(guess, match.getCurrentGuessCtr());
         return guess.isCorrect();
     }

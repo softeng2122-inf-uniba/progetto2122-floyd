@@ -5,6 +5,7 @@ import static it.uniba.app.utils.ConsoleUtils.ANSI_RESET;
 
 import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
+import it.uniba.app.match.controller.GuessController;
 import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.user.Player;
 
@@ -15,7 +16,7 @@ public class UIPrinter {
     /**
      * Si occupa del disegno della griglia con i relativi caratteri e colori
      */
-    public void getGrid(final Guess[] guesses) {
+    public void getGrid(final GuessController[] guesses) {
         for (int i = 0; i < Match.NUM_OF_GUESSES; i++) {
             for (int j = 0; j < Match.NUM_OF_CELLS; j++) {
                 System.out.print(String.format("[ %s ]",

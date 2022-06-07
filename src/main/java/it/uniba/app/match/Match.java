@@ -1,5 +1,6 @@
 package it.uniba.app.match;
 
+import it.uniba.app.match.controller.GuessController;
 import it.uniba.app.ui.UserInterface;
 
 /**
@@ -13,7 +14,7 @@ public class Match {
 
     private Word secretWord;
     private boolean inProgress;
-    private Guess[] guesses;
+    private GuessController[] guessControllers;
 
     private int currentGuessCtr;
 
@@ -22,9 +23,9 @@ public class Match {
         this.currentGuessCtr = 0;
         this.secretWord = new Word();
 
-        guesses = new Guess[NUM_OF_GUESSES];
-        for (int i = 0; i < guesses.length; i++) {
-            guesses[i] = new Guess();
+        this.guessControllers = new GuessController[NUM_OF_GUESSES];
+        for (int i = 0; i < guessControllers.length; i++) {
+            this.guessControllers[i] = new GuessController();
         }
     }
 
@@ -36,12 +37,12 @@ public class Match {
      * If you want to intentionally save the changes
      * made on this object, use setGuesses().
      */
-    public Guess[] getGuesses() {
-        Guess[] guessesCopy = new Guess[NUM_OF_GUESSES];
-        for (int i = 0; i < guessesCopy.length; i++) {
-            guessesCopy[i] = new Guess(this.guesses[i]);
+    public GuessController[] getGuesses() {
+        GuessController[] guessControllersCopy = new GuessController[NUM_OF_GUESSES];
+        for (int i = 0; i < guessControllersCopy.length; i++) {
+            guessControllersCopy[i] = new GuessController(this.guessControllers[i]);
         }
-        return guessesCopy;
+        return guessControllersCopy;
     }
 
     /**
@@ -52,11 +53,11 @@ public class Match {
      * It preserves the internal state of the object
      * from unintentional changes.
      */
-    public void setGuesses(final Guess[] newGuesses) {
-        Guess[] guessesCopy = new Guess[NUM_OF_GUESSES];
+    public void setGuesses(final GuessController[] newGuesses) {
+        GuessController[] guessControllersCopy = new GuessController[NUM_OF_GUESSES];
         for (int i = 0; i < NUM_OF_GUESSES; i++) {
-            guessesCopy[i] = new Guess(newGuesses[i]);
-            this.guesses[i] = guessesCopy[i];
+            guessControllersCopy[i] = new GuessController(newGuesses[i]);
+            this.guessControllers[i] = guessControllersCopy[i];
         }
     }
 
@@ -68,9 +69,9 @@ public class Match {
      * If you want to intentionally save the changes
      * made on this object, see setGuess().
      */
-    public Guess getGuess(int idx) {
+    public GuessController getGuess(final int idx) {
         if (idx < NUM_OF_GUESSES) {
-            return new Guess(this.guesses[idx]);
+            return new GuessController(this.guessControllers[idx]);
         }
         return null;
     }
@@ -83,9 +84,9 @@ public class Match {
      * It preserves the internal state of the object
      * from unintentional changes.
      */
-    public void setGuess(final Guess guess, final int idx) {
-        Guess guessCopy = new Guess(guess);
-        this.guesses[idx] = guessCopy;
+    public void setGuess(final GuessController guess, final int idx) {
+        GuessController guessControllerCopy = new GuessController(guess);
+        this.guessControllers[idx] = guessControllerCopy;
     }
 
     public int getCurrentGuessCtr() {
@@ -116,8 +117,8 @@ public class Match {
         this.currentGuessCtr = 0;
         this.inProgress = false;
 
-        for (Guess guess : guesses) {
-            guess.initGuess();
+        for (GuessController guess : guessControllers) {
+            guess.reset();
         }
     }
 
