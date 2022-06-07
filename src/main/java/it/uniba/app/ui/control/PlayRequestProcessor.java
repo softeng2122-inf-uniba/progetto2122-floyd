@@ -26,7 +26,7 @@ public class PlayRequestProcessor implements ExecutableTaskString {
      *                       Can be {@code null}.
      */
     @Override
-    public void execute(String lastSecretWord) {
+    public void execute(final String lastSecretWord) {
         if (matchController.isInProgress()) {
             UserInterface.printer.getMatchAlreadyStarted();
         } else {

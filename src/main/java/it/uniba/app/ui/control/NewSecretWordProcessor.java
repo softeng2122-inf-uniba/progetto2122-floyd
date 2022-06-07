@@ -31,7 +31,7 @@ public class NewSecretWordProcessor implements ExecutableTaskString {
     /**
      * @param input the new secret word.
      */
-    public void execute(String input) {
+    public void execute(final String input) {
         if (InputChecker.isValidAsWord(input)) {
             if (matchController.isInProgress()) {
                 matchController.setSecretWord(input);
