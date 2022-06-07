@@ -7,6 +7,11 @@ import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.InputChecker;
 import it.uniba.app.utils.UserInput;
 
+/**
+ * {@literal <<control>>}
+ * Controls a Match object and its components. Provides methods to control every
+ * phase of the match.
+ */
 public class MatchController {
     private final UserInterface ui;
 
@@ -18,7 +23,7 @@ public class MatchController {
     }
 
     /**
-     * Inizia la partita
+     * Starts the match.
      */
     public void start() {
         match.setInProgress(true);
@@ -29,7 +34,7 @@ public class MatchController {
     }
 
     /**
-     * Si occupa dell'aggiornamento della partita ad ogni input
+     * Responsible of updating the match state at each user input.
      */
     private void update() {
         while (match.getCurrentGuessCtr() < Match.NUM_OF_GUESSES && match.isInProgress()) {
@@ -37,6 +42,10 @@ public class MatchController {
         }
     }
 
+    /**
+     * Dispatches the user input depending on whether
+     * the input is a command or a guess.
+     */
     private void dispatchInput(String userInput) {
         if (InputChecker.isCommand(userInput)) {
             ui.getCommands(userInput);
@@ -53,6 +62,10 @@ public class MatchController {
 
     }
 
+    /**
+     * Requests the guess controller to make the required
+     * guess examination and updates on the attempt.
+     */
     private boolean guessAttempt(String userInput) {
         Guess guess = match.getGuess(match.getCurrentGuessCtr());
         guess.getController().examineGuessAttempt(userInput, match.getSecretWord());
@@ -60,6 +73,11 @@ public class MatchController {
         return guess.isCorrect();
     }
 
+    /**
+     * Checks if the given guess is marked as correct,
+     * if so it ends the match,
+     * if not it increments the current guess counter.
+     */
     private void updateMatchStatus(boolean guessCorrect) {
         if (guessCorrect) {
             match.setInProgress(false);
