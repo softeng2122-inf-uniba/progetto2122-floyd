@@ -9,6 +9,10 @@ import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
 import it.uniba.app.match.Word;
 
+/**
+ * {@literal <<control>>}
+ * Controls a Guess object. Provides methods to check guess attempts.
+ */
 public class GuessController {
     private final Guess guess;
 
@@ -17,11 +21,11 @@ public class GuessController {
     }
 
     /**
-     * Si occupa di controllare lettera per lettera nella griglia la parola appena
-     * inserita
-     * 
-     * @param secretWord Parola segreta della partita
-     * @return
+     * Starts the examine process of the attempt.
+     * In detail, it stores the input,
+     * transposes it into cells,
+     * then checks and updates colors of the cells and finally
+     * updates the guess status if it's correct.
      */
     public void examineGuessAttempt(String userInput, Word matchSecretWord) {
         guess.setChosenWord(userInput);
