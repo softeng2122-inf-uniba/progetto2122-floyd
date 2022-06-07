@@ -1,11 +1,12 @@
 package it.uniba.app.ui;
 
 import it.uniba.app.match.controller.MatchController;
-import it.uniba.app.match.controller.SecretWordSetter;
 import it.uniba.app.ui.control.ExitRequestProcessor;
+import it.uniba.app.ui.control.HelpRequestProcessor;
 import it.uniba.app.ui.control.LeaveRequestProcessor;
+import it.uniba.app.ui.control.NewSecretWordProcessor;
 import it.uniba.app.ui.control.PlayRequestProcessor;
-import it.uniba.app.ui.control.SecretWordPrinter;
+import it.uniba.app.ui.control.ShowSecretWordProcessor;
 import it.uniba.app.user.UserController;
 
 public class UICommands {
@@ -25,15 +26,15 @@ public class UICommands {
     }
 
     public void showSecretWord(String lastSecretWord) {
-        new SecretWordPrinter().execute(lastSecretWord);
+        new ShowSecretWordProcessor().execute(lastSecretWord);
     }
 
     public void help(UserController userController) {
-        UserInterface.printer.getHelp(userController);
+        new HelpRequestProcessor(userController).execute(null);
     }
 
     public void newSecretWord(UserInterface ui, String secretWord, MatchController matchController) {
-        new SecretWordSetter(ui, matchController).execute(secretWord);
+        new NewSecretWordProcessor(ui, matchController).execute(secretWord);
     }
 
 }

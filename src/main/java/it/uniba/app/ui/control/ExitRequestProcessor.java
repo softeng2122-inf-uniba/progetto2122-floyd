@@ -8,6 +8,9 @@ import it.uniba.app.utils.ExecutableTask;
  */
 public class ExitRequestProcessor implements ExecutableTask {
 
+    public ExitRequestProcessor() {
+    }
+
     @Override
     public void execute(String str) {
         UserInterface.printer.getExitRequestConfirmation();

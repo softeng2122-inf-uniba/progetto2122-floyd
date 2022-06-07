@@ -1,16 +1,17 @@
-package it.uniba.app.match.controller;
+package it.uniba.app.ui.control;
 
 import it.uniba.app.match.Match;
+import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ExecutableTask;
 import it.uniba.app.utils.InputChecker;
 
-public class SecretWordSetter implements ExecutableTask {
+public class NewSecretWordProcessor implements ExecutableTask {
     private final MatchController matchController;
 
     private final UserInterface ui;
 
-    public SecretWordSetter(final UserInterface uiObj, final MatchController matchControllerObj) {
+    public NewSecretWordProcessor(final UserInterface uiObj, final MatchController matchControllerObj) {
         this.ui = uiObj;
         this.matchController = matchControllerObj;
     }

@@ -6,6 +6,9 @@ import it.uniba.app.utils.UserInput;
 
 public class ConfirmationRequester implements ExecutableTaskGeneric<Boolean> {
 
+    public ConfirmationRequester() {
+    }
+
     @Override
     public Boolean execute(String str) {
         String answer = UserInput.get();
