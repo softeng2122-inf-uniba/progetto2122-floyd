@@ -21,26 +21,15 @@ public class MatchInputDispatcher implements ExecutableTask {
         if (InputChecker.isCommand(userInput)) {
             ui.getCommands(userInput);
         } else {
-
             if (InputChecker.isValidAsWord(userInput)) {
-                updateMatchStatus(guessAttempt(userInput));
+                Boolean guessAttempt = new GuessAttemptManager(match).execute(userInput);
+                updateMatchStatus(guessAttempt);
                 ConsoleUtils.clearScreen();
                 UserInterface.printer.getGrid(match.getGuesses());
             } else {
                 UserInterface.printer.getGuessError(userInput);
             }
         }
-    }
-
-    /**
-     * Requests the guess controller to make the required
-     * guess examination and updates on the attempt.
-     */
-    private boolean guessAttempt(String userInput) {
-        GuessController guess = match.getGuess(match.getCurrentGuessCtr());
-        guess.examineGuessAttempt(userInput, match.getSecretWord());
-        match.setGuess(guess, match.getCurrentGuessCtr());
-        return guess.isCorrect();
     }
 
     /**
