@@ -1,7 +1,7 @@
 package it.uniba.app.user;
 
 /**
- * < < noECB > > Gestisce i diritti del paroliere
+ * < < entity > > Gestisce i diritti del paroliere
  */
 public class Wordsmith extends Player {
     private static final String[] COMMANDS = {

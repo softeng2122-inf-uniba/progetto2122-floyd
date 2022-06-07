@@ -1,7 +1,7 @@
 package it.uniba.app.user;
 
 /**
- * < < noECB > > Gestisce i diritti del giocatore
+ * < < entity > > Gestisce i diritti del giocatore
  */
 public class Player {
     private static final String[] COMMANDS = {

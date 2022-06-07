@@ -1,7 +1,7 @@
 package it.uniba.app.utils;
 
 /**
- * < < Boundary > > Codici ANSI per visualizzazione avanzata in console
+ * < < noECB > > Codici ANSI per visualizzazione avanzata in console
  */
 public class ConsoleUtils {
     public static final String ANSI_RESET = "\u001B[0m";
