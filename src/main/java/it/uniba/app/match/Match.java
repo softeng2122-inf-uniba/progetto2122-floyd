@@ -36,6 +36,14 @@ public class Match {
         return controller;
     }
 
+    /**
+     * This will not return a reference to the
+     * real object but a clone of the requested object.
+     * It preserves the internal state of the object
+     * from unintentional changes.
+     * If you want to intentionally save the changes
+     * made on this object, use setGuesses().
+     */
     public Guess[] getGuesses() {
         Guess[] guessesCopy = new Guess[NUM_OF_GUESSES];
         for (int i = 0; i < guessesCopy.length; i++) {
@@ -44,6 +52,14 @@ public class Match {
         return guessesCopy;
     }
 
+    /**
+     * Updates the guesses (array) by making a new copy, so that
+     * it decouples the parameter from the actual updated guesses.
+     * Use this when you want to save the changes made
+     * on a deep copy.
+     * It preserves the internal state of the object
+     * from unintentional changes.
+     */
     public void setGuesses(final Guess[] newGuesses) {
         Guess[] guessesCopy = new Guess[NUM_OF_GUESSES];
         for (int i = 0; i < NUM_OF_GUESSES; i++) {
@@ -52,6 +68,14 @@ public class Match {
         }
     }
 
+    /**
+     * This will not return a reference to the
+     * real object but a clone of the requested object.
+     * It preserves the internal state of the object
+     * from unintentional changes.
+     * If you want to intentionally save the changes
+     * made on this object, see setGuess().
+     */
     public Guess getGuess(int idx) {
         if (idx < NUM_OF_GUESSES) {
             return new Guess(this.guesses[idx]);
@@ -59,6 +83,14 @@ public class Match {
         return null;
     }
 
+    /**
+     * Updates the guess by making a new copy, so that
+     * it decouples the parameter from the actual updated guess.
+     * Use this when you want to save the changes made
+     * on a deep copy.
+     * It preserves the internal state of the object
+     * from unintentional changes.
+     */
     public void setGuess(final Guess guess, final int idx) {
         Guess guessCopy = new Guess(guess);
         this.guesses[idx] = guessCopy;
