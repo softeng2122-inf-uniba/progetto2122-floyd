@@ -3,10 +3,10 @@ package it.uniba.app.ui;
 import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.match.controller.SecretWordSetter;
 import it.uniba.app.ui.control.ExitRequestProcessor;
+import it.uniba.app.ui.control.LeaveRequestProcessor;
 import it.uniba.app.ui.control.SecretWordPrinter;
 import it.uniba.app.user.UserController;
 import it.uniba.app.utils.ConsoleUtils;
-import it.uniba.app.utils.UserInput;
 
 public class UICommands {
     public UICommands() {
@@ -26,14 +26,7 @@ public class UICommands {
     }
 
     public void leave(MatchController matchController) {
-        if (matchController.isInProgress()) {
-            UserInterface.printer.getLeaveRequestConfirmation();
-            if (getConfirmation()) {
-                matchController.endMatch();
-            }
-        } else {
-            UserInterface.printer.getNoMatchToLeave();
-        }
+        new LeaveRequestProcessor(matchController).execute(null);
     }
 
     public void exit() {
