@@ -19,8 +19,7 @@ public class UICommands {
                 UserInterface.printer.getSecretWordMissing();
             } else {
                 ConsoleUtils.clearScreen();
-                matchController.setSecretWord(lastSecretWord);
-                matchController.start();
+                matchController.start(lastSecretWord);
             }
         }
     }
