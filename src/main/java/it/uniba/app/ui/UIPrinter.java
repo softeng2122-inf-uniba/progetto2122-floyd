@@ -6,7 +6,7 @@ import static it.uniba.app.utils.ConsoleUtils.ANSI_RESET;
 import it.uniba.app.match.Match;
 import it.uniba.app.match.controller.GuessController;
 import it.uniba.app.match.controller.MatchController;
-import it.uniba.app.user.Player;
+import it.uniba.app.user.UserController;
 
 public class UIPrinter {
     public UIPrinter() {
@@ -43,7 +43,7 @@ public class UIPrinter {
         System.out.println();
     }
 
-    public void getHelp(final Player user) {
+    public void getHelp(final UserController user) {
         System.out.println();
         for (String command : user.getHelpCommands()) {
             System.out.println(command);

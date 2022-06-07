@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import it.uniba.app.match.controller.MatchController;
-import it.uniba.app.user.Player;
+import it.uniba.app.user.UserController;
 
 /**
  * < < Boundary > > Gestisce l'interfaccia utente
@@ -15,10 +15,10 @@ public class UserInterface {
     private static final UICommands commands = new UICommands();
 
     private final MatchController matchController;
-    private final Player user;
+    private final UserController user;
     private String lastSecretWord = null;
 
-    public UserInterface(final Player userObj) {
+    public UserInterface(final UserController userObj) {
         this.user = userObj;
         this.matchController = new MatchController(this);
     }
