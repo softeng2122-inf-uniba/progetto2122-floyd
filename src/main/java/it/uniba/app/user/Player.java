@@ -29,8 +29,4 @@ public class Player {
         return wordsmith;
     }
 
-    protected void setWordsmith(final boolean value) {
-        wordsmith = value;
-    }
-
 }

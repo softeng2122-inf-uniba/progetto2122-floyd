@@ -13,9 +13,10 @@ public class Wordsmith extends Player {
             "/mostra"
     };
 
+    private boolean wordsmith;
+
     public Wordsmith() {
-        super();
-        setWordsmith(true);
+        wordsmith = true;
     }
 
     @Override
@@ -25,6 +26,11 @@ public class Wordsmith extends Player {
             copy[i] = COMMANDS[i];
         }
         return copy;
+    }
+
+    @Override
+    public boolean isWordsmith() {
+        return wordsmith;
     }
 
 }
