@@ -2,6 +2,7 @@ package it.uniba.app.ui;
 
 import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.match.controller.SecretWordSetter;
+import it.uniba.app.ui.control.ExitRequestProcessor;
 import it.uniba.app.ui.control.SecretWordPrinter;
 import it.uniba.app.user.UserController;
 import it.uniba.app.utils.ConsoleUtils;
@@ -35,23 +36,8 @@ public class UICommands {
         }
     }
 
-    private boolean getConfirmation() {
-        String answer = UserInput.get();
-        if (answer.equals("y")) {
-            return true;
-        } else if (answer.equals("n")) {
-            return false;
-        } else {
-            UserInterface.printer.getInvalidOption();
-            return false;
-        }
-    }
-
     public void exit() {
-        UserInterface.printer.getExitRequestConfirmation();
-        if (getConfirmation()) {
-            System.exit(0);
-        }
+        new ExitRequestProcessor().execute(null);
     }
 
     public void showSecretWord(String lastSecretWord) {
