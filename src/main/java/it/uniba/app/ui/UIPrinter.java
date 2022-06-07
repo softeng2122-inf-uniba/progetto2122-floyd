@@ -137,10 +137,11 @@ public class UIPrinter {
     }
 
     public void getEndGameMessage(final MatchController matchController) {
-        if (matchController.getCurrentGuessNumber() == Match.NUM_OF_GUESSES && matchController.isInProgress()) {
+        int currGuessNumber = matchController.getCurrentGuessNumber();
+        if (currGuessNumber == Match.NUM_OF_GUESSES && matchController.isInProgress()) {
             getMaxTriesReached(matchController.getSecretWord());
         } else if (matchController.isCurrentGuessCorrect()) {
-            getCorrectGuessNotification(matchController.getCurrentGuessNumber());
+            getCorrectGuessNotification(currGuessNumber);
         } else {
             getLeftCorrectlyNotification();
         }

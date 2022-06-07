@@ -16,11 +16,10 @@ public class InputChecker {
 
     public static boolean isValidAsWord(String input) {
         if (input.length() == Match.NUM_OF_CELLS) {
-            Matcher matcher = Pattern.compile("[A-Za-z]*").matcher(input);
+            Matcher matcher = Pattern.compile("[a-z]*").matcher(input);
             return matcher.matches();
         } else {
             return false;
         }
     }
-
 }
