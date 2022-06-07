@@ -24,6 +24,7 @@ public final class App {
         for (String arg : args) {
             if (arg.equals("--help") || arg.equals("-h")) {
                 UserInterface.printer.getHelp(userController);
+                break;
             }
         }
 
