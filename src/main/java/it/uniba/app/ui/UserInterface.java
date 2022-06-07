@@ -5,6 +5,12 @@ import java.util.regex.Pattern;
 
 import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.user.UserController;
+import it.uniba.app.ui.control.ExitRequestProcessor;
+import it.uniba.app.ui.control.HelpRequestProcessor;
+import it.uniba.app.ui.control.LeaveRequestProcessor;
+import it.uniba.app.ui.control.NewSecretWordProcessor;
+import it.uniba.app.ui.control.PlayRequestProcessor;
+import it.uniba.app.ui.control.ShowSecretWordProcessor;
 
 /**
  * < < Boundary > > Gestisce l'interfaccia utente
@@ -12,7 +18,6 @@ import it.uniba.app.user.UserController;
 public class UserInterface {
 
     public static final UIPrinter printer = new UIPrinter();
-    private static final UICommands commands = new UICommands();
 
     private final MatchController matchController;
     private final UserController userController;
@@ -23,10 +28,6 @@ public class UserInterface {
         this.matchController = new MatchController(this);
     }
 
-    public void setLastSecretWord(String str) {
-        this.lastSecretWord = str;
-    }
-
     /**
      * Gestisce i comandi dati in input
      */
@@ -34,19 +35,19 @@ public class UserInterface {
         if (userController.isWordsmith()) {
             switch (userInput) {
                 case "/help":
-                    commands.help(userController);
+                    new HelpRequestProcessor(userController).execute(null);
                     break;
                 case "/gioca":
-                    commands.play(lastSecretWord, matchController);
+                    new PlayRequestProcessor(matchController);
                     break;
                 case "/abbandona":
-                    commands.leave(matchController);
+                    new LeaveRequestProcessor(matchController).execute(null);
                     break;
                 case "/esci":
-                    commands.exit();
+                    new ExitRequestProcessor().execute(null);
                     break;
                 case "/mostra":
-                    commands.showSecretWord(lastSecretWord);
+                    new ShowSecretWordProcessor().execute(lastSecretWord);
                     break;
                 default:
                     Matcher matcher = Pattern.compile("(/nuova) (.+)").matcher(userInput);
@@ -54,7 +55,7 @@ public class UserInterface {
                         matcher.reset();
                         while (matcher.find()) {
                             int gc = matcher.groupCount();
-                            commands.newSecretWord(this, matcher.group(gc), matchController);
+                            new NewSecretWordProcessor(this, matchController).execute(matcher.group(gc));
                         }
                     } else {
                         printer.getInvalidCommand();
@@ -64,22 +65,26 @@ public class UserInterface {
         } else {
             switch (userInput) {
                 case "/help":
-                    commands.help(userController);
+                    new HelpRequestProcessor(userController).execute(null);
                     break;
                 case "/gioca":
-                    commands.play(lastSecretWord, matchController);
+                    new PlayRequestProcessor(matchController);
                     break;
                 case "/abbandona":
-                    commands.leave(matchController);
+                    new LeaveRequestProcessor(matchController).execute(null);
                     break;
                 case "/esci":
-                    commands.exit();
+                    new ExitRequestProcessor().execute(null);
                     break;
                 default:
                     printer.getInvalidCommand();
                     break;
             }
         }
+    }
+
+    public void setLastSecretWord(String str) {
+        this.lastSecretWord = str;
     }
 
     //
