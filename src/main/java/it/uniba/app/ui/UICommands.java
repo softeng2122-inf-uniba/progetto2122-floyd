@@ -2,6 +2,7 @@ package it.uniba.app.ui;
 
 import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.match.controller.SecretWordSetter;
+import it.uniba.app.ui.control.SecretWordPrinter;
 import it.uniba.app.user.UserController;
 import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.UserInput;
@@ -54,11 +55,7 @@ public class UICommands {
     }
 
     public void showSecretWord(String lastSecretWord) {
-        if (lastSecretWord == null) {
-            UserInterface.printer.getSecretWordMissing();
-        } else {
-            UserInterface.printer.getShowSecretWord(lastSecretWord);
-        }
+        new SecretWordPrinter().execute(lastSecretWord);
     }
 
     public void help(UserController userController) {
