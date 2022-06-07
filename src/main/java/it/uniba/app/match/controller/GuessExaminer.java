@@ -7,9 +7,9 @@ import static it.uniba.app.utils.ConsoleUtils.ANSI_YELLOW_BACKGROUND;
 import it.uniba.app.match.Cell;
 import it.uniba.app.match.Guess;
 import it.uniba.app.match.Word;
-import it.uniba.app.utils.ExecutableTask;
+import it.uniba.app.utils.ExecutableTaskString;
 
-public class GuessExaminer implements ExecutableTask {
+public class GuessExaminer implements ExecutableTaskString {
 
     private final Guess guess;
 

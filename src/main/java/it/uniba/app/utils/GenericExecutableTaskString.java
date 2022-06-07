@@ -1,5 +1,5 @@
 package it.uniba.app.utils;
 
-public interface ExecutableTaskGeneric<T> {
+public interface GenericExecutableTaskString<T> {
     T execute(String str);
 }

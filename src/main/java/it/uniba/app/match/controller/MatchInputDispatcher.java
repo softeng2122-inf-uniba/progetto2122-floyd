@@ -3,10 +3,10 @@ package it.uniba.app.match.controller;
 import it.uniba.app.match.Match;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ConsoleUtils;
-import it.uniba.app.utils.ExecutableTask;
+import it.uniba.app.utils.ExecutableTaskString;
 import it.uniba.app.utils.InputChecker;
 
-public class MatchInputDispatcher implements ExecutableTask {
+public class MatchInputDispatcher implements ExecutableTaskString {
 
     private final Match match;
     private final UserInterface ui;

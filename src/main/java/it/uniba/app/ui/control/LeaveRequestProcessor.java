@@ -12,10 +12,10 @@ public class LeaveRequestProcessor implements ExecutableTask {
     }
 
     @Override
-    public void execute(String str) {
+    public void execute() {
         if (matchController.isInProgress()) {
             UserInterface.printer.getLeaveRequestConfirmation();
-            if (new ConfirmationRequester().execute(null)) {
+            if (new ConfirmationRequester().execute()) {
                 matchController.endMatch();
             }
         } else {

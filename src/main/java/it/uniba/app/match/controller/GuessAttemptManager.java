@@ -1,9 +1,9 @@
 package it.uniba.app.match.controller;
 
 import it.uniba.app.match.Match;
-import it.uniba.app.utils.ExecutableTaskGeneric;
+import it.uniba.app.utils.GenericExecutableTaskString;
 
-public class GuessAttemptManager implements ExecutableTaskGeneric<Boolean> {
+public class GuessAttemptManager implements GenericExecutableTaskString<Boolean> {
 
     private final Match match;
 

@@ -35,16 +35,16 @@ public class UserInterface {
         if (userController.isWordsmith()) {
             switch (userInput) {
                 case "/help":
-                    new HelpRequestProcessor(userController).execute(null);
+                    new HelpRequestProcessor(userController).execute();
                     break;
                 case "/gioca":
                     new PlayRequestProcessor(matchController);
                     break;
                 case "/abbandona":
-                    new LeaveRequestProcessor(matchController).execute(null);
+                    new LeaveRequestProcessor(matchController).execute();
                     break;
                 case "/esci":
-                    new ExitRequestProcessor().execute(null);
+                    new ExitRequestProcessor().execute();
                     break;
                 case "/mostra":
                     new ShowSecretWordProcessor().execute(lastSecretWord);
@@ -65,16 +65,16 @@ public class UserInterface {
         } else {
             switch (userInput) {
                 case "/help":
-                    new HelpRequestProcessor(userController).execute(null);
+                    new HelpRequestProcessor(userController).execute();
                     break;
                 case "/gioca":
                     new PlayRequestProcessor(matchController);
                     break;
                 case "/abbandona":
-                    new LeaveRequestProcessor(matchController).execute(null);
+                    new LeaveRequestProcessor(matchController).execute();
                     break;
                 case "/esci":
-                    new ExitRequestProcessor().execute(null);
+                    new ExitRequestProcessor().execute();
                     break;
                 default:
                     printer.getInvalidCommand();

@@ -23,7 +23,7 @@ public class MatchController {
      */
     public void start(String secretWord) {
         setSecretWord(secretWord);
-        new MatchStarter(match, ui).execute(null);
+        new MatchStarter(match, ui).execute();
         UserInterface.printer.getEndGameMessage(this);
         match.reset();
     }

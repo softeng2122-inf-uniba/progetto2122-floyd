@@ -13,7 +13,7 @@ public class HelpRequestProcessor implements ExecutableTask {
     }
 
     @Override
-    public void execute(String str) {
+    public void execute() {
         UserInterface.printer.getHelp(userController);
     }
 

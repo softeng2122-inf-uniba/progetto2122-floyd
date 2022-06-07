@@ -1,9 +1,9 @@
 package it.uniba.app.ui.control;
 
 import it.uniba.app.ui.UserInterface;
-import it.uniba.app.utils.ExecutableTask;
+import it.uniba.app.utils.ExecutableTaskString;
 
-public class ShowSecretWordProcessor implements ExecutableTask {
+public class ShowSecretWordProcessor implements ExecutableTaskString {
 
     public ShowSecretWordProcessor() {
     }

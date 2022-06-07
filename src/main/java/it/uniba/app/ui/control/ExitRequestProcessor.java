@@ -12,9 +12,9 @@ public class ExitRequestProcessor implements ExecutableTask {
     }
 
     @Override
-    public void execute(String str) {
+    public void execute() {
         UserInterface.printer.getExitRequestConfirmation();
-        if (new ConfirmationRequester().execute(null)) {
+        if (new ConfirmationRequester().execute()) {
             System.exit(0);
         }
     }

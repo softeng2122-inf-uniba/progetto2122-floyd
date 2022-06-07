@@ -16,7 +16,7 @@ public class MatchStarter implements ExecutableTask {
     }
 
     @Override
-    public void execute(String str) {
+    public void execute() {
         match.setInProgress(true);
 
         UserInterface.printer.getGrid(match.getGuessControllers());

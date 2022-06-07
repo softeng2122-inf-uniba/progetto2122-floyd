@@ -3,10 +3,10 @@ package it.uniba.app.ui.control;
 import it.uniba.app.match.Match;
 import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
-import it.uniba.app.utils.ExecutableTask;
+import it.uniba.app.utils.ExecutableTaskString;
 import it.uniba.app.utils.InputChecker;
 
-public class NewSecretWordProcessor implements ExecutableTask {
+public class NewSecretWordProcessor implements ExecutableTaskString {
     private final MatchController matchController;
 
     private final UserInterface ui;
