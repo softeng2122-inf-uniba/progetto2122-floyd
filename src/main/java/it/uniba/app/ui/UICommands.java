@@ -4,25 +4,16 @@ import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.match.controller.SecretWordSetter;
 import it.uniba.app.ui.control.ExitRequestProcessor;
 import it.uniba.app.ui.control.LeaveRequestProcessor;
+import it.uniba.app.ui.control.PlayRequestProcessor;
 import it.uniba.app.ui.control.SecretWordPrinter;
 import it.uniba.app.user.UserController;
-import it.uniba.app.utils.ConsoleUtils;
 
 public class UICommands {
     public UICommands() {
     }
 
     public void play(String lastSecretWord, MatchController matchController) {
-        if (matchController.isInProgress()) {
-            UserInterface.printer.getMatchAlreadyStarted();
-        } else {
-            if (lastSecretWord == null) {
-                UserInterface.printer.getSecretWordMissing();
-            } else {
-                ConsoleUtils.clearScreen();
-                matchController.start(lastSecretWord);
-            }
-        }
+        new PlayRequestProcessor(matchController);
     }
 
     public void leave(MatchController matchController) {
