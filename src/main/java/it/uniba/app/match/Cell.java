@@ -2,16 +2,18 @@ package it.uniba.app.match;
 
 import static it.uniba.app.utils.ConsoleUtils.ANSI_WHITE_BACKGROUND;
 
+import it.uniba.app.utils.Resettable;
+
 /**
  * <<Entity>> Elemento composto da un colore e una lettera.
  */
-public class Cell {
+public class Cell implements Resettable {
     private String color;
 
     private char character;
 
     public Cell() {
-        initCell();
+        reset();
     }
 
     public Cell(final Cell cell) {
@@ -35,7 +37,7 @@ public class Cell {
         this.character = character;
     }
 
-    public void initCell() {
+    public void reset() {
         this.setColor(ANSI_WHITE_BACKGROUND);
         this.setCharacter(' ');
     }

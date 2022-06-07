@@ -37,11 +37,4 @@ public class Word {
     public void setMarked(int index) {
         marked[index] = true;
     }
-
-    public void resetMarked() {
-        for (int i = 0; i < marked.length; i++) {
-            marked[i] = false;
-        }
-    }
-
 }

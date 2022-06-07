@@ -101,6 +101,6 @@ public class GuessController {
     }
 
     public void reset() {
-        guess.initGuess();
+        guess.reset();
     }
 }

@@ -1,9 +1,11 @@
 package it.uniba.app.match;
 
+import it.uniba.app.utils.Resettable;
+
 /**
  * < < Entity > > Si occupa di controllare la validità del tentativo
  */
-public class Guess {
+public class Guess implements Resettable {
     private String chosenWord;
 
     private boolean correct;
@@ -85,12 +87,12 @@ public class Guess {
         this.chosenWord = chosenWord;
     }
 
-    public void initGuess() {
+    public void reset() {
         this.chosenWord = " ";
         this.correct = false;
 
         for (Cell cell : cells) {
-            cell.initCell();
+            cell.reset();
         }
     }
 }

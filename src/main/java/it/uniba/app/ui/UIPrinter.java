@@ -3,7 +3,6 @@ package it.uniba.app.ui;
 import static it.uniba.app.utils.ConsoleUtils.ANSI_BLACK;
 import static it.uniba.app.utils.ConsoleUtils.ANSI_RESET;
 
-import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
 import it.uniba.app.match.controller.GuessController;
 import it.uniba.app.match.controller.MatchController;

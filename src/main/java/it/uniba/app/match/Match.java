@@ -2,12 +2,13 @@ package it.uniba.app.match;
 
 import it.uniba.app.match.controller.GuessController;
 import it.uniba.app.ui.UserInterface;
+import it.uniba.app.utils.Resettable;
 
 /**
  * < < Control > > Gestisce la partita e tutti i suoi componenti
  */
 
-public class Match {
+public class Match implements Resettable {
 
     public static final int NUM_OF_GUESSES = 6;
     public static final int NUM_OF_CELLS = 5;
