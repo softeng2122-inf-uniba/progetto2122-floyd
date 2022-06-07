@@ -1,17 +1,12 @@
-package it.uniba.app;
+package it.uniba.app.utils;
 
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * < < noECB > > Gestisce gli input da tastiera
- */
-public class UserInput {
-    private static Scanner in = new Scanner(System.in);
+import it.uniba.app.match.Match;
 
-    public static String get() {
-        return in.nextLine().toLowerCase();
+public class InputChecker {
+    private InputChecker() {
     }
 
     public static boolean isCommand(String input) {
@@ -21,9 +16,10 @@ public class UserInput {
 
     public static boolean isValidAsWord(String input) {
         if (input.length() == Match.NUM_OF_CELLS) {
-            Matcher matcher = Pattern.compile("[A-Za-z]*").matcher(input);
+            Matcher matcher = Pattern.compile("[a-z]*").matcher(input);
             return matcher.matches();
-        } else
+        } else {
             return false;
+        }
     }
 }
