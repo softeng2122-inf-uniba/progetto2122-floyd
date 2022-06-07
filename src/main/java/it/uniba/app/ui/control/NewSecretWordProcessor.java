@@ -6,17 +6,31 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ExecutableTaskString;
 import it.uniba.app.utils.InputChecker;
 
+/**
+ * This method tries to set a new secret word,
+ * it checks if it's valid before and then
+ * updates the old one with the new one.
+ */
 public class NewSecretWordProcessor implements ExecutableTaskString {
+    
+    /** Reference to the match controller. */
     private final MatchController matchController;
 
+    /** Reference to the user interface. */
     private final UserInterface ui;
 
+    /**
+     * @param uiObj              reference to the user interface.
+     * @param matchControllerObj reference to the match controller.
+     */
     public NewSecretWordProcessor(final UserInterface uiObj, final MatchController matchControllerObj) {
         this.ui = uiObj;
         this.matchController = matchControllerObj;
     }
 
-    @Override
+    /**
+     * @param input the new secret word.
+     */
     public void execute(String input) {
         if (InputChecker.isValidAsWord(input)) {
             if (matchController.isInProgress()) {
