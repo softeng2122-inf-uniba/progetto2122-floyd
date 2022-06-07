@@ -42,6 +42,10 @@ public class MatchController {
         return match.getSecretWord().getString();
     }
 
+    public void setSecretWord(final String str) {
+        match.setSecretWord(str);
+    }
+
     /**
      * Starts the match.
      */
@@ -51,6 +55,10 @@ public class MatchController {
         UserInterface.printer.getGrid(match.getGuesses());
 
         update();
+
+        UserInterface.printer.getEndGameMessage(this);
+
+        match.reset();
     }
 
     /**

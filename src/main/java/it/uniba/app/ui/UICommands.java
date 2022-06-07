@@ -19,10 +19,8 @@ public class UICommands {
                 UserInterface.printer.getSecretWordMissing();
             } else {
                 ConsoleUtils.clearScreen();
-                match.setSecretWord(lastSecretWord);
+                matchController.setSecretWord(lastSecretWord);
                 matchController.start();
-                UserInterface.printer.getEndGameMessage(matchController);
-                match.reset();
             }
         }
     }
@@ -72,7 +70,7 @@ public class UICommands {
     public void newSecretWord(UserInterface ui, String secretWord, MatchController matchController) {
         if (InputChecker.isValidAsWord(secretWord)) {
             if (matchController.isInProgress()) {
-                match.setSecretWord(secretWord);
+                matchController.setSecretWord(secretWord);
             }
             ui.setLastSecretWord(secretWord);
             UserInterface.printer.getOk();
