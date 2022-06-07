@@ -35,6 +35,14 @@ public class Guess {
         this.controller = new GuessController(this);
     }
 
+    /**
+     * This will not return a reference to the
+     * real object but a clone of the requested object.
+     * It preserves the internal state of the object
+     * from unintentional changes.
+     * If you want to intentionally save the changes
+     * made on this object, see setCells.
+     */
     public Cell[] getCells() {
         Cell[] cellsCopy = new Cell[Match.NUM_OF_CELLS];
         for (int i = 0; i < cellsCopy.length; i++) {
@@ -43,6 +51,14 @@ public class Guess {
         return cellsCopy;
     }
 
+    /**
+     * Updates the cells (array) by making a new copy, so that
+     * it decouples the parameter from the actual new cells.
+     * Use this when you want to save the changes made
+     * on a deep copy.
+     * It preserves the internal state of the object
+     * from unintentional changes.
+     */
     public void setCells(final Cell[] newCells) {
         Cell[] cellsCopy = new Cell[Match.NUM_OF_CELLS];
         for (int i = 0; i < cellsCopy.length; i++) {
