@@ -20,7 +20,11 @@ public class Wordsmith extends Player {
 
     @Override
     public String[] getHelpCommands() {
-        return COMMANDS;
+        String[] copy = new String[COMMANDS.length];
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = COMMANDS[i];
+        }
+        return copy;
     }
 
 }

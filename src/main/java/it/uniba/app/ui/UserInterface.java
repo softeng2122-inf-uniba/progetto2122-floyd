@@ -38,7 +38,7 @@ public class UserInterface {
                     new HelpRequestProcessor(userController).execute();
                     break;
                 case "/gioca":
-                    new PlayRequestProcessor(matchController);
+                    new PlayRequestProcessor(matchController).execute(lastSecretWord);
                     break;
                 case "/abbandona":
                     new LeaveRequestProcessor(matchController).execute();
@@ -68,7 +68,7 @@ public class UserInterface {
                     new HelpRequestProcessor(userController).execute();
                     break;
                 case "/gioca":
-                    new PlayRequestProcessor(matchController);
+                    new PlayRequestProcessor(matchController).execute(lastSecretWord);
                     break;
                 case "/abbandona":
                     new LeaveRequestProcessor(matchController).execute();
