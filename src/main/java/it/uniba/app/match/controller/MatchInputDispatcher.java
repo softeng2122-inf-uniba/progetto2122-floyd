@@ -23,7 +23,7 @@ public class MatchInputDispatcher implements ExecutableTask {
         } else {
             if (InputChecker.isValidAsWord(userInput)) {
                 Boolean guessAttempt = new GuessAttemptManager(match).execute(userInput);
-                updateMatchStatus(guessAttempt);
+                new MatchStatusUpdater(match).execute(guessAttempt.toString());
                 ConsoleUtils.clearScreen();
                 UserInterface.printer.getGrid(match.getGuesses());
             } else {
@@ -31,18 +31,4 @@ public class MatchInputDispatcher implements ExecutableTask {
             }
         }
     }
-
-    /**
-     * Checks if the given guess is marked as correct,
-     * if so it ends the match,
-     * if not it increments the current guess counter.
-     */
-    private void updateMatchStatus(boolean guessCorrect) {
-        if (guessCorrect) {
-            match.setInProgress(false);
-        } else {
-            match.incrementCurrentGuessCtr();
-        }
-    }
-
 }

@@ -1,6 +1,5 @@
 package it.uniba.app.match.controller;
 
-import it.uniba.app.match.Guess;
 import it.uniba.app.match.Match;
 import it.uniba.app.utils.ExecutableTaskGeneric;
 
