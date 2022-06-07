@@ -1,10 +1,9 @@
 package it.uniba.app.ui;
 
-import it.uniba.app.match.Match;
 import it.uniba.app.match.controller.MatchController;
+import it.uniba.app.match.controller.SecretWordSetter;
 import it.uniba.app.user.Player;
 import it.uniba.app.utils.ConsoleUtils;
-import it.uniba.app.utils.InputChecker;
 import it.uniba.app.utils.UserInput;
 
 public class UICommands {
@@ -67,22 +66,7 @@ public class UICommands {
     }
 
     public void newSecretWord(UserInterface ui, String secretWord, MatchController matchController) {
-        if (InputChecker.isValidAsWord(secretWord)) {
-            if (matchController.isInProgress()) {
-                matchController.setSecretWord(secretWord);
-            }
-            ui.setLastSecretWord(secretWord);
-            UserInterface.printer.getOk();
-        } else {
-            if (secretWord.length() < Match.NUM_OF_CELLS) {
-                UserInterface.printer.getSecretWordTooShort();
-            } else if (secretWord.length() > Match.NUM_OF_CELLS) {
-                UserInterface.printer.getSecretWordTooLong();
-            } else {
-                UserInterface.printer.getInvalidSecretWord();
-            }
-
-        }
+        new SecretWordSetter(ui, matchController).execute(secretWord);
     }
 
 }

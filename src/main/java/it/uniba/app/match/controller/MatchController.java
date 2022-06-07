@@ -18,6 +18,16 @@ public class MatchController {
         this.ui = uiObj;
     }
 
+    /**
+     * Starts the match.
+     */
+    public void start(String secretWord) {
+        setSecretWord(secretWord);
+        new MatchStarter(match, ui).execute(null);
+        UserInterface.printer.getEndGameMessage(this);
+        match.reset();
+    }
+
     public void endMatch() {
         match.setInProgress(false);
     }
@@ -41,15 +51,4 @@ public class MatchController {
     public void setSecretWord(final String str) {
         match.setSecretWord(str);
     }
-
-    /**
-     * Starts the match.
-     */
-    public void start(String secretWord) {
-        setSecretWord(secretWord);
-        new MatchStarter(match, ui).execute(null);
-        UserInterface.printer.getEndGameMessage(this);
-        match.reset();
-    }
-
 }
