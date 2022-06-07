@@ -25,7 +25,7 @@ public class MatchInputDispatcher implements ExecutableTask {
                 Boolean guessAttempt = new GuessAttemptManager(match).execute(userInput);
                 new MatchStatusUpdater(match).execute(guessAttempt.toString());
                 ConsoleUtils.clearScreen();
-                UserInterface.printer.getGrid(match.getGuesses());
+                UserInterface.printer.getGrid(match.getGuessControllers());
             } else {
                 UserInterface.printer.getGuessError(userInput);
             }

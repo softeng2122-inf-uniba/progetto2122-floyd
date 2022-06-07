@@ -38,7 +38,7 @@ public class Match implements Resettable {
      * If you want to intentionally save the changes
      * made on this object, use setGuesses().
      */
-    public GuessController[] getGuesses() {
+    public GuessController[] getGuessControllers() {
         GuessController[] guessControllersCopy = new GuessController[NUM_OF_GUESSES];
         for (int i = 0; i < guessControllersCopy.length; i++) {
             guessControllersCopy[i] = new GuessController(this.guessControllers[i]);
@@ -54,10 +54,10 @@ public class Match implements Resettable {
      * It preserves the internal state of the object
      * from unintentional changes.
      */
-    public void setGuesses(final GuessController[] newGuesses) {
+    public void setGuessControllers(final GuessController[] newGuessControllers) {
         GuessController[] guessControllersCopy = new GuessController[NUM_OF_GUESSES];
         for (int i = 0; i < NUM_OF_GUESSES; i++) {
-            guessControllersCopy[i] = new GuessController(newGuesses[i]);
+            guessControllersCopy[i] = new GuessController(newGuessControllers[i]);
             this.guessControllers[i] = guessControllersCopy[i];
         }
     }
@@ -70,7 +70,7 @@ public class Match implements Resettable {
      * If you want to intentionally save the changes
      * made on this object, see setGuess().
      */
-    public GuessController getGuess(final int idx) {
+    public GuessController getGuessController(final int idx) {
         if (idx < NUM_OF_GUESSES) {
             return new GuessController(this.guessControllers[idx]);
         }
@@ -85,8 +85,8 @@ public class Match implements Resettable {
      * It preserves the internal state of the object
      * from unintentional changes.
      */
-    public void setGuess(final GuessController guess, final int idx) {
-        GuessController guessControllerCopy = new GuessController(guess);
+    public void setGuessController(final GuessController newGuessController, final int idx) {
+        GuessController guessControllerCopy = new GuessController(newGuessController);
         this.guessControllers[idx] = guessControllerCopy;
     }
 
@@ -118,8 +118,8 @@ public class Match implements Resettable {
         this.currentGuessCtr = 0;
         this.inProgress = false;
 
-        for (GuessController guess : guessControllers) {
-            guess.reset();
+        for (GuessController guessController : guessControllers) {
+            guessController.reset();
         }
     }
 

@@ -19,7 +19,7 @@ public class MatchStarter implements ExecutableTask {
     public void execute(String str) {
         match.setInProgress(true);
 
-        UserInterface.printer.getGrid(match.getGuesses());
+        UserInterface.printer.getGrid(match.getGuessControllers());
 
         while (match.getCurrentGuessCtr() < Match.NUM_OF_GUESSES && match.isInProgress()) {
             new MatchInputDispatcher(match, ui).execute(UserInput.get());

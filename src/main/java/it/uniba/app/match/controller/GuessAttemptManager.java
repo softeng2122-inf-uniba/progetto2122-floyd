@@ -13,11 +13,11 @@ public class GuessAttemptManager implements ExecutableTaskGeneric<Boolean> {
 
     @Override
     public Boolean execute(String userInput) {
-        GuessController guessCopy = match.getGuess(match.getCurrentGuessCtr());
-        guessCopy.setSecretWordToGuess(match.getSecretWord().getString());
-        guessCopy.startExamination(userInput);
-        match.setGuess(guessCopy, match.getCurrentGuessCtr());
-        return guessCopy.isCorrect();
+        GuessController guessControllerCopy = match.getGuessController(match.getCurrentGuessCtr());
+        guessControllerCopy.setSecretWordToGuess(match.getSecretWord().getString());
+        guessControllerCopy.startExamination(userInput);
+        match.setGuessController(guessControllerCopy, match.getCurrentGuessCtr());
+        return guessControllerCopy.isCorrect();
     }
 
 }

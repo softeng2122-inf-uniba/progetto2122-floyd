@@ -15,11 +15,11 @@ public class UserInterface {
     private static final UICommands commands = new UICommands();
 
     private final MatchController matchController;
-    private final UserController user;
+    private final UserController userController;
     private String lastSecretWord = null;
 
-    public UserInterface(final UserController userObj) {
-        this.user = userObj;
+    public UserInterface(final UserController userControllerObj) {
+        this.userController = userControllerObj;
         this.matchController = new MatchController(this);
     }
 
@@ -31,10 +31,10 @@ public class UserInterface {
      * Gestisce i comandi dati in input
      */
     public void getCommands(String userInput) {
-        if (user.isWordsmith()) {
+        if (userController.isWordsmith()) {
             switch (userInput) {
                 case "/help":
-                    commands.help(user);
+                    commands.help(userController);
                     break;
                 case "/gioca":
                     commands.play(lastSecretWord, matchController);
@@ -64,7 +64,7 @@ public class UserInterface {
         } else {
             switch (userInput) {
                 case "/help":
-                    commands.help(user);
+                    commands.help(userController);
                     break;
                 case "/gioca":
                     commands.play(lastSecretWord, matchController);

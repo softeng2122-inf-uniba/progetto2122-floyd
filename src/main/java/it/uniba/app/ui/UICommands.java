@@ -61,8 +61,8 @@ public class UICommands {
         }
     }
 
-    public void help(UserController user) {
-        UserInterface.printer.getHelp(user);
+    public void help(UserController userController) {
+        UserInterface.printer.getHelp(userController);
     }
 
     public void newSecretWord(UserInterface ui, String secretWord, MatchController matchController) {

@@ -1,7 +1,6 @@
 package it.uniba.app;
 
 import it.uniba.app.ui.UserInterface;
-import it.uniba.app.user.Player;
 import it.uniba.app.user.UserController;
 import it.uniba.app.user.Wordsmith;
 import it.uniba.app.utils.UserInput;
@@ -17,14 +16,14 @@ public final class App {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
-        UserController user = new UserController(new Wordsmith());
-        UserInterface ui = new UserInterface(user);
+        UserController userController = new UserController(new Wordsmith());
+        UserInterface ui = new UserInterface(userController);
 
         UserInterface.printer.getWelcome();
 
         for (String arg : args) {
             if (arg.equals("--help") || arg.equals("-h")) {
-                UserInterface.printer.getHelp(user);
+                UserInterface.printer.getHelp(userController);
             }
         }
 

@@ -37,7 +37,7 @@ public class MatchController {
     }
 
     public boolean isCurrentGuessCorrect() {
-        return match.getGuess(match.getCurrentGuessCtr()).isCorrect();
+        return match.getGuessController(match.getCurrentGuessCtr()).isCorrect();
     }
 
     public int getCurrentGuessNumber() {

@@ -15,13 +15,13 @@ public class UIPrinter {
     /**
      * Si occupa del disegno della griglia con i relativi caratteri e colori
      */
-    public void getGrid(final GuessController[] guesses) {
+    public void getGrid(final GuessController[] guessControllers) {
         for (int i = 0; i < Match.NUM_OF_GUESSES; i++) {
             for (int j = 0; j < Match.NUM_OF_CELLS; j++) {
                 System.out.print(String.format("[ %s ]",
-                        guesses[i].getCellColor(j)
+                        guessControllers[i].getCellColor(j)
                                 + ANSI_BLACK
-                                + guesses[i].getCellCharacter(j)
+                                + guessControllers[i].getCellCharacter(j)
                                 + ANSI_RESET));
             }
             System.out.println();
@@ -43,9 +43,9 @@ public class UIPrinter {
         System.out.println();
     }
 
-    public void getHelp(final UserController user) {
+    public void getHelp(final UserController userController) {
         System.out.println();
-        for (String command : user.getHelpCommands()) {
+        for (String command : userController.getHelpCommands()) {
             System.out.println(command);
         }
         System.out.println();

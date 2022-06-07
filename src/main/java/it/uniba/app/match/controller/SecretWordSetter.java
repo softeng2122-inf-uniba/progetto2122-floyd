@@ -6,20 +6,20 @@ import it.uniba.app.utils.ExecutableTask;
 import it.uniba.app.utils.InputChecker;
 
 public class SecretWordSetter implements ExecutableTask {
-    private final MatchController match;
+    private final MatchController matchController;
 
     private final UserInterface ui;
 
-    public SecretWordSetter(final UserInterface uiObj, final MatchController matchObj) {
+    public SecretWordSetter(final UserInterface uiObj, final MatchController matchControllerObj) {
         this.ui = uiObj;
-        this.match = matchObj;
+        this.matchController = matchControllerObj;
     }
 
     @Override
     public void execute(String input) {
         if (InputChecker.isValidAsWord(input)) {
-            if (match.isInProgress()) {
-                match.setSecretWord(input);
+            if (matchController.isInProgress()) {
+                matchController.setSecretWord(input);
             }
             ui.setLastSecretWord(input);
             UserInterface.printer.getOk();
