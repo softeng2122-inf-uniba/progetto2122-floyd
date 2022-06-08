@@ -7,6 +7,7 @@ import it.uniba.app.utils.ExecutableTaskString;
 import it.uniba.app.utils.InputChecker;
 
 /**
+ *  @{literal <<control>>}
  * This method tries to set a new secret word,
  * it checks if it's valid before and then
  * updates the old one with the new one.

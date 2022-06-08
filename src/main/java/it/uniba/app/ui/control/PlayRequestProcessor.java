@@ -6,6 +6,7 @@ import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.ExecutableTaskString;
 
 /**
+ *  @{literal <<control>>}
  * Tries to start a match, if not already started.
  * Prints error otherwise.
  */

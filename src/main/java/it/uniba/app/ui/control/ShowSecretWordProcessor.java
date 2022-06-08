@@ -4,6 +4,7 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ExecutableTaskString;
 
 /**
+ *  @{literal <<control>>}
  * Prints the latest secret word, if there is one.
  * Prints error otherwise.
  */

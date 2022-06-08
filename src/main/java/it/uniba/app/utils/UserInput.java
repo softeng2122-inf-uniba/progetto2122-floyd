@@ -3,7 +3,7 @@ package it.uniba.app.utils;
 import java.util.Scanner;
 
 /**
- * {@literal <<noECB>>}
+ * {@literal <<boundary>>}
  * Manages the input operations.
  */
 public final class UserInput {
