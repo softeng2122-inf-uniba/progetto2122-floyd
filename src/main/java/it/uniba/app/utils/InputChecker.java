@@ -22,7 +22,7 @@ public class InputChecker {
      * @return {@code true} if the word is a command, {@code false}
      *         otherwise.
      */
-    public static boolean isCommand(String input) {
+    public static boolean isCommand(final String input) {
         Matcher matcher = Pattern.compile("/.+").matcher(input);
         return matcher.matches();
     }
@@ -37,7 +37,7 @@ public class InputChecker {
      * @return {@code true} if the word is valid, {@code false}
      *         otherwise.
      */
-    public static boolean isValidAsWord(String input) {
+    public static boolean isValidAsWord(final String input) {
         if (input.length() == Match.NUM_OF_CELLS) {
             Matcher matcher = Pattern.compile("[a-z]*").matcher(input);
             return matcher.matches();

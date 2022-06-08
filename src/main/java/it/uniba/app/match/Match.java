@@ -180,7 +180,7 @@ public class Match implements Resettable {
      *
      * @param newSecretWord the new secret word.
      */
-    public void setSecretWord(String newSecretWord) {
+    public void setSecretWord(final String newSecretWord) {
         this.secretWord.setString(newSecretWord);
     }
 

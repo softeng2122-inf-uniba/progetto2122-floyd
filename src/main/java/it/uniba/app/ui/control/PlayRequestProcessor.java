@@ -17,7 +17,7 @@ public class PlayRequestProcessor implements ExecutableTaskString {
     /**
      * @param matchControllerObj the reference to the match controller.
      */
-    public PlayRequestProcessor(MatchController matchControllerObj) {
+    public PlayRequestProcessor(final MatchController matchControllerObj) {
         this.matchController = matchControllerObj;
     }
 
