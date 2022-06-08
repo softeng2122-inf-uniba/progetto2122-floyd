@@ -7,7 +7,7 @@ import it.uniba.app.utils.ExecutableTaskString;
  * Prints the latest secret word, if there is one.
  * Prints error otherwise.
  */
-public class ShowSecretWordProcessor implements ExecutableTaskString {
+public final class ShowSecretWordProcessor implements ExecutableTaskString {
 
     /** Instantiates a ShowSecretWord task. */
     public ShowSecretWordProcessor() {

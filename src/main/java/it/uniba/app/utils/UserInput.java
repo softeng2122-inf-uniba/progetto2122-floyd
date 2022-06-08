@@ -8,6 +8,9 @@ import java.util.Scanner;
  */
 public class UserInput {
 
+    private UserInput() {
+    }
+
     /** Scanner where we store the input stream. */
     private static Scanner in = new Scanner(System.in, "UTF-8");
 

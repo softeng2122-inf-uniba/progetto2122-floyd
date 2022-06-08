@@ -9,7 +9,7 @@ import it.uniba.app.utils.ExecutableTaskString;
  * Tries to start a match, if not already started.
  * Prints error otherwise.
  */
-public class PlayRequestProcessor implements ExecutableTaskString {
+public final class PlayRequestProcessor implements ExecutableTaskString {
 
     /** Reference to the match controller. */
     private MatchController matchController;

@@ -11,7 +11,7 @@ package it.uniba.app.match;
  * of the cells.
  */
 public class Word {
-    
+
     /** String representing the secret word. */
     private String word;
 
@@ -42,7 +42,7 @@ public class Word {
             this.marked[i] = wordObj.marked[i];
         }
     }
-    
+
     /**
      * @return the secret word as string.
      */

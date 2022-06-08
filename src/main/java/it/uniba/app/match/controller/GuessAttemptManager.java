@@ -8,7 +8,7 @@ import it.uniba.app.utils.GenericExecutableTaskString;
  * and returning a flag indicating if the attempt was successful.
  */
 public class GuessAttemptManager implements GenericExecutableTaskString<Boolean> {
-    
+
     /** Reference to the match currently in progress. */
     private final Match match;
 

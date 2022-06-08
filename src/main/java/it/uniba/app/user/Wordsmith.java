@@ -5,7 +5,7 @@ package it.uniba.app.user;
  * Manages wordsmith's privileges.
  */
 public class Wordsmith extends Player {
-    
+
     /** The list of available commands. */
     private static final String[] COMMANDS = {
             "/help",
@@ -35,7 +35,7 @@ public class Wordsmith extends Player {
         }
         return copy;
     }
-    
+
     /** {@inheritDoc} */
     @Override
     public boolean isWordsmith() {

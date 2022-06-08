@@ -11,8 +11,8 @@ import it.uniba.app.utils.InputChecker;
  * it checks if it's valid before and then
  * updates the old one with the new one.
  */
-public class NewSecretWordProcessor implements ExecutableTaskString {
-    
+public final class NewSecretWordProcessor implements ExecutableTaskString {
+
     /** Reference to the match controller. */
     private final MatchController matchController;
 

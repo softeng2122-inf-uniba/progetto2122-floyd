@@ -10,10 +10,10 @@ import it.uniba.app.match.Match;
  * Contains methods to check the input strings based
  * on the game rules.
  */
-public class InputChecker {
+public final class InputChecker {
     private InputChecker() {
     }
-    
+
     /**
      * Checks if the input is a command.
      * Only accepts strings that contain a "/" as first character.

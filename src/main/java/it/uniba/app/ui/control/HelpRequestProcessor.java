@@ -5,7 +5,7 @@ import it.uniba.app.user.UserController;
 import it.uniba.app.utils.ExecutableTask;
 
 /** Prints the available commands for the user privileges. */
-public class HelpRequestProcessor implements ExecutableTask {
+public final class HelpRequestProcessor implements ExecutableTask {
 
     /** the reference to the user controller. */
     private UserController userController;

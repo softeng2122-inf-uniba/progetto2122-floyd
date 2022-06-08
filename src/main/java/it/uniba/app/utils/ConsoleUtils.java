@@ -6,6 +6,9 @@ package it.uniba.app.utils;
  */
 public class ConsoleUtils {
 
+    private ConsoleUtils() {
+    }
+
     /** Resets text color and background color. */
     public static final String ANSI_RESET = "\u001B[0m";
 

@@ -18,7 +18,7 @@ import it.uniba.app.ui.control.ShowSecretWordProcessor;
  */
 public class UserInterface {
 
-    
+
     /** Responsible of printing messages on console. */
     public static final UIPrinter printer = new UIPrinter();
 
@@ -27,7 +27,7 @@ public class UserInterface {
 
     /** Reference to user controller. */
     private final UserController userController;
-    
+
     /**
      * Holds the latest secret word to start
      * new matches with the previous word.

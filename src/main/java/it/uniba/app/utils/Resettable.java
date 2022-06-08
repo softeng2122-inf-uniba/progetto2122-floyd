@@ -6,7 +6,7 @@ package it.uniba.app.utils;
  * reset its state to default.
  */
 public interface Resettable {
-    
+
     /** Sets the object to default state. */
     void reset();
 }
