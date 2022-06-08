@@ -6,7 +6,7 @@ import java.util.Scanner;
  * {@literal <<noECB>>}
  * Manages the input operations.
  */
-public class UserInput {
+public final class UserInput {
 
     private UserInput() {
     }

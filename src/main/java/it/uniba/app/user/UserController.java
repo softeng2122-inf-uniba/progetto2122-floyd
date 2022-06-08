@@ -19,8 +19,8 @@ public class UserController {
         } else if (playerType.equals("Wordsmith")) {
             this.user = new Wordsmith();
         } else {
-            throw new IllegalArgumentException("Undefined player type." +
-                    "Must be Player or Wordsmith");
+            throw new IllegalArgumentException("Undefined player type."
+                + "Must be Player or Wordsmith");
         }
     }
 

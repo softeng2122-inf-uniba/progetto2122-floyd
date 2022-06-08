@@ -4,7 +4,7 @@ package it.uniba.app.utils;
  * {@literal <<noECB>>}
  * Contains ANSI escape sequences for colors and clearing console.
  */
-public class ConsoleUtils {
+public final class ConsoleUtils {
 
     private ConsoleUtils() {
     }

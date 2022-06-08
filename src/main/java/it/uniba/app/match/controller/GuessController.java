@@ -10,7 +10,7 @@ import it.uniba.app.match.Word;
  * Provides methods to check guess attempts.
  */
 public class GuessController {
-    
+
      /** Reference to the guess object that this controller is responsible of. */
     private final Guess guess;
 
