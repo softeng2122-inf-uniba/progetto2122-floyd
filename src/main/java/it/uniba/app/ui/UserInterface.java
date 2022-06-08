@@ -107,6 +107,13 @@ public class UserInterface {
         this.lastSecretWord = str;
     }
 
+    /**
+     * @return the latest secret word.
+     */
+    public String getLastSecretWord() {
+        return this.lastSecretWord;
+    }
+
     // Takes input for the secret word.
     //
     // @deprecated not used because you are not forced
