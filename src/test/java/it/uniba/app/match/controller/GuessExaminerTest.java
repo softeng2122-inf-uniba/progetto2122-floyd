@@ -85,4 +85,20 @@ public class GuessExaminerTest {
         assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(4));
         assertFalse(guess.isCorrect());
     }
+
+    @Test
+    public void testExecute_DoubleLetters_SecretWordToo() {
+        secretWord.setString("parra");
+        new GuessExaminer(guess, secretWord).execute("brraa");
+
+        for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
+            assertEquals(guess.getCellCharacter(i), "brraa".charAt(i));
+        }
+        assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND, guess.getCellColor(0));
+        assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND, guess.getCellColor(1));
+        assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(2));
+        assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND, guess.getCellColor(3));
+        assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(4));
+        assertFalse(guess.isCorrect());
+    }
 }
