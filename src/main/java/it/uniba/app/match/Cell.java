@@ -51,8 +51,8 @@ public class Cell implements Resettable {
      *             the color background the cell should be.
      */
 
-    public void setColor(final String color) {
-        this.color = color;
+    public void setColor(final String ansi) {
+        this.color = ansi;
     }
 
    /**
@@ -65,8 +65,8 @@ public class Cell implements Resettable {
     /**
      * @param ch the character the cell must contain.
      */
-    public void setCharacter(final char character) {
-        this.character = character;
+    public void setCharacter(final char ch) {
+        this.character = ch;
     }
 
     /**

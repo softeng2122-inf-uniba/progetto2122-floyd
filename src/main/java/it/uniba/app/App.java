@@ -10,7 +10,7 @@ import it.uniba.app.utils.UserInput;
  */
 public final class App {
 
-    private App(){
+    private App() {
     }
 
     /**
