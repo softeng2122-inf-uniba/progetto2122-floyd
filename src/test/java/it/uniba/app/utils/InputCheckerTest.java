@@ -20,4 +20,39 @@ public class InputCheckerTest {
     public void testIsCommand_False_BackslashCommand() {
         assertFalse(InputChecker.isCommand("\\command"));
     }
+
+    @Test
+    public void testIsValidAsWord_CorrectLenght_Alphabet() {
+        assertTrue(InputChecker.isValidAsWord("abcde"));
+    }
+
+    @Test
+    public void testIsValidAsWord_TooShort() {
+        assertFalse(InputChecker.isValidAsWord("abcd"));
+    }
+
+    @Test
+    public void testIsValidAsWord_TooShort_AnyCharacter() {
+        assertFalse(InputChecker.isValidAsWord("a!cd"));
+    }
+
+    @Test
+    public void testIsValidAsWord_TooLong() {
+        assertFalse(InputChecker.isValidAsWord("abcdef"));
+    }
+
+    @Test
+    public void testIsValidAsWord_TooLong_AnyCharacter() {
+        assertFalse(InputChecker.isValidAsWord("ab^def"));
+    }
+
+    @Test
+    public void testIsValidAsWord_CorrectLenght_AnyNonAlphabet() {
+        assertFalse(InputChecker.isValidAsWord("ab@de"));
+    }
+
+    @Test
+    public void testIsValidAsWord_CorrectLenght_Alphabet_UpperCase() {
+        assertFalse(InputChecker.isValidAsWord("aBcde"));
+    }
 }
