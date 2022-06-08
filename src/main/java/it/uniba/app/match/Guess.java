@@ -117,7 +117,7 @@ public class Guess implements Resettable {
      * @param value {@code true} if the guess is correct,
      *              {@code false} otherwise.
      */
-    public void setCorrect(boolean value) {
+    public void setCorrect(final boolean value) {
         this.correct = value;
     }
 
@@ -133,7 +133,7 @@ public class Guess implements Resettable {
      *
      * @param userInput the string taken in input from user.
      */
-    public void setChosenWord(String chosenWord) {
+    public void setChosenWord(final String chosenWord) {
         this.chosenWord = chosenWord;
     }
 

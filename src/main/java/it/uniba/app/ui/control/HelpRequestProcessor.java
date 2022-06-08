@@ -13,7 +13,7 @@ public class HelpRequestProcessor implements ExecutableTask {
     /**
      * @param userControllerObj the reference to the user controller.
      */
-    public HelpRequestProcessor(UserController userControllerObj) {
+    public HelpRequestProcessor(final UserController userControllerObj) {
         this.userController = userControllerObj;
     }
 

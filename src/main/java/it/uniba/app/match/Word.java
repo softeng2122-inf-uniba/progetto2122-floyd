@@ -55,7 +55,7 @@ public class Word {
      *
      * @param str the new secret word.
      */
-    public void setString(String str) {
+    public void setString(final String str) {
         this.word = str;
     }
 
@@ -64,7 +64,7 @@ public class Word {
      * @return {@code true} if that cell has been already visited,
      *         {@code false} otherwise.
      */
-    public boolean isMarked(int idx) {
+    public boolean isMarked(final int idx) {
         return marked[idx];
     }
 
@@ -73,7 +73,7 @@ public class Word {
      *
      * @param idx the cell number to flag as marked.
      */
-    public void setMarked(int idx) {
+    public void setMarked(final int idx) {
         marked[idx] = true;
     }
 }

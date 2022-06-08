@@ -16,7 +16,7 @@ public class LeaveRequestProcessor implements ExecutableTask {
     /**
      * @param matchControllerObj the reference to the match controller.
      */
-    public LeaveRequestProcessor(MatchController matchControllerObj) {
+    public LeaveRequestProcessor(final MatchController matchControllerObj) {
         this.matchController = matchControllerObj;
     }
 

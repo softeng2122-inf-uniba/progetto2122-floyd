@@ -47,7 +47,7 @@ public class UserInterface {
      *
      * @param userInput command taken in input.
      */
-    public void getCommands(String userInput) {
+    public void getCommands(final String userInput) {
         if (userController.isWordsmith()) {
             switch (userInput) {
                 case "/help":
@@ -104,7 +104,7 @@ public class UserInterface {
      *
      * @param str the new secret word.
      */
-    public void setLastSecretWord(String str) {
+    public void setLastSecretWord(final String str) {
         this.lastSecretWord = str;
     }
 
