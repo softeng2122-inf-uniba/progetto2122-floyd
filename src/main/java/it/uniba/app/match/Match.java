@@ -51,7 +51,7 @@ public class Match implements Resettable {
      *
      * @param ui a reference to the User Interface object
      */
-    public Match(UserInterface ui) {
+    public Match(final UserInterface ui) {
         this.inProgress = false;
         this.currentGuessCtr = 0;
         this.secretWord = new Word();
@@ -196,7 +196,7 @@ public class Match implements Resettable {
      * @param value {@code true} if match is currently in progress,
      *              {@code false} otherwise.
      */
-    public void setInProgress(boolean value) {
+    public void setInProgress(final boolean value) {
         inProgress = value;
     }
 
