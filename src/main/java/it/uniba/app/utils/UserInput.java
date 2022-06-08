@@ -12,7 +12,6 @@ public final class UserInput {
     }
 
     /** Scanner where we store the input stream. */
-    private static Scanner in = new Scanner(System.in, "UTF-8");
 
     /**
      * Gets a line of input from the user.
@@ -21,6 +20,7 @@ public final class UserInput {
      *         automatically converted to lower case.
      */
     public static String get() {
+        Scanner in = new Scanner(System.in, "UTF-8");
         String input = in.nextLine().toLowerCase();
         while (input.isEmpty()) {
             input = in.nextLine().toLowerCase();

@@ -8,14 +8,15 @@ import java.io.InputStream;
 import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class UserInputTest {
-    private final InputStream stdIn = System.in;
+    private InputStream stdIn;
 
-    @AfterEach
-    public void restoreInStream() {
-        System.setIn(stdIn);
+    @BeforeEach
+    public void setUp() {
+        stdIn = System.in;
     }
 
     @Test
@@ -27,15 +28,17 @@ public class UserInputTest {
         assertEquals(userInput.toLowerCase(), UserInput.get());
     }
 
-    // Se vengono eseguiti insieme, tramite la suite, da errore
-    // e falliscono, ma se eseguiti singolarmente riescono a testare tutta la
-    // funzione get()
-    // @Test
-    // public void testGet_EmptyInput() {
-    // String userInput = "";
-    // InputStream in = new ByteArrayInputStream(userInput.getBytes());
-    // System.setIn(in);
+    @Test
+    public void testGet_EmptyInput() {
+        String userInput = "";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
 
-    // assertThrowsExactly(NoSuchElementException.class, () -> UserInput.get());
-    // }
+        assertThrowsExactly(NoSuchElementException.class, () -> UserInput.get());
+    }
+
+    @AfterEach
+    public void restoreStream() {
+        System.setIn(stdIn);
+    }
 }

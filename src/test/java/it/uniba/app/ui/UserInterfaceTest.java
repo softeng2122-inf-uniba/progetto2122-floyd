@@ -8,22 +8,26 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import it.uniba.app.ExitAssertions;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.user.UserController;
-import it.uniba.app.utils.UserInput;
 
 public class UserInterfaceTest {
     private UserInterface uiWordsmith;
     private UserInterface uiPlayer;
     private ByteArrayOutputStream outContent;
+    private PrintStream stdOut;
+    private InputStream stdIn;
 
     @BeforeEach
     public void setUp() {
         uiWordsmith = new UserInterface(new UserController("Wordsmith"));
         uiPlayer = new UserInterface(new UserController("Player"));
         outContent = new ByteArrayOutputStream();
+        stdOut = System.out;
+        stdIn = System.in;
         System.setOut(new PrintStream(outContent));
     }
 
@@ -62,15 +66,16 @@ public class UserInterfaceTest {
 
     @Test
     public void testGetCommands_AsBoth_Exit() {
-        final InputStream stdIn = System.in;
-        String userInput = "/esci" + System.lineSeparator() + "y"
-                + System.lineSeparator() + "/esci"
-                + System.lineSeparator() + "y";
+        String userInput = "y";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
 
-        ExitAssertions.assertExits(0, () -> uiWordsmith.getCommands(UserInput.get()));
-        ExitAssertions.assertExits(0, () -> uiPlayer.getCommands(UserInput.get()));
+        ExitAssertions.assertExits(0, () -> uiWordsmith.getCommands("/esci"));
+
+        in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        ExitAssertions.assertExits(0, () -> uiPlayer.getCommands("/esci"));
 
         System.setIn(stdIn);
     }
@@ -161,6 +166,11 @@ public class UserInterfaceTest {
                 + "/help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @AfterEach
+    public void restoreStream() {
+        System.setOut(stdOut);
     }
 
 }
