@@ -72,8 +72,8 @@ public class MatchInputDispatcherTest {
     }
 
     @Test
-    public void testExecute_Command_Play() {
-        new MatchInputDispatcher(match, ui).execute("/abbandona");
+    public void testExecute_Command_Help() {
+        new MatchInputDispatcher(match, ui).execute("/help");
 
         String expectedOutput = System.lineSeparator();
         expectedOutput = expectedOutput
