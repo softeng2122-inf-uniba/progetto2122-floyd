@@ -42,7 +42,7 @@ public class GuessExaminer implements ExecutableTaskString {
      *                  examined.
      */
     @Override
-    public void execute(String userInput) {
+    public void execute(final String userInput) {
         guess.setChosenWord(userInput);
         updateCellsCharacters();
         updateCellsColor();
