@@ -22,7 +22,7 @@ public class Guess implements Resettable {
     private boolean correct;
 
     /** Array of cells, representing each one a character of the chosen word. */
-    public Cell[] cells;
+    private Cell[] cells;
 
     /**
      * Initializes a new Guess,
@@ -51,7 +51,7 @@ public class Guess implements Resettable {
             this.cells[i] = guess.cells[i];
         }
     }
-     
+
     /**
      * This will not return a reference to the
      * real object but a clone of the requested object.
@@ -87,7 +87,7 @@ public class Guess implements Resettable {
             this.cells[i] = cellsCopy[i];
         }
     }
-    
+
     /**
      * @param cellIdx index of the cell
      * @return a string representing ANSI sequence of the cell color.
@@ -133,8 +133,8 @@ public class Guess implements Resettable {
      *
      * @param userInput the string taken in input from user.
      */
-    public void setChosenWord(final String chosenWord) {
-        this.chosenWord = chosenWord;
+    public void setChosenWord(final String userInput) {
+        this.chosenWord = userInput;
     }
 
     /**
