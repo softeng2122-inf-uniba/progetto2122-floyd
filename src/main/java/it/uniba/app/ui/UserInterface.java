@@ -13,25 +13,41 @@ import it.uniba.app.ui.control.PlayRequestProcessor;
 import it.uniba.app.ui.control.ShowSecretWordProcessor;
 
 /**
- * < < Boundary > > Gestisce l'interfaccia utente
+ * {@literal <<boundary>>}
+ * Manages the I/O operations of the game.
  */
 public class UserInterface {
 
+
+    /** Responsible of printing messages on console. */
     public static final UIPrinter printer = new UIPrinter();
 
+    /** Reference to match controller. */
     private final MatchController matchController;
+
+    /** Reference to user controller. */
     private final UserController userController;
+
+    /**
+     * Holds the latest secret word to start
+     * new matches with the previous word.
+     */
     private String lastSecretWord = null;
 
+    /**
+     * @param userControllerObj the user controller linked to this ui.
+     */
     public UserInterface(final UserController userControllerObj) {
         this.userController = userControllerObj;
         this.matchController = new MatchController(this);
     }
 
     /**
-     * Gestisce i comandi dati in input
+     * Dispatches input to the relative command processor.
+     *
+     * @param userInput command taken in input.
      */
-    public void getCommands(String userInput) {
+    public void getCommands(final String userInput) {
         if (userController.isWordsmith()) {
             switch (userInput) {
                 case "/help":
@@ -83,14 +99,20 @@ public class UserInterface {
         }
     }
 
-    public void setLastSecretWord(String str) {
+    /**
+     * Sets the latest secret word.
+     *
+     * @param str the new secret word.
+     */
+    public void setLastSecretWord(final String str) {
         this.lastSecretWord = str;
     }
 
+     // Takes input for the secret word.
     //
-    // Prende lo user input per la parola segreta
-    //
-    // @return restituisce l'input dato se è valido
+    // @deprecated not used because you are not forced
+    // to input a secret word when starting a match anymore.
+    // @return the input string if it's valid.
     //
     // public String inputSecretWord() {
     // while (true) {

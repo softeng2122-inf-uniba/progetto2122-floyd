@@ -5,16 +5,29 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.ExecutableTaskString;
 
-public class PlayRequestProcessor implements ExecutableTaskString {
+/**
+ *  @{literal <<control>>}
+ * Tries to start a match, if not already started.
+ * Prints error otherwise.
+ */
+public final class PlayRequestProcessor implements ExecutableTaskString {
 
+    /** Reference to the match controller. */
     private MatchController matchController;
 
-    public PlayRequestProcessor(MatchController matchControllerObj) {
+    /**
+     * @param matchControllerObj the reference to the match controller.
+     */
+    public PlayRequestProcessor(final MatchController matchControllerObj) {
         this.matchController = matchControllerObj;
     }
 
+    /**
+     * @param lastSecretWord the latest secret word.
+     *                       Can be {@code null}.
+     */
     @Override
-    public void execute(String lastSecretWord) {
+    public void execute(final String lastSecretWord) {
         if (matchController.isInProgress()) {
             UserInterface.printer.getMatchAlreadyStarted();
         } else {

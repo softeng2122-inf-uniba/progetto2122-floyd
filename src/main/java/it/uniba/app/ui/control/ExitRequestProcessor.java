@@ -4,10 +4,11 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ExecutableTask;
 
 /**
- * ExitRequestProcessor
- */
-public class ExitRequestProcessor implements ExecutableTask {
+ *  @{literal <<control>>}
+ * Exits the application, after a confirmation prompt. */
+public final class ExitRequestProcessor implements ExecutableTask {
 
+    /** Instantiates a ExitRequest task. */
     public ExitRequestProcessor() {
     }
 
