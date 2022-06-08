@@ -73,7 +73,7 @@ public class UIPrinter {
      *
      * @param secretWord the secret word of the match.
      */
-    public void getMaxTriesReached(final String secretWord) {
+    private void getMaxTriesReached(final String secretWord) {
         System.out.println("Hai raggiunto il numero massimo di tentativi");
         System.out.println("La parola segreta è " + secretWord);
     }
@@ -85,7 +85,7 @@ public class UIPrinter {
      *
      * @param currentGuess the counter of guesses taken.
      */
-    public void getCorrectGuessNotification(final int currentGuess) {
+    private void getCorrectGuessNotification(final int currentGuess) {
         System.out.println("Parola segreta indovinata");
         System.out.println("Numero tentativi: " + (currentGuess + 1));
     }
@@ -103,7 +103,7 @@ public class UIPrinter {
      * Prints a notification saying the
      * player has successfully left the match.
      */
-    public void getLeftCorrectlyNotification() {
+    private void getLeftCorrectlyNotification() {
         System.out.println("Hai abbandonato correttamente la partita!");
     }
 
@@ -111,7 +111,7 @@ public class UIPrinter {
      * Prints an error notification, saying that
      * the guess was incomplete.
      */
-    public void getIncompleteGuess() {
+    private void getIncompleteGuess() {
         System.out.println("Tentantivo incompleto");
     }
 
@@ -119,7 +119,7 @@ public class UIPrinter {
      * Prints an error notification, saying that
      * the guess was excessive.
      */
-    public void getExcessiveGuess() {
+    private void getExcessiveGuess() {
         System.out.println("Tentativo eccessivo");
     }
 
@@ -127,7 +127,7 @@ public class UIPrinter {
      * Prints an error notification, saying that
      * the guess was not valid.
      */
-    public void getInvalidGuess() {
+    private void getInvalidGuess() {
         System.out.println("Tentativo non valido");
     }
 

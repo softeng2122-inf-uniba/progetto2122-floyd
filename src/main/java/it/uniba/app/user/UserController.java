@@ -4,7 +4,7 @@ package it.uniba.app.user;
  * {@literal <<control>>}
  * Wraps a user entity and controls communications with it.
  */
-public class UserController {
+public final class UserController {
 
     /** The currently active user object reference. */
     private final Player user;
@@ -20,7 +20,7 @@ public class UserController {
             this.user = new Wordsmith();
         } else {
             throw new IllegalArgumentException("Undefined player type."
-                + "Must be Player or Wordsmith");
+                    + "Must be Player or Wordsmith");
         }
     }
 
