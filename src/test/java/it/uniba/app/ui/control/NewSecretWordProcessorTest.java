@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.AfterEach;
@@ -16,7 +15,6 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
 public class NewSecretWordProcessorTest {
-    private InputStream stdIn;
     private PrintStream stdOut;
     private ByteArrayOutputStream outContent;
 
@@ -30,7 +28,6 @@ public class NewSecretWordProcessorTest {
         matchController = new MatchController(ui);
         objToTest = new NewSecretWordProcessor(ui, matchController);
         stdOut = System.out;
-        stdIn = System.in;
         outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
     }
@@ -73,7 +70,6 @@ public class NewSecretWordProcessorTest {
 
     @AfterEach
     public void restoreStream() {
-        System.setIn(stdIn);
         System.setOut(stdOut);
     }
 }
