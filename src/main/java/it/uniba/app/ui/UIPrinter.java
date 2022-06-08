@@ -112,7 +112,7 @@ public class UIPrinter {
      * the guess was incomplete.
      */
     private void getIncompleteGuess() {
-        System.out.println("Tentantivo incompleto");
+        System.out.println("Tentativo incompleto");
     }
 
     /**
