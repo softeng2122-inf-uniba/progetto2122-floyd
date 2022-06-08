@@ -17,6 +17,7 @@ public class WordsmithTest {
     @Test
     public void testGetHelpCommands() {
         assertNotNull(wordsmith.getHelpCommands());
+        assertTrue(wordsmith.getHelpCommands().length > 0);
     }
 
     @Test
