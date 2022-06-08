@@ -10,9 +10,13 @@ import it.uniba.app.utils.UserInput;
  */
 public final class App {
 
+    private App(){
+    }
+
     /**
      * @param args command line arguments
      */
+
     public static void main(final String[] args) {
         UserController userController = new UserController("Wordsmith");
         UserInterface ui = new UserInterface(userController);

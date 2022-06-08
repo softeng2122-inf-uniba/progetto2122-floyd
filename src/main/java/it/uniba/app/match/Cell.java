@@ -18,7 +18,6 @@ public class Cell implements Resettable {
      * @see it.uniba.app.utils.ConsoleUtils
      */
     private String color;
-    
     /** Contains a character. */
     private char character;
 
@@ -46,7 +45,7 @@ public class Cell implements Resettable {
     public String getColor() {
         return color;
     }
-    
+
     /**
      * @param ansi the ANSI escape sequence for
      *             the color background the cell should be.
@@ -55,10 +54,10 @@ public class Cell implements Resettable {
     public void setColor(final String color) {
         this.color = color;
     }
-    
+
    /**
      * @return the character contained in the cell.
-     */ 
+     */
     public char getCharacter() {
         return character;
     }
@@ -69,7 +68,7 @@ public class Cell implements Resettable {
     public void setCharacter(final char character) {
         this.character = character;
     }
-    
+
     /**
      * Resets the cell to default state.
      * It means white background and whitespace character.
