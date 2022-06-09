@@ -20,11 +20,11 @@ import it.uniba.app.user.UserController;
 /**
  * Main test class of the application.
  */
-public class AppTest {
-    InputStream stdIn;
-    InputStream in;
-    PrintStream stdOut;
-    ByteArrayOutputStream outContent;
+public final class AppTest {
+    private InputStream stdIn;
+    private InputStream in;
+    private PrintStream stdOut;
+    private ByteArrayOutputStream outContent;
 
     @BeforeEach
     public void setUp() throws UnsupportedEncodingException {

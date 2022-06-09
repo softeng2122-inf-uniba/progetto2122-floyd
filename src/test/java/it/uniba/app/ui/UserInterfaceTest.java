@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.user.UserController;
 import it.uniba.app.utils.UserInput;
 
-public class UserInterfaceTest {
+public final class UserInterfaceTest {
     private UserInterface uiWordsmith;
     private UserInterface uiPlayer;
     private ByteArrayOutputStream outContent;

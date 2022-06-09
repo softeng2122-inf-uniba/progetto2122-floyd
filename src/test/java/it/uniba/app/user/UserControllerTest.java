@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class UserControllerTest {
+public final class UserControllerTest {
     private UserController playerController;
     private UserController wordsmithController;
 

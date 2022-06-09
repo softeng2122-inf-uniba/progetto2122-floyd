@@ -14,7 +14,7 @@ import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
-public class PlayRequestProcessorTest {
+public final class PlayRequestProcessorTest {
     private PrintStream stdOut;
     private ByteArrayOutputStream outContent;
 

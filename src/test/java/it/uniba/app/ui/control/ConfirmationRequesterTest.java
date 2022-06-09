@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import it.uniba.app.utils.UserInput;
 
-public class ConfirmationRequesterTest {
+public final class ConfirmationRequesterTest {
 
     private ConfirmationRequester objToTest;
     private InputStream stdIn;

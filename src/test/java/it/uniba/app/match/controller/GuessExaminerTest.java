@@ -14,7 +14,7 @@ import it.uniba.app.match.Match;
 import it.uniba.app.match.Word;
 import it.uniba.app.utils.ConsoleUtils;
 
-public class GuessExaminerTest {
+public final class GuessExaminerTest {
     private Guess guess;
     private Word secretWord;
 

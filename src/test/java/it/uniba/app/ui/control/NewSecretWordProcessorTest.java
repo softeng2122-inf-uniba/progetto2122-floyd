@@ -15,13 +15,13 @@ import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
-public class NewSecretWordProcessorTest {
+public final class NewSecretWordProcessorTest {
     private PrintStream stdOut;
     private ByteArrayOutputStream outContent;
 
-    NewSecretWordProcessor objToTest;
-    UserInterface ui;
-    MatchController matchController;
+    private NewSecretWordProcessor objToTest;
+    private UserInterface ui;
+    private MatchController matchController;
 
     @BeforeEach
     public void setUp() throws UnsupportedEncodingException {

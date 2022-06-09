@@ -9,7 +9,7 @@ import it.uniba.app.match.controller.GuessController;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
-public class MatchTest {
+public final class MatchTest {
     private UserInterface ui;
     private Match match;
 

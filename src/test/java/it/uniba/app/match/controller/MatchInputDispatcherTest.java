@@ -16,7 +16,7 @@ import it.uniba.app.match.Match;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
-public class MatchInputDispatcherTest {
+public final class MatchInputDispatcherTest {
     private PrintStream stdOut;
     private ByteArrayOutputStream outContent;
 

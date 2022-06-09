@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import it.uniba.app.utils.ConsoleUtils;
 
-public class GuessControllerTest {
+public final class GuessControllerTest {
 
     private GuessController objToTest;
 

@@ -11,7 +11,7 @@ import it.uniba.app.match.Match;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
-public class MatchStatusUpdaterTest {
+public final class MatchStatusUpdaterTest {
     private Match match;
     private UserInterface ui;
 

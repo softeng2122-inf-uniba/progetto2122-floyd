@@ -21,7 +21,7 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 import it.uniba.app.utils.UserInput;
 
-public class LeaveRequestProcessorTest {
+public final class LeaveRequestProcessorTest {
 
     private InputStream stdIn;
     private PrintStream stdOut;

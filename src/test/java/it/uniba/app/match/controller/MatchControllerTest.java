@@ -16,7 +16,7 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 import it.uniba.app.utils.UserInput;
 
-public class MatchControllerTest {
+public final class MatchControllerTest {
     private UserInterface ui;
     private MatchController matchController;
 
@@ -28,7 +28,7 @@ public class MatchControllerTest {
 
     @Nested
     public class TestStartMatch {
-        InputStream stdIn;
+        private InputStream stdIn;
 
         @BeforeEach
         public void setUp() {

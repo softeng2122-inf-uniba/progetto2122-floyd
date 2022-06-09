@@ -10,7 +10,7 @@ import it.uniba.app.match.Match;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
-public class GuessAttemptManagerTest {
+public final class GuessAttemptManagerTest {
     private Match match;
     private UserInterface ui;
 
