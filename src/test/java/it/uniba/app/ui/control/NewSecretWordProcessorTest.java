@@ -15,14 +15,29 @@ import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
+/** Test NewSecretWordProcessor class. */
 public final class NewSecretWordProcessorTest {
+
+    /** Standard PrintStream. */
     private PrintStream stdOut;
+
+    /** Test OutputStream. */
     private ByteArrayOutputStream outContent;
 
+    /** Class to test. */
     private NewSecretWordProcessor objToTest;
+
+    /** UserInterface object. */
     private UserInterface ui;
+
+    /** MatchController object. */
     private MatchController matchController;
 
+    /**
+     * Setups the test.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @BeforeEach
     public void setUp() throws UnsupportedEncodingException {
         ui = new UserInterface(new UserController("Wordsmith"));
@@ -33,6 +48,10 @@ public final class NewSecretWordProcessorTest {
         System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
+    /**
+     * Test execute method with a valid input and
+     * match in progress.
+     */
     @Test
     public void textExecute_Valid_MatchInProgress() {
         matchController.setInProgress(true);
@@ -41,6 +60,10 @@ public final class NewSecretWordProcessorTest {
         assertEquals("prova", ui.getLastSecretWord());
     }
 
+    /**
+     * Test execute method with a valid input and
+     * match not in progress.
+     */
     @Test
     public void testExecute_Valid_MatchNotInProgress() {
         objToTest.execute("prova");
@@ -48,6 +71,7 @@ public final class NewSecretWordProcessorTest {
         assertEquals("prova", ui.getLastSecretWord());
     }
 
+    /** Test execute method with a too short input. */
     @Test
     public void testExecute_NotValid_TooShort() throws UnsupportedEncodingException {
         String outExpected = "Parola segreta troppo corta"
@@ -56,6 +80,7 @@ public final class NewSecretWordProcessorTest {
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
+    /** Test execute method with a too long input. */
     @Test
     public void testExecute_NotValid_TooLong() throws UnsupportedEncodingException {
         String outExpected = "Parola segreta troppo lunga"
@@ -64,6 +89,7 @@ public final class NewSecretWordProcessorTest {
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
+    /** Test execute method with an invalid input. */
     @Test
     public void testExecute_NotValid_NotAlphabet() throws UnsupportedEncodingException {
         String outExpected = "Parola segreta non valida!"
@@ -72,6 +98,7 @@ public final class NewSecretWordProcessorTest {
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
+    /** Restores the std I/O streams. */
     @AfterEach
     public void restoreStream() {
         System.setOut(stdOut);
