@@ -11,10 +11,15 @@ import it.uniba.app.match.Match;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
+/** Test MatchStatusUpdater class. */
 public final class MatchStatusUpdaterTest {
+    /** Match object. */
     private Match match;
+
+    /** UserInterface object. */
     private UserInterface ui;
 
+    /** Setups the test. */
     @BeforeEach
     public void setUp() {
         ui = new UserInterface(new UserController("Wordsmith"));
@@ -22,18 +27,30 @@ public final class MatchStatusUpdaterTest {
         match.setInProgress(true);
     }
 
+    /**
+     * Test execute with a "true" guess correct.
+     * Checks if the match is still in progress.
+     */
     @Test
     public void testExecute_CorrectGuess() {
         new MatchStatusUpdater(match).execute("true");
         assertFalse(match.isInProgress());
     }
 
+    /**
+     * Test execute with a "false" guess correct.
+     * Checks if the match is still in progress.
+     */
     @Test
     public void testExecute_IncorrectGuess_MatchIsInProgress() {
         new MatchStatusUpdater(match).execute("false");
         assertTrue(match.isInProgress());
     }
 
+    /**
+     * Test execute with a "false" guess correct.
+     * Checks if the guess counter increments.
+     */
     @Test
     public void testExecute_IncorrectGuess_MatchGuessCounterIncrements() {
         int oldCtr = match.getCurrentGuessCtr();
