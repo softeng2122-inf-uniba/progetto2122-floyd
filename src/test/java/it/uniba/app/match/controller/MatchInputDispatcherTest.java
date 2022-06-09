@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +24,7 @@ public class MatchInputDispatcherTest {
     private UserInterface ui;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws UnsupportedEncodingException {
         ui = new UserInterface(new UserController("Wordsmith"));
         match = new Match(ui);
         match.setInProgress(true);
@@ -31,7 +32,7 @@ public class MatchInputDispatcherTest {
 
         stdOut = System.out;
         outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
     @Test
@@ -42,37 +43,37 @@ public class MatchInputDispatcherTest {
     }
 
     @Test
-    public void testExecute_GuessAttempt_NotValid_TooLong() {
+    public void testExecute_GuessAttempt_NotValid_TooLong() throws UnsupportedEncodingException {
         assertTrue(match.isInProgress());
         new MatchInputDispatcher(match, ui).execute("provva");
         assertTrue(match.isInProgress());
 
         String outExpected = "Tentativo eccessivo" + System.lineSeparator();
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testExecute_GuessAttempt_NotValid_TooShort() {
+    public void testExecute_GuessAttempt_NotValid_TooShort() throws UnsupportedEncodingException {
         assertTrue(match.isInProgress());
         new MatchInputDispatcher(match, ui).execute("prov");
         assertTrue(match.isInProgress());
 
         String outExpected = "Tentativo incompleto" + System.lineSeparator();
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testExecute_GuessAttempt_NotValid_NotAlphabet() {
+    public void testExecute_GuessAttempt_NotValid_NotAlphabet() throws UnsupportedEncodingException {
         assertTrue(match.isInProgress());
         new MatchInputDispatcher(match, ui).execute("pr2ov");
         assertTrue(match.isInProgress());
 
         String outExpected = "Tentativo non valido" + System.lineSeparator();
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testExecute_Command() {
+    public void testExecute_Command() throws UnsupportedEncodingException {
         new MatchInputDispatcher(match, ui).execute("/help");
 
         String expectedOutput = System.lineSeparator();
@@ -80,7 +81,7 @@ public class MatchInputDispatcherTest {
                 + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands());
         expectedOutput = expectedOutput + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
 
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @AfterEach

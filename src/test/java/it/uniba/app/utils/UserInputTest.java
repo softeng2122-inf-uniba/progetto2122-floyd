@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.AfterEach;
@@ -22,7 +23,7 @@ public class UserInputTest {
     @Test
     public void testGet_UpperLowerCase() {
         String userInput = "InpUt stRing";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -32,7 +33,7 @@ public class UserInputTest {
     @Test
     public void testGet_EmptyInput() {
         String userInput = "";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -43,7 +44,7 @@ public class UserInputTest {
     public void testGet_Empty_ThenCorrect() {
         String userInput = "" + System.lineSeparator()
                 + "string";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 

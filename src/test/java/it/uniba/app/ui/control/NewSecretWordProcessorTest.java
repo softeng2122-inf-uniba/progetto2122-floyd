@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,13 +24,13 @@ public class NewSecretWordProcessorTest {
     MatchController matchController;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws UnsupportedEncodingException {
         ui = new UserInterface(new UserController("Wordsmith"));
         matchController = new MatchController(ui);
         objToTest = new NewSecretWordProcessor(ui, matchController);
         stdOut = System.out;
         outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
     @Test
@@ -48,24 +49,24 @@ public class NewSecretWordProcessorTest {
     }
 
     @Test
-    public void testExecute_NotValid_TooShort() {
+    public void testExecute_NotValid_TooShort() throws UnsupportedEncodingException {
         String outExpected = "Parola segreta troppo corta" + System.lineSeparator();
         objToTest.execute("prov");
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testExecute_NotValid_TooLong() {
+    public void testExecute_NotValid_TooLong() throws UnsupportedEncodingException {
         String outExpected = "Parola segreta troppo lunga" + System.lineSeparator();
         objToTest.execute("provaa");
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testExecute_NotValid_NotAlphabet() {
+    public void testExecute_NotValid_NotAlphabet() throws UnsupportedEncodingException {
         String outExpected = "Parola segreta non valida!" + System.lineSeparator();
         objToTest.execute("pr0va");
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @AfterEach

@@ -8,6 +8,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +31,7 @@ public class ConfirmationRequesterTest {
     @Test
     public void testExecute_YesConfirmation() {
         String userInput = "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -39,7 +41,7 @@ public class ConfirmationRequesterTest {
     @Test
     public void testExecute_NoConfirmation() {
         String userInput = "n";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -47,19 +49,19 @@ public class ConfirmationRequesterTest {
     }
 
     @Test
-    public void testExecute_InvalidConfirmation() {
+    public void testExecute_InvalidConfirmation() throws UnsupportedEncodingException {
         String userInput = "yy";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
         PrintStream stdOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
         String expectedOut = "Opzione non valida!" + System.lineSeparator();
 
         assertFalse(objToTest.execute());
-        assertEquals(expectedOut, outContent.toString());
+        assertEquals(expectedOut, outContent.toString("UTF-8"));
 
         System.setOut(stdOut);
     }

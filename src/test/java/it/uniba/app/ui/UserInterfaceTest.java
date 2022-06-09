@@ -8,6 +8,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 import it.uniba.app.ExitAssertions;
 
 import org.junit.jupiter.api.AfterEach;
@@ -26,56 +29,56 @@ public class UserInterfaceTest {
     private InputStream stdIn;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws UnsupportedEncodingException {
         uiWordsmith = new UserInterface(new UserController("Wordsmith"));
         uiPlayer = new UserInterface(new UserController("Player"));
         outContent = new ByteArrayOutputStream();
         stdOut = System.out;
         stdIn = System.in;
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_Help() {
+    public void testGetCommands_AsWordsmith_Help() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/help");
 
         String expectedOutput = System.lineSeparator()
                 + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands())
                 + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
 
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsPlayer_Help() {
+    public void testGetCommands_AsPlayer_Help() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/help");
 
         String expectedOutput = System.lineSeparator()
                 + String.join(System.lineSeparator(), new UserController("Player").getHelpCommands())
                 + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
 
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_Play_NoSecretWord() {
+    public void testGetCommands_AsWordsmith_Play_NoSecretWord() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/gioca");
 
         String expectedOutput = "Parola segreta mancante" + System.lineSeparator();
 
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
     public void testGetCommands_AsBoth_Exit() {
         String userInput = "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
         ExitAssertions.assertExits(0, () -> uiWordsmith.getCommands("/esci"));
 
-        in = new ByteArrayInputStream(userInput.getBytes());
+        in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -86,18 +89,18 @@ public class UserInterfaceTest {
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_ShowSecretWord_Missing() {
+    public void testGetCommands_AsWordsmith_ShowSecretWord_Missing() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/mostra");
         String expectedOutput = "Parola segreta mancante" + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_ShowSecretWord() {
+    public void testGetCommands_AsWordsmith_ShowSecretWord() throws UnsupportedEncodingException {
         uiWordsmith.setLastSecretWord("prova");
         uiWordsmith.getCommands("/mostra");
         String expectedOutput = "La parola segreta è: prova" + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
@@ -107,55 +110,55 @@ public class UserInterfaceTest {
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_InvalidCommand_WithSlash() {
+    public void testGetCommands_AsWordsmith_InvalidCommand_WithSlash() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/invalid");
         String expectedOutput = "Comando non riconosciuto. "
                 + "/help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_InvalidCommand_WithoutSlash() {
+    public void testGetCommands_AsWordsmith_InvalidCommand_WithoutSlash() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("invalid");
         String expectedOutput = "Comando non riconosciuto. "
                 + "/help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsPlayer_InvalidCommand_WithSlash() {
+    public void testGetCommands_AsPlayer_InvalidCommand_WithSlash() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/invalid");
         String expectedOutput = "Comando non riconosciuto. "
                 + "/help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsPlayer_InvalidCommand_WithoutSlash() {
+    public void testGetCommands_AsPlayer_InvalidCommand_WithoutSlash() throws UnsupportedEncodingException {
         uiPlayer.getCommands("invalid");
         String expectedOutput = "Comando non riconosciuto. "
                 + "/help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsPlayer_Play_NoSecretWord() {
+    public void testGetCommands_AsPlayer_Play_NoSecretWord() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/gioca");
         String expectedOutput = "Parola segreta mancante" + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testGetCommands_AsPlayer_ShowSecretWord() {
+    public void testGetCommands_AsPlayer_ShowSecretWord() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/mostra");
         String expectedOutput = "Comando non riconosciuto. "
                 + "/help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
     @Nested
@@ -166,11 +169,11 @@ public class UserInterfaceTest {
         }
 
         @Test
-        public void testOutput() {
+        public void testOutput() throws UnsupportedEncodingException {
             String expectedOutput = "Comando non riconosciuto. "
                     + "/help per visualizzare la lista dei comandi."
                     + System.lineSeparator();
-            assertEquals(expectedOutput, outContent.toString());
+            assertEquals(expectedOutput, outContent.toString("UTF-8"));
         }
 
         @Test
@@ -180,17 +183,17 @@ public class UserInterfaceTest {
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_Leave_MatchInProgress() {
+    public void testGetCommands_AsWordsmith_Leave_MatchInProgress() throws UnsupportedEncodingException {
         String userInput = "/abbandona" + System.lineSeparator()
                 + "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
         uiWordsmith.getCommands("/nuova prova");
         uiWordsmith.getCommands("/gioca");
 
-        String[] content = outContent.toString().split(System.lineSeparator());
+        String[] content = outContent.toString("UTF-8").split(System.lineSeparator());
         String expectedOut = "Hai abbandonato";
         assertTrue(content[content.length - 1].contains(expectedOut));
 
@@ -199,19 +202,19 @@ public class UserInterfaceTest {
     }
 
     @Test
-    public void testGetCommands_AsWordsmith_Leave_NoMatchToLeave() {
+    public void testGetCommands_AsWordsmith_Leave_NoMatchToLeave() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/abbandona");
 
         String expectedOut = "Non è in corso alcuna partita da abbandonare.";
-        assertTrue(outContent.toString().contains(expectedOut));
+        assertTrue(outContent.toString("UTF-8").contains(expectedOut));
     }
 
     @Test
-    public void testGetCommands_AsPlayer_Leave_NoMatchToLeave() {
+    public void testGetCommands_AsPlayer_Leave_NoMatchToLeave() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/abbandona");
 
         String expectedOut = "Non è in corso alcuna partita da abbandonare.";
-        assertTrue(outContent.toString().contains(expectedOut));
+        assertTrue(outContent.toString("UTF-8").contains(expectedOut));
     }
 
     @AfterEach

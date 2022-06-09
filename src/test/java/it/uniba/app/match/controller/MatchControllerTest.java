@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +24,6 @@ public class MatchControllerTest {
     public void setUp() {
         ui = new UserInterface(new UserController("Wordsmith"));
         matchController = new MatchController(ui);
-
     }
 
     @Nested
@@ -38,7 +38,7 @@ public class MatchControllerTest {
         @Test
         public void testStartMatch_CorrectGuess() {
             String userInput = "prova";
-            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 
@@ -56,7 +56,7 @@ public class MatchControllerTest {
                     + "ciaoo" + System.lineSeparator()
                     + "ciaoo" + System.lineSeparator()
                     + "ciaoo" + System.lineSeparator();
-            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 

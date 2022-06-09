@@ -6,6 +6,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,18 +23,18 @@ public class ExitRequestProcessorTest {
     private ByteArrayOutputStream outContent;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws UnsupportedEncodingException {
         objToTest = new ExitRequestProcessor();
         stdOut = System.out;
         stdIn = System.in;
         outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
     @Test
     public void testExecute_DoesExit() {
         String userInput = "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -40,16 +42,16 @@ public class ExitRequestProcessorTest {
     }
 
     @Test
-    public void testExecute_DoesNotExit() {
+    public void testExecute_DoesNotExit() throws UnsupportedEncodingException {
         String userInput = "n";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
         objToTest.execute();
 
         String outExpected = "Sicuro di voler uscire dal gioco? Y/N: ";
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @AfterEach

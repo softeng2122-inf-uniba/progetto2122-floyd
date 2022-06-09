@@ -8,6 +8,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,7 +50,7 @@ public class LeaveRequestProcessorTest {
         @Test
         public void testExecute_MatchInProgress_Leave() {
             String userInput = "y";
-            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 
@@ -60,7 +62,7 @@ public class LeaveRequestProcessorTest {
         @Test
         public void testExecute_MatchInProgress_DontLeave() {
             String userInput = "n";
-            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 
@@ -77,13 +79,13 @@ public class LeaveRequestProcessorTest {
     }
 
     @Test
-    public void testExecute_MatchNotInProgress() {
+    public void testExecute_MatchNotInProgress() throws UnsupportedEncodingException {
         outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
 
         String outExpected = "Non è in corso alcuna partita da abbandonare." + System.lineSeparator();
         objToTest.execute();
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
         System.setOut(stdOut);
     }
 

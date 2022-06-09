@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,28 +23,28 @@ public class PlayRequestProcessorTest {
     private PlayRequestProcessor objToTest;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws UnsupportedEncodingException {
         ui = new UserInterface(new UserController("Wordsmith"));
         matchController = new MatchController(ui);
         objToTest = new PlayRequestProcessor(matchController);
         stdOut = System.out;
         outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
     @Test
-    public void testExecute_MatchAlreadyInProgress() {
+    public void testExecute_MatchAlreadyInProgress() throws UnsupportedEncodingException {
         matchController.setInProgress(true);
         String outExpected = "La partita è già in corso!" + System.lineSeparator();
         objToTest.execute("prova");
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
-    public void testExecute_SecretWordMissing() {
+    public void testExecute_SecretWordMissing() throws UnsupportedEncodingException {
         objToTest.execute(null);
         String outExpected = "Parola segreta mancante" + System.lineSeparator();
-        assertEquals(outExpected, outContent.toString());
+        assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @AfterEach

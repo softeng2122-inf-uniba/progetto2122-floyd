@@ -7,6 +7,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.AfterEach;
@@ -25,18 +27,18 @@ public class AppTest {
     ByteArrayOutputStream outContent;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws UnsupportedEncodingException {
         stdIn = System.in;
-        in = new ByteArrayInputStream("".getBytes());
+        in = new ByteArrayInputStream("".getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
 
         stdOut = System.out;
         outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
     @Test
-    public void testMain_Help_Arg() {
+    public void testMain_Help_Arg() throws UnsupportedEncodingException {
         String[] args = { "--help" };
 
         // Chiederà input ma noi vogliamo solo verificare l'output
@@ -48,11 +50,11 @@ public class AppTest {
                 + System.lineSeparator()
                 + System.lineSeparator();
 
-        assertTrue(outContent.toString().contains(outExpected));
+        assertTrue(outContent.toString("UTF-8").contains(outExpected));
     }
 
     @Test
-    public void testMain_H_Arg() {
+    public void testMain_H_Arg() throws UnsupportedEncodingException {
         String[] args = { "-h" };
 
         // Chiederà input ma noi vogliamo solo verificare l'output
@@ -64,7 +66,7 @@ public class AppTest {
                 + System.lineSeparator()
                 + System.lineSeparator();
 
-        assertTrue(outContent.toString().contains(outExpected));
+        assertTrue(outContent.toString("UTF-8").contains(outExpected));
     }
 
     @AfterEach
