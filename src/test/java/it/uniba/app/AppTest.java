@@ -21,11 +21,23 @@ import it.uniba.app.user.UserController;
  * Main test class of the application.
  */
 public final class AppTest {
+         /** Standard InputStream. */
     private InputStream stdIn;
+
+    /** Test InputStream. */
     private InputStream in;
+
+    /** Standard PrintStream. */
     private PrintStream stdOut;
+
+    /** Test OutputStream. */
     private ByteArrayOutputStream outContent;
 
+    /**
+     * Setups the test.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @BeforeEach
     public void setUp() throws UnsupportedEncodingException {
         stdIn = System.in;
@@ -37,6 +49,11 @@ public final class AppTest {
         System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
+    /**
+     * Tests the main with --help as arg.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testMain_Help_Arg() throws UnsupportedEncodingException {
         String[] args = { "--help" };
@@ -55,6 +72,11 @@ public final class AppTest {
         assertTrue(outContent.toString("UTF-8").contains(outExpected));
     }
 
+    /**
+     * Tests the main with -h as arg.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testMain_H_Arg() throws UnsupportedEncodingException {
         String[] args = { "-h" };
@@ -73,6 +95,7 @@ public final class AppTest {
         assertTrue(outContent.toString("UTF-8").contains(outExpected));
     }
 
+    /** Restores the I/O std streams. */
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
