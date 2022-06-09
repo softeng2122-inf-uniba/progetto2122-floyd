@@ -31,7 +31,8 @@ public final class ConfirmationRequesterTest {
     @Test
     public void testExecute_YesConfirmation() {
         String userInput = "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -41,7 +42,8 @@ public final class ConfirmationRequesterTest {
     @Test
     public void testExecute_NoConfirmation() {
         String userInput = "n";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -51,7 +53,8 @@ public final class ConfirmationRequesterTest {
     @Test
     public void testExecute_InvalidConfirmation() throws UnsupportedEncodingException {
         String userInput = "yy";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 

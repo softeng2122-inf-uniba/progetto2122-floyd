@@ -38,7 +38,8 @@ public final class MatchControllerTest {
         @Test
         public void testStartMatch_CorrectGuess() {
             String userInput = "prova";
-            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+            InputStream in = new ByteArrayInputStream(
+                    userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 
@@ -56,7 +57,8 @@ public final class MatchControllerTest {
                     + "ciaoo" + System.lineSeparator()
                     + "ciaoo" + System.lineSeparator()
                     + "ciaoo" + System.lineSeparator();
-            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+            InputStream in = new ByteArrayInputStream(
+                    userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 

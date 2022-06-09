@@ -34,17 +34,20 @@ public final class ExitRequestProcessorTest {
     @Test
     public void testExecute_DoesExit() {
         String userInput = "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
-        ExitAssertions.assertExits(0, () -> objToTest.execute());
+        ExitAssertions.assertExits(0,
+                () -> objToTest.execute());
     }
 
     @Test
     public void testExecute_DoesNotExit() throws UnsupportedEncodingException {
         String userInput = "n";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 

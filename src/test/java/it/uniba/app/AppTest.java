@@ -42,10 +42,12 @@ public final class AppTest {
         String[] args = { "--help" };
 
         // Chiederà input ma noi vogliamo solo verificare l'output
-        assertThrowsExactly(NoSuchElementException.class, () -> App.main(args));
+        assertThrowsExactly(NoSuchElementException.class,
+                () -> App.main(args));
 
         String outExpected = System.lineSeparator()
-                + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands())
+                + String.join(System.lineSeparator(),
+                        new UserController("Wordsmith").getHelpCommands())
                 + System.lineSeparator()
                 + System.lineSeparator()
                 + System.lineSeparator();
@@ -58,10 +60,12 @@ public final class AppTest {
         String[] args = { "-h" };
 
         // Chiederà input ma noi vogliamo solo verificare l'output
-        assertThrowsExactly(NoSuchElementException.class, () -> App.main(args));
+        assertThrowsExactly(NoSuchElementException.class,
+                () -> App.main(args));
 
         String outExpected = System.lineSeparator()
-                + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands())
+                + String.join(System.lineSeparator(),
+                        new UserController("Wordsmith").getHelpCommands())
                 + System.lineSeparator()
                 + System.lineSeparator()
                 + System.lineSeparator();

@@ -43,8 +43,11 @@ public final class UserInterfaceTest {
         uiWordsmith.getCommands("/help");
 
         String expectedOutput = System.lineSeparator()
-                + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands())
-                + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
+                + String.join(System.lineSeparator(),
+                        new UserController("Wordsmith").getHelpCommands())
+                + System.lineSeparator()
+                + System.lineSeparator()
+                + System.lineSeparator();
 
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
@@ -54,8 +57,11 @@ public final class UserInterfaceTest {
         uiPlayer.getCommands("/help");
 
         String expectedOutput = System.lineSeparator()
-                + String.join(System.lineSeparator(), new UserController("Player").getHelpCommands())
-                + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
+                + String.join(System.lineSeparator(),
+                        new UserController("Player").getHelpCommands())
+                + System.lineSeparator()
+                + System.lineSeparator()
+                + System.lineSeparator();
 
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
@@ -64,7 +70,8 @@ public final class UserInterfaceTest {
     public void testGetCommands_AsWordsmith_Play_NoSecretWord() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/gioca");
 
-        String expectedOutput = "Parola segreta mancante" + System.lineSeparator();
+        String expectedOutput = "Parola segreta mancante"
+                + System.lineSeparator();
 
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
@@ -72,17 +79,21 @@ public final class UserInterfaceTest {
     @Test
     public void testGetCommands_AsBoth_Exit() {
         String userInput = "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
-        ExitAssertions.assertExits(0, () -> uiWordsmith.getCommands("/esci"));
+        ExitAssertions.assertExits(0,
+                () -> uiWordsmith.getCommands("/esci"));
 
-        in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
-        ExitAssertions.assertExits(0, () -> uiPlayer.getCommands("/esci"));
+        ExitAssertions.assertExits(0,
+                () -> uiPlayer.getCommands("/esci"));
 
         System.setIn(stdIn);
         UserInput.refreshStream();
@@ -91,7 +102,8 @@ public final class UserInterfaceTest {
     @Test
     public void testGetCommands_AsWordsmith_ShowSecretWord_Missing() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/mostra");
-        String expectedOutput = "Parola segreta mancante" + System.lineSeparator();
+        String expectedOutput = "Parola segreta mancante"
+                + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
@@ -99,7 +111,8 @@ public final class UserInterfaceTest {
     public void testGetCommands_AsWordsmith_ShowSecretWord() throws UnsupportedEncodingException {
         uiWordsmith.setLastSecretWord("prova");
         uiWordsmith.getCommands("/mostra");
-        String expectedOutput = "La parola segreta è: prova" + System.lineSeparator();
+        String expectedOutput = "La parola segreta è: prova"
+                + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
@@ -148,7 +161,8 @@ public final class UserInterfaceTest {
     @Test
     public void testGetCommands_AsPlayer_Play_NoSecretWord() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/gioca");
-        String expectedOutput = "Parola segreta mancante" + System.lineSeparator();
+        String expectedOutput = "Parola segreta mancante"
+                + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
@@ -186,14 +200,17 @@ public final class UserInterfaceTest {
     public void testGetCommands_AsWordsmith_Leave_MatchInProgress() throws UnsupportedEncodingException {
         String userInput = "/abbandona" + System.lineSeparator()
                 + "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
         uiWordsmith.getCommands("/nuova prova");
         uiWordsmith.getCommands("/gioca");
 
-        String[] content = outContent.toString("UTF-8").split(System.lineSeparator());
+        String[] content = outContent
+                .toString("UTF-8")
+                .split(System.lineSeparator());
         String expectedOut = "Hai abbandonato";
         assertTrue(content[content.length - 1].contains(expectedOut));
 

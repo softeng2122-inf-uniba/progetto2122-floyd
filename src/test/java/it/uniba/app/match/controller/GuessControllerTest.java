@@ -51,7 +51,8 @@ public final class GuessControllerTest {
 
         @Test
         public void testReset_Before_CellIsGreen() {
-            assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, objToTest.getCellColor(0));
+            assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND,
+                    objToTest.getCellColor(0));
         }
 
         @Test
@@ -69,7 +70,8 @@ public final class GuessControllerTest {
         @Test
         public void testReset_After_CellIsWhite() {
             objToTest.reset();
-            assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND, objToTest.getCellColor(0));
+            assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND,
+                    objToTest.getCellColor(0));
         }
     }
 

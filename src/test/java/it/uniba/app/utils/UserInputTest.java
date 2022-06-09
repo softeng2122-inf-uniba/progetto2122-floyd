@@ -23,7 +23,8 @@ public final class UserInputTest {
     @Test
     public void testGet_UpperLowerCase() {
         String userInput = "InpUt stRing";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
@@ -33,18 +34,21 @@ public final class UserInputTest {
     @Test
     public void testGet_EmptyInput() {
         String userInput = "";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 
-        assertThrowsExactly(NoSuchElementException.class, () -> UserInput.get());
+        assertThrowsExactly(NoSuchElementException.class,
+                () -> UserInput.get());
     }
 
     @Test
     public void testGet_Empty_ThenCorrect() {
         String userInput = "" + System.lineSeparator()
                 + "string";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+        InputStream in = new ByteArrayInputStream(
+                userInput.getBytes(StandardCharsets.UTF_8));
         System.setIn(in);
         UserInput.refreshStream();
 

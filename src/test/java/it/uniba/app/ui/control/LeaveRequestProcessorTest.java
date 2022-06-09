@@ -50,7 +50,8 @@ public final class LeaveRequestProcessorTest {
         @Test
         public void testExecute_MatchInProgress_Leave() {
             String userInput = "y";
-            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+            InputStream in = new ByteArrayInputStream(
+                    userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 
@@ -62,7 +63,8 @@ public final class LeaveRequestProcessorTest {
         @Test
         public void testExecute_MatchInProgress_DontLeave() {
             String userInput = "n";
-            InputStream in = new ByteArrayInputStream(userInput.getBytes(StandardCharsets.UTF_8));
+            InputStream in = new ByteArrayInputStream(
+                    userInput.getBytes(StandardCharsets.UTF_8));
             System.setIn(in);
             UserInput.refreshStream();
 
@@ -83,7 +85,8 @@ public final class LeaveRequestProcessorTest {
         outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent, false, "UTF-8"));
 
-        String outExpected = "Non è in corso alcuna partita da abbandonare." + System.lineSeparator();
+        String outExpected = "Non è in corso alcuna partita da abbandonare."
+                + System.lineSeparator();
         objToTest.execute();
         assertEquals(outExpected, outContent.toString("UTF-8"));
         System.setOut(stdOut);

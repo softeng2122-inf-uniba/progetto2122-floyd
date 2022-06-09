@@ -23,11 +23,13 @@ public final class GuessAttemptManagerTest {
 
     @Test
     public void testExecute_CorrectGuess() {
-        assertTrue(new GuessAttemptManager(match).execute("prova"));
+        assertTrue(
+                new GuessAttemptManager(match).execute("prova"));
     }
 
     @Test
     public void testExecute_IncorrectGuess() {
-        assertFalse(new GuessAttemptManager(match).execute("papap"));
+        assertFalse(
+                new GuessAttemptManager(match).execute("papap"));
     }
 }

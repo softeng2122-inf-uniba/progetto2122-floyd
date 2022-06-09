@@ -50,21 +50,24 @@ public final class NewSecretWordProcessorTest {
 
     @Test
     public void testExecute_NotValid_TooShort() throws UnsupportedEncodingException {
-        String outExpected = "Parola segreta troppo corta" + System.lineSeparator();
+        String outExpected = "Parola segreta troppo corta"
+                + System.lineSeparator();
         objToTest.execute("prov");
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
     public void testExecute_NotValid_TooLong() throws UnsupportedEncodingException {
-        String outExpected = "Parola segreta troppo lunga" + System.lineSeparator();
+        String outExpected = "Parola segreta troppo lunga"
+                + System.lineSeparator();
         objToTest.execute("provaa");
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
     @Test
     public void testExecute_NotValid_NotAlphabet() throws UnsupportedEncodingException {
-        String outExpected = "Parola segreta non valida!" + System.lineSeparator();
+        String outExpected = "Parola segreta non valida!"
+                + System.lineSeparator();
         objToTest.execute("pr0va");
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }

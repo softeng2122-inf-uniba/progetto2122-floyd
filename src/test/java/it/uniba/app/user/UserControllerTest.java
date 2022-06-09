@@ -1,7 +1,6 @@
 package it.uniba.app.user;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -20,7 +19,8 @@ public final class UserControllerTest {
 
     @Test
     public void testUserController_invalidPlayerType() {
-        assertThrowsExactly(IllegalArgumentException.class, () -> new UserController("illegal"));
+        assertThrowsExactly(IllegalArgumentException.class,
+                () -> new UserController("illegal"));
     }
 
     @Test
@@ -34,18 +34,8 @@ public final class UserControllerTest {
     }
 
     @Test
-    public void testGetHelpCommands_Player_NotNull() {
-        assertNotNull(playerController.getHelpCommands());
-    }
-
-    @Test
     public void testGetHelpCommands_Player_NotEmpty() {
         assertTrue(playerController.getHelpCommands().length > 0);
-    }
-
-    @Test
-    public void testGetHelpCommands_Wordsmith_NotNull() {
-        assertNotNull(wordsmithController.getHelpCommands());
     }
 
     @Test

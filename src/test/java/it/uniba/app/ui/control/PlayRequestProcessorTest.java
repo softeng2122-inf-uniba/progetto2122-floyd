@@ -35,7 +35,8 @@ public final class PlayRequestProcessorTest {
     @Test
     public void testExecute_MatchAlreadyInProgress() throws UnsupportedEncodingException {
         matchController.setInProgress(true);
-        String outExpected = "La partita è già in corso!" + System.lineSeparator();
+        String outExpected = "La partita è già in corso!"
+                + System.lineSeparator();
         objToTest.execute("prova");
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
@@ -43,7 +44,8 @@ public final class PlayRequestProcessorTest {
     @Test
     public void testExecute_SecretWordMissing() throws UnsupportedEncodingException {
         objToTest.execute(null);
-        String outExpected = "Parola segreta mancante" + System.lineSeparator();
+        String outExpected = "Parola segreta mancante"
+                + System.lineSeparator();
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 

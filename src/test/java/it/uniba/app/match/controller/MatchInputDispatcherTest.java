@@ -76,10 +76,12 @@ public final class MatchInputDispatcherTest {
     public void testExecute_Command() throws UnsupportedEncodingException {
         new MatchInputDispatcher(match, ui).execute("/help");
 
-        String expectedOutput = System.lineSeparator();
-        expectedOutput = expectedOutput
-                + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands());
-        expectedOutput = expectedOutput + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
+        String expectedOutput = System.lineSeparator()
+                + String.join(System.lineSeparator(),
+                        new UserController("Wordsmith").getHelpCommands())
+                + System.lineSeparator()
+                + System.lineSeparator()
+                + System.lineSeparator();
 
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }

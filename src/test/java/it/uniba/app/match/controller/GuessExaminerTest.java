@@ -35,14 +35,16 @@ public final class GuessExaminerTest {
         @Test
         public void testCellsCharacterAreOk() {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(guess.getCellCharacter(i), secretWord.getString().charAt(i));
+                assertEquals(guess.getCellCharacter(i),
+                        secretWord.getString().charAt(i));
             }
         }
 
         @Test
         public void testCellsAreGreen() {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(i));
+                assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND,
+                        guess.getCellColor(i));
             }
         }
 
@@ -62,14 +64,16 @@ public final class GuessExaminerTest {
         @Test
         public void testCellCharactersAreOk() {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(guess.getCellCharacter(i), "libbe".charAt(i));
+                assertEquals(guess.getCellCharacter(i),
+                        "libbe".charAt(i));
             }
         }
 
         @Test
         public void testCellsAreWhite() {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND, guess.getCellColor(i));
+                assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND,
+                        guess.getCellColor(i));
             }
         }
 
@@ -89,14 +93,16 @@ public final class GuessExaminerTest {
         @Test
         public void testCellCharactersAreOk() {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(guess.getCellCharacter(i), "avrop".charAt(i));
+                assertEquals(guess.getCellCharacter(i),
+                        "avrop".charAt(i));
             }
         }
 
         @Test
         public void testCellsAreYellow() {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND, guess.getCellColor(i));
+                assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND,
+                        guess.getCellColor(i));
             }
         }
 
@@ -116,18 +122,24 @@ public final class GuessExaminerTest {
         @Test
         public void testCellCharactersAreOk() {
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(guess.getCellCharacter(i), "brraa".charAt(i));
+                assertEquals(guess.getCellCharacter(i),
+                        "brraa".charAt(i));
             }
         }
 
         @Test
         public void testCellColorsAreOk() {
             assertAll(
-                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND, guess.getCellColor(0)),
-                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(1)),
-                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND, guess.getCellColor(2)),
-                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND, guess.getCellColor(3)),
-                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(4))
+                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND,
+                            guess.getCellColor(0)),
+                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND,
+                            guess.getCellColor(1)),
+                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND,
+                            guess.getCellColor(2)),
+                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND,
+                            guess.getCellColor(3)),
+                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND,
+                            guess.getCellColor(4))
 
             );
         }
@@ -150,18 +162,24 @@ public final class GuessExaminerTest {
         public void testCellCharactersAreOk() {
 
             for (int i = 0; i < Match.NUM_OF_CELLS; i++) {
-                assertEquals(guess.getCellCharacter(i), "brraa".charAt(i));
+                assertEquals(guess.getCellCharacter(i),
+                        "brraa".charAt(i));
             }
         }
 
         @Test
         public void testCellColorsAreOk() {
             assertAll(
-                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND, guess.getCellColor(0)),
-                    () -> assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND, guess.getCellColor(1)),
-                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(2)),
-                    () -> assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND, guess.getCellColor(3)),
-                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND, guess.getCellColor(4))
+                    () -> assertEquals(ConsoleUtils.ANSI_WHITE_BACKGROUND,
+                            guess.getCellColor(0)),
+                    () -> assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND,
+                            guess.getCellColor(1)),
+                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND,
+                            guess.getCellColor(2)),
+                    () -> assertEquals(ConsoleUtils.ANSI_YELLOW_BACKGROUND,
+                            guess.getCellColor(3)),
+                    () -> assertEquals(ConsoleUtils.ANSI_GREEN_BACKGROUND,
+                            guess.getCellColor(4))
 
             );
 
