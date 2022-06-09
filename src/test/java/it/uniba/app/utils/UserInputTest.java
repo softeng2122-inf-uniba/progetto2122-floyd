@@ -12,14 +12,19 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/** Tests UserInput class. */
 public final class UserInputTest {
+
+    /** Standard InputStream. */
     private InputStream stdIn;
 
+    /** Setups the test. */
     @BeforeEach
     public void setUp() {
         stdIn = System.in;
     }
 
+    /** Tests get method with an upper and lowercase input. */
     @Test
     public void testGet_UpperLowerCase() {
         String userInput = "InpUt stRing";
@@ -31,6 +36,7 @@ public final class UserInputTest {
         assertEquals(userInput.toLowerCase(), UserInput.get());
     }
 
+    /** Tests get method with an empty input. */
     @Test
     public void testGet_EmptyInput() {
         String userInput = "";
@@ -43,6 +49,7 @@ public final class UserInputTest {
                 () -> UserInput.get());
     }
 
+    /** Tests get method with an empty and then correct input. */
     @Test
     public void testGet_Empty_ThenCorrect() {
         String userInput = "" + System.lineSeparator()
@@ -55,6 +62,7 @@ public final class UserInputTest {
         assertEquals("string", UserInput.get());
     }
 
+    /** Restores the std I/O streams. */
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
