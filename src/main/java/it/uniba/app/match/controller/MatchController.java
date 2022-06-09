@@ -62,7 +62,7 @@ public class MatchController {
      * @param value {@code true} if the match is currently in progress,
      *              {@code false} otherwise.
      */
-    public void setInProgress(boolean value) {
+    public void setInProgress(final boolean value) {
         match.setInProgress(value);
     }
 

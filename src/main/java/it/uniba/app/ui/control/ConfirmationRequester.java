@@ -5,7 +5,7 @@ import it.uniba.app.utils.GenericExecutableTask;
 import it.uniba.app.utils.UserInput;
 
 /**
- *  @{literal <<control>>}
+ * {@literal <<control>>}
  * Asks for a confirmation.
  * The user is asked for a Y or N answer
  * (lower case accepted too).
@@ -13,7 +13,7 @@ import it.uniba.app.utils.UserInput;
  */
 public class ConfirmationRequester implements GenericExecutableTask<Boolean> {
 
-     /** Instantiates a ConfirmationRequester task. */
+    /** Instantiates a ConfirmationRequester task. */
     public ConfirmationRequester() {
     }
 
