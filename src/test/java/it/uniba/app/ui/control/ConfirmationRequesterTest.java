@@ -59,7 +59,6 @@ public class ConfirmationRequesterTest {
         String expectedOut = "Opzione non valida!" + System.lineSeparator();
 
         assertFalse(objToTest.execute());
-
         assertEquals(expectedOut, outContent.toString());
 
         System.setOut(stdOut);

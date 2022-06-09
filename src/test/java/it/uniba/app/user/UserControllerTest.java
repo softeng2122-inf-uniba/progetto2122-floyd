@@ -34,14 +34,22 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testGetHelpCommands_Player() {
+    public void testGetHelpCommands_Player_NotNull() {
         assertNotNull(playerController.getHelpCommands());
+    }
+
+    @Test
+    public void testGetHelpCommands_Player_NotEmpty() {
         assertTrue(playerController.getHelpCommands().length > 0);
     }
 
     @Test
-    public void testGetHelpCommands_Wordsmith() {
+    public void testGetHelpCommands_Wordsmith_NotNull() {
         assertNotNull(wordsmithController.getHelpCommands());
+    }
+
+    @Test
+    public void testGetHelpCommands_Wordsmith_NotEmpty() {
         assertTrue(wordsmithController.getHelpCommands().length > 0);
     }
 

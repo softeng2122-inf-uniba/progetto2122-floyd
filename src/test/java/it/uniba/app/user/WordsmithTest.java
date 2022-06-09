@@ -1,5 +1,6 @@
 package it.uniba.app.user;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -15,9 +16,26 @@ public class WordsmithTest {
     }
 
     @Test
-    public void testGetHelpCommands() {
+    public void testGetHelpCommands_NotNull() {
         assertNotNull(wordsmith.getHelpCommands());
+    }
+
+    @Test
+    public void testGetHelpCommands_NotEmpty() {
         assertTrue(wordsmith.getHelpCommands().length > 0);
+    }
+
+    @Test
+    public void testGetHelpCommands_ContainsTheCorrectCommands() {
+        final String[] COMMANDS = {
+                "/help",
+                "/gioca",
+                "/abbandona",
+                "/esci",
+                "/nuova <parola>",
+                "/mostra"
+        };
+        assertArrayEquals(COMMANDS, wordsmith.getHelpCommands());
     }
 
     @Test

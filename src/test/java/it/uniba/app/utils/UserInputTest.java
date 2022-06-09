@@ -39,6 +39,17 @@ public class UserInputTest {
         assertThrowsExactly(NoSuchElementException.class, () -> UserInput.get());
     }
 
+    @Test
+    public void testGet_Empty_ThenCorrect() {
+        String userInput = "" + System.lineSeparator()
+                + "string";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        UserInput.refreshStream();
+
+        assertEquals("string", UserInput.get());
+    }
+
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);

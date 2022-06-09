@@ -29,10 +29,15 @@ public class MatchStatusUpdaterTest {
     }
 
     @Test
-    public void testExecute_IncorrectGuess() {
-        int oldCtr = match.getCurrentGuessCtr();
+    public void testExecute_IncorrectGuess_MatchIsInProgress() {
         new MatchStatusUpdater(match).execute("false");
         assertTrue(match.isInProgress());
+    }
+
+    @Test
+    public void testExecute_IncorrectGuess_MatchGuessCounterIncrements() {
+        int oldCtr = match.getCurrentGuessCtr();
+        new MatchStatusUpdater(match).execute("false");
         assertEquals((oldCtr + 1), match.getCurrentGuessCtr());
     }
 }

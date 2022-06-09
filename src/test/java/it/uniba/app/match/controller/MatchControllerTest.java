@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.ui.UserInterface;
@@ -24,45 +26,51 @@ public class MatchControllerTest {
 
     }
 
-    @Test
-    public void testStartMatch_CorrectGuess() {
-        InputStream stdIn = System.in;
+    @Nested
+    public class TestStartMatch {
+        InputStream stdIn;
 
-        String userInput = "prova";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
-        UserInput.refreshStream();
+        @BeforeEach
+        public void setUp() {
+            stdIn = System.in;
+        }
 
-        matchController.startMatch("prova");
-        assertEquals(0, matchController.getCurrentGuessNumber());
-        assertEquals(false, matchController.isCurrentGuessCorrect());
-        assertEquals("prova", matchController.getSecretWord());
+        @Test
+        public void testStartMatch_CorrectGuess() {
+            String userInput = "prova";
+            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            System.setIn(in);
+            UserInput.refreshStream();
 
-        System.setIn(stdIn);
-        UserInput.refreshStream();
-    }
+            matchController.startMatch("prova");
+            assertEquals(0, matchController.getCurrentGuessNumber());
+            assertEquals(false, matchController.isCurrentGuessCorrect());
+            assertEquals("prova", matchController.getSecretWord());
+        }
 
-    @Test
-    public void testStartMatch_NoGuess() {
-        InputStream stdIn = System.in;
+        @Test
+        public void testStartMatch_NoGuess() {
+            String userInput = "ciaoo" + System.lineSeparator()
+                    + "ciaoo" + System.lineSeparator()
+                    + "ciaoo" + System.lineSeparator()
+                    + "ciaoo" + System.lineSeparator()
+                    + "ciaoo" + System.lineSeparator()
+                    + "ciaoo" + System.lineSeparator();
+            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            System.setIn(in);
+            UserInput.refreshStream();
 
-        String userInput = "ciaoo" + System.lineSeparator()
-                + "ciaoo" + System.lineSeparator()
-                + "ciaoo" + System.lineSeparator()
-                + "ciaoo" + System.lineSeparator()
-                + "ciaoo" + System.lineSeparator()
-                + "ciaoo" + System.lineSeparator();
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
-        UserInput.refreshStream();
+            matchController.startMatch("prova");
+            assertEquals(0, matchController.getCurrentGuessNumber());
+            assertEquals(false, matchController.isCurrentGuessCorrect());
+            assertEquals("prova", matchController.getSecretWord());
+        }
 
-        matchController.startMatch("prova");
-        assertEquals(0, matchController.getCurrentGuessNumber());
-        assertEquals(false, matchController.isCurrentGuessCorrect());
-        assertEquals("prova", matchController.getSecretWord());
-
-        System.setIn(stdIn);
-        UserInput.refreshStream();
+        @AfterEach
+        public void restoreStream() {
+            System.setIn(stdIn);
+            UserInput.refreshStream();
+        }
     }
 
     @Test

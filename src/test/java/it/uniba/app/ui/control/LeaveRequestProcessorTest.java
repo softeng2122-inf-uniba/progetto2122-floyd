@@ -1,8 +1,8 @@
 package it.uniba.app.ui.control;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,6 +11,7 @@ import java.io.PrintStream;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.match.controller.MatchController;
@@ -35,49 +36,55 @@ public class LeaveRequestProcessorTest {
         objToTest = new LeaveRequestProcessor(matchController);
         stdOut = System.out;
         stdIn = System.in;
-        outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
     }
 
-    @Test
-    public void testExecute_MatchInProgress_Leave() {
-        matchController.setInProgress(true);
+    @Nested
+    class MatchInProgress {
+        @BeforeEach
+        public void setUp() {
+            matchController.setInProgress(true);
+        }
 
-        String userInput = "y";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
-        UserInput.refreshStream();
+        @Test
+        public void testExecute_MatchInProgress_Leave() {
+            String userInput = "y";
+            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            System.setIn(in);
+            UserInput.refreshStream();
 
-        objToTest.execute();
+            objToTest.execute();
 
-        assumeFalse(matchController.isInProgress());
-    }
+            assertFalse(matchController.isInProgress());
+        }
 
-    @Test
-    public void testExecute_MatchInProgress_DontLeave() {
-        matchController.setInProgress(true);
+        @Test
+        public void testExecute_MatchInProgress_DontLeave() {
+            String userInput = "n";
+            InputStream in = new ByteArrayInputStream(userInput.getBytes());
+            System.setIn(in);
+            UserInput.refreshStream();
 
-        String userInput = "n";
-        InputStream in = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(in);
-        UserInput.refreshStream();
+            objToTest.execute();
 
-        objToTest.execute();
+            assertTrue(matchController.isInProgress());
+        }
 
-        assumeTrue(matchController.isInProgress());
+        @AfterEach
+        public void restoreStream() {
+            System.setIn(stdIn);
+            UserInput.refreshStream();
+        }
     }
 
     @Test
     public void testExecute_MatchNotInProgress() {
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
         String outExpected = "Non è in corso alcuna partita da abbandonare." + System.lineSeparator();
         objToTest.execute();
         assertEquals(outExpected, outContent.toString());
-    }
-
-    @AfterEach
-    public void restoreStream() {
-        System.setIn(stdIn);
-        UserInput.refreshStream();
         System.setOut(stdOut);
     }
+
 }

@@ -1,6 +1,7 @@
 package it.uniba.app.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
@@ -11,6 +12,7 @@ import it.uniba.app.ExitAssertions;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.user.UserController;
@@ -37,10 +39,9 @@ public class UserInterfaceTest {
     public void testGetCommands_AsWordsmith_Help() {
         uiWordsmith.getCommands("/help");
 
-        String expectedOutput = System.lineSeparator();
-        expectedOutput = expectedOutput
-                + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands());
-        expectedOutput = expectedOutput + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
+        String expectedOutput = System.lineSeparator()
+                + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands())
+                + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
 
         assertEquals(expectedOutput, outContent.toString());
     }
@@ -49,10 +50,9 @@ public class UserInterfaceTest {
     public void testGetCommands_AsPlayer_Help() {
         uiPlayer.getCommands("/help");
 
-        String expectedOutput = System.lineSeparator();
-        expectedOutput = expectedOutput
-                + String.join(System.lineSeparator(), new UserController("Player").getHelpCommands());
-        expectedOutput = expectedOutput + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
+        String expectedOutput = System.lineSeparator()
+                + String.join(System.lineSeparator(), new UserController("Player").getHelpCommands())
+                + System.lineSeparator() + System.lineSeparator() + System.lineSeparator();
 
         assertEquals(expectedOutput, outContent.toString());
     }
@@ -103,11 +103,7 @@ public class UserInterfaceTest {
     @Test
     public void testGetCommands_AsWordsmith_NewSecretWord() {
         uiWordsmith.getCommands("/nuova prova");
-        uiWordsmith.getCommands("/mostra");
-
-        String expectedOutput = "OK" + System.lineSeparator()
-                + "La parola segreta è: prova" + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals("prova", uiWordsmith.getLastSecretWord());
     }
 
     @Test
@@ -149,9 +145,7 @@ public class UserInterfaceTest {
     @Test
     public void testGetCommands_AsPlayer_Play_NoSecretWord() {
         uiPlayer.getCommands("/gioca");
-
         String expectedOutput = "Parola segreta mancante" + System.lineSeparator();
-
         assertEquals(expectedOutput, outContent.toString());
     }
 
@@ -164,13 +158,25 @@ public class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString());
     }
 
-    @Test
-    public void testGetCommands_AsPlayer_NewSecretWord() {
-        uiPlayer.getCommands("/nuova prova");
-        String expectedOutput = "Comando non riconosciuto. "
-                + "/help per visualizzare la lista dei comandi."
-                + System.lineSeparator();
-        assertEquals(expectedOutput, outContent.toString());
+    @Nested
+    class AsPlayer_NewSecretWord {
+        @BeforeEach
+        public void setUp() {
+            uiPlayer.getCommands("/nuova prova");
+        }
+
+        @Test
+        public void testOutput() {
+            String expectedOutput = "Comando non riconosciuto. "
+                    + "/help per visualizzare la lista dei comandi."
+                    + System.lineSeparator();
+            assertEquals(expectedOutput, outContent.toString());
+        }
+
+        @Test
+        public void testLastSecretWord_HasNotChanged() {
+            assertNull(uiPlayer.getLastSecretWord());
+        }
     }
 
     @Test

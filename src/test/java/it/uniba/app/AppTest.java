@@ -1,7 +1,7 @@
 package it.uniba.app;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.user.UserController;
@@ -17,42 +19,56 @@ import it.uniba.app.user.UserController;
  * Main test class of the application.
  */
 public class AppTest {
-    @Test
-    public void testMain() {
-        String[] args = { "--help", "-h" };
+    InputStream stdIn;
+    InputStream in;
+    PrintStream stdOut;
+    ByteArrayOutputStream outContent;
 
-        InputStream stdIn = System.in;
-        InputStream in = new ByteArrayInputStream("userInput".getBytes());
+    @BeforeEach
+    public void setUp() {
+        stdIn = System.in;
+        in = new ByteArrayInputStream("".getBytes());
         System.setIn(in);
 
-        PrintStream stdOut = System.out;
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        stdOut = System.out;
+        outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
+    }
 
+    @Test
+    public void testMain_Help_Arg() {
+        String[] args = { "--help" };
+
+        // Chiederà input ma noi vogliamo solo verificare l'output
         assertThrowsExactly(NoSuchElementException.class, () -> App.main(args));
 
-        String outExpected = " __      __                .___.__          " + System.lineSeparator()
-                + "/  \\    /  \\___________  __| _/|  |   ____  " + System.lineSeparator()
-                + "\\   \\/\\/   /  _ \\_  __ \\/ __ | |  | _/ __ \\ " + System.lineSeparator()
-                + " \\        (  <_> )  | \\/ /_/ | |  |_\\  ___/ " + System.lineSeparator()
-                + "  \\__/\\  / \\____/|__|  \\____ | |____/\\___  >" + System.lineSeparator()
-                + "       \\/                   \\/           \\/ |" + System.lineSeparator()
-                + System.lineSeparator()
-                + "--------------------------------------------" + System.lineSeparator()
-                + System.lineSeparator()
-                + "Benvenuto su Wordle!" + System.lineSeparator()
-                + "Digitare /help per la lista dei comandi." + System.lineSeparator()
-                + System.lineSeparator()
-                + System.lineSeparator()
+        String outExpected = System.lineSeparator()
                 + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands())
                 + System.lineSeparator()
                 + System.lineSeparator()
-                + System.lineSeparator()
-                + "Comando non riconosciuto. /help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
 
-        assertEquals(outExpected, outContent.toString());
+        assertTrue(outContent.toString().contains(outExpected));
+    }
 
+    @Test
+    public void testMain_H_Arg() {
+        String[] args = { "-h" };
+
+        // Chiederà input ma noi vogliamo solo verificare l'output
+        assertThrowsExactly(NoSuchElementException.class, () -> App.main(args));
+
+        String outExpected = System.lineSeparator()
+                + String.join(System.lineSeparator(), new UserController("Wordsmith").getHelpCommands())
+                + System.lineSeparator()
+                + System.lineSeparator()
+                + System.lineSeparator();
+
+        assertTrue(outContent.toString().contains(outExpected));
+    }
+
+    @AfterEach
+    public void restoreStream() {
         System.setIn(stdIn);
         System.setOut(stdOut);
     }

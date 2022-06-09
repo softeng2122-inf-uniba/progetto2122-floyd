@@ -1,5 +1,6 @@
 package it.uniba.app.user;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,9 +17,24 @@ public class PlayerTest {
     }
 
     @Test
-    public void testGetHelpCommands() {
+    public void testGetHelpCommands_NotNull() {
         assertNotNull(player.getHelpCommands());
+    }
+
+    @Test
+    public void testGetHelpCommands_NotEmpty() {
         assertTrue(player.getHelpCommands().length > 0);
+    }
+
+    @Test
+    public void testGetHelpCommands_ContainsTheCorrectCommands() {
+        final String[] COMMANDS = {
+                "/help",
+                "/gioca",
+                "/abbandona",
+                "/esci"
+        };
+        assertArrayEquals(COMMANDS, player.getHelpCommands());
     }
 
     @Test
