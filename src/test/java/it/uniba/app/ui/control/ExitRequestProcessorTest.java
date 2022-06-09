@@ -16,12 +16,25 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.ExitAssertions;
 import it.uniba.app.utils.UserInput;
 
+/** Test ExitRequestProcessor class. */
 public final class ExitRequestProcessorTest {
+    /** Class to test. */
     private ExitRequestProcessor objToTest;
+
+    /** Standard InputStream. */
     private InputStream stdIn;
+
+    /** Standard PrintStream. */
     private PrintStream stdOut;
+
+    /** Test OutputStream. */
     private ByteArrayOutputStream outContent;
 
+    /**
+     * Setups the test.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @BeforeEach
     public void setUp() throws UnsupportedEncodingException {
         objToTest = new ExitRequestProcessor();
@@ -31,6 +44,7 @@ public final class ExitRequestProcessorTest {
         System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
+    /** Test execute method with a y in input. */
     @Test
     public void testExecute_DoesExit() {
         String userInput = "y";
@@ -43,6 +57,11 @@ public final class ExitRequestProcessorTest {
                 () -> objToTest.execute());
     }
 
+    /**
+     * Test execute method with a n in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testExecute_DoesNotExit() throws UnsupportedEncodingException {
         String userInput = "n";
@@ -57,6 +76,7 @@ public final class ExitRequestProcessorTest {
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
+    /** Restores the std I/O streams. */
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
