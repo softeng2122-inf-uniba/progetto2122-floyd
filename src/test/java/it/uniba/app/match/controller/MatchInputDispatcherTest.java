@@ -72,7 +72,7 @@ public class MatchInputDispatcherTest {
     }
 
     @Test
-    public void testExecute_Command_Help() {
+    public void testExecute_Command() {
         new MatchInputDispatcher(match, ui).execute("/help");
 
         String expectedOutput = System.lineSeparator();

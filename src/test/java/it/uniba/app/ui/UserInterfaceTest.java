@@ -1,6 +1,7 @@
 package it.uniba.app.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -170,6 +171,41 @@ public class UserInterfaceTest {
                 + "/help per visualizzare la lista dei comandi."
                 + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    public void testGetCommands_AsWordsmith_Leave_MatchInProgress() {
+        String userInput = "/abbandona" + System.lineSeparator()
+                + "y";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        UserInput.refreshStream();
+
+        uiWordsmith.getCommands("/nuova prova");
+        uiWordsmith.getCommands("/gioca");
+
+        String[] content = outContent.toString().split(System.lineSeparator());
+        String expectedOut = "Hai abbandonato";
+        assertTrue(content[content.length - 1].contains(expectedOut));
+
+        System.setIn(stdIn);
+        UserInput.refreshStream();
+    }
+
+    @Test
+    public void testGetCommands_AsWordsmith_Leave_NoMatchToLeave() {
+        uiWordsmith.getCommands("/abbandona");
+
+        String expectedOut = "Non è in corso alcuna partita da abbandonare.";
+        assertTrue(outContent.toString().contains(expectedOut));
+    }
+
+    @Test
+    public void testGetCommands_AsPlayer_Leave_NoMatchToLeave() {
+        uiPlayer.getCommands("/abbandona");
+
+        String expectedOut = "Non è in corso alcuna partita da abbandonare.";
+        assertTrue(outContent.toString().contains(expectedOut));
     }
 
     @AfterEach
