@@ -44,9 +44,9 @@ public final class MatchInputDispatcherTest {
 
     @Test
     public void testExecute_GuessAttempt_NotValid_TooLong() throws UnsupportedEncodingException {
-        assertTrue(match.isInProgress());
+        int old = match.getCurrentGuessCtr();
         new MatchInputDispatcher(match, ui).execute("provva");
-        assertTrue(match.isInProgress());
+        assertEquals(old, match.getCurrentGuessCtr());
 
         String outExpected = "Tentativo eccessivo" + System.lineSeparator();
         assertEquals(outExpected, outContent.toString("UTF-8"));
@@ -54,9 +54,9 @@ public final class MatchInputDispatcherTest {
 
     @Test
     public void testExecute_GuessAttempt_NotValid_TooShort() throws UnsupportedEncodingException {
-        assertTrue(match.isInProgress());
+        int old = match.getCurrentGuessCtr();
         new MatchInputDispatcher(match, ui).execute("prov");
-        assertTrue(match.isInProgress());
+        assertEquals(old, match.getCurrentGuessCtr());
 
         String outExpected = "Tentativo incompleto" + System.lineSeparator();
         assertEquals(outExpected, outContent.toString("UTF-8"));
@@ -64,9 +64,9 @@ public final class MatchInputDispatcherTest {
 
     @Test
     public void testExecute_GuessAttempt_NotValid_NotAlphabet() throws UnsupportedEncodingException {
-        assertTrue(match.isInProgress());
+        int old = match.getCurrentGuessCtr();
         new MatchInputDispatcher(match, ui).execute("pr2ov");
-        assertTrue(match.isInProgress());
+        assertEquals(old, match.getCurrentGuessCtr());
 
         String outExpected = "Tentativo non valido" + System.lineSeparator();
         assertEquals(outExpected, outContent.toString("UTF-8"));
