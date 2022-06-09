@@ -14,14 +14,29 @@ import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 
+/** Test PlayRequestProcessor class. */
 public final class PlayRequestProcessorTest {
+
+    /** Standard PrintStream. */
     private PrintStream stdOut;
+
+    /** Test OutputStream. */
     private ByteArrayOutputStream outContent;
 
+    /** UserInterface object. */
     private UserInterface ui;
+
+    /** MatchController object. */
     private MatchController matchController;
+
+    /** Class to test. */
     private PlayRequestProcessor objToTest;
 
+    /**
+     * Setups the test.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @BeforeEach
     public void setUp() throws UnsupportedEncodingException {
         ui = new UserInterface(new UserController("Wordsmith"));
@@ -32,6 +47,11 @@ public final class PlayRequestProcessorTest {
         System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
+    /**
+     * Test execute method when a match is in progress.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testExecute_MatchAlreadyInProgress() throws UnsupportedEncodingException {
         matchController.setInProgress(true);
@@ -41,6 +61,11 @@ public final class PlayRequestProcessorTest {
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Test execute method when secret word is missing.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testExecute_SecretWordMissing() throws UnsupportedEncodingException {
         objToTest.execute(null);
@@ -49,6 +74,7 @@ public final class PlayRequestProcessorTest {
         assertEquals(outExpected, outContent.toString("UTF-8"));
     }
 
+    /** Restores the std I/O streams. */
     @AfterEach
     public void restoreStream() {
         System.setOut(stdOut);
