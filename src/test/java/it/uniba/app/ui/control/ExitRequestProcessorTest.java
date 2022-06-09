@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.ExitAssertions;
+import it.uniba.app.utils.UserInput;
 
 public class ExitRequestProcessorTest {
     private ExitRequestProcessor objToTest;
@@ -33,6 +34,7 @@ public class ExitRequestProcessorTest {
         String userInput = "y";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         ExitAssertions.assertExits(0, () -> objToTest.execute());
     }
@@ -42,6 +44,7 @@ public class ExitRequestProcessorTest {
         String userInput = "n";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         objToTest.execute();
 
@@ -52,6 +55,7 @@ public class ExitRequestProcessorTest {
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
+        UserInput.refreshStream();
         System.setOut(stdOut);
     }
 

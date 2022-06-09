@@ -2,6 +2,7 @@ package it.uniba.app.match.controller;
 
 import it.uniba.app.match.Match;
 import it.uniba.app.ui.UserInterface;
+import it.uniba.app.utils.UserInput;
 
 /**
  * {@literal <<control>>}
@@ -31,9 +32,15 @@ public class MatchController {
      *
      * @param secretWord the secret word.
      */
-    public void start(final String secretWord) {
+    public void startMatch(final String secretWord) {
         setSecretWord(secretWord);
-        new MatchStarter(match, ui).execute();
+
+        match.setInProgress(true);
+        UserInterface.printer.getGrid(match.getGuessControllers());
+        while (match.getCurrentGuessCtr() < Match.NUM_OF_GUESSES && match.isInProgress()) {
+            new MatchInputDispatcher(match, ui).execute(UserInput.get());
+        }
+
         UserInterface.printer.getEndGameMessage(this);
         match.reset();
     }

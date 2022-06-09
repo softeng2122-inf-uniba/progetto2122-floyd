@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
+import it.uniba.app.utils.UserInput;
 
 public class MatchControllerTest {
     private UserInterface ui;
@@ -24,19 +25,44 @@ public class MatchControllerTest {
     }
 
     @Test
-    public void testStart() {
+    public void testStartMatch_CorrectGuess() {
         InputStream stdIn = System.in;
 
         String userInput = "prova";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
-        matchController.start("prova");
+        matchController.startMatch("prova");
         assertEquals(0, matchController.getCurrentGuessNumber());
         assertEquals(false, matchController.isCurrentGuessCorrect());
         assertEquals("prova", matchController.getSecretWord());
 
         System.setIn(stdIn);
+        UserInput.refreshStream();
+    }
+
+    @Test
+    public void testStartMatch_NoGuess() {
+        InputStream stdIn = System.in;
+
+        String userInput = "ciaoo" + System.lineSeparator()
+                + "ciaoo" + System.lineSeparator()
+                + "ciaoo" + System.lineSeparator()
+                + "ciaoo" + System.lineSeparator()
+                + "ciaoo" + System.lineSeparator()
+                + "ciaoo" + System.lineSeparator();
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        UserInput.refreshStream();
+
+        matchController.startMatch("prova");
+        assertEquals(0, matchController.getCurrentGuessNumber());
+        assertEquals(false, matchController.isCurrentGuessCorrect());
+        assertEquals("prova", matchController.getSecretWord());
+
+        System.setIn(stdIn);
+        UserInput.refreshStream();
     }
 
     @Test

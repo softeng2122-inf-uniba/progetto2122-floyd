@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniba.app.user.UserController;
+import it.uniba.app.utils.UserInput;
 
 public class UserInterfaceTest {
     private UserInterface uiWordsmith;
@@ -69,15 +70,18 @@ public class UserInterfaceTest {
         String userInput = "y";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         ExitAssertions.assertExits(0, () -> uiWordsmith.getCommands("/esci"));
 
         in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         ExitAssertions.assertExits(0, () -> uiPlayer.getCommands("/esci"));
 
         System.setIn(stdIn);
+        UserInput.refreshStream();
     }
 
     @Test

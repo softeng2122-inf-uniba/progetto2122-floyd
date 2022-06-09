@@ -6,9 +6,9 @@ import it.uniba.app.utils.ConsoleUtils;
 import it.uniba.app.utils.ExecutableTaskString;
 
 /**
- *  @{literal <<control>>}
- * Tries to start a match, if not already started.
- * Prints error otherwise.
+ * @{literal <<control>>}
+ *           Tries to start a match, if not already started.
+ *           Prints error otherwise.
  */
 public final class PlayRequestProcessor implements ExecutableTaskString {
 
@@ -35,7 +35,7 @@ public final class PlayRequestProcessor implements ExecutableTaskString {
                 UserInterface.printer.getSecretWordMissing();
             } else {
                 ConsoleUtils.clearScreen();
-                matchController.start(lastSecretWord);
+                matchController.startMatch(lastSecretWord);
             }
         }
     }

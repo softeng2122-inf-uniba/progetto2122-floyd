@@ -13,6 +13,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniba.app.utils.UserInput;
+
 public class ConfirmationRequesterTest {
 
     private ConfirmationRequester objToTest;
@@ -29,6 +31,7 @@ public class ConfirmationRequesterTest {
         String userInput = "y";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         assertTrue(objToTest.execute());
     }
@@ -38,6 +41,7 @@ public class ConfirmationRequesterTest {
         String userInput = "n";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         assertFalse(objToTest.execute());
     }
@@ -47,6 +51,7 @@ public class ConfirmationRequesterTest {
         String userInput = "yy";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         PrintStream stdOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -63,6 +68,7 @@ public class ConfirmationRequesterTest {
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
+        UserInput.refreshStream();
     }
 
 }

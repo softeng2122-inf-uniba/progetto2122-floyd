@@ -24,6 +24,7 @@ public class UserInputTest {
         String userInput = "InpUt stRing";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         assertEquals(userInput.toLowerCase(), UserInput.get());
     }
@@ -33,6 +34,7 @@ public class UserInputTest {
         String userInput = "";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         assertThrowsExactly(NoSuchElementException.class, () -> UserInput.get());
     }
@@ -40,5 +42,6 @@ public class UserInputTest {
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
+        UserInput.refreshStream();
     }
 }

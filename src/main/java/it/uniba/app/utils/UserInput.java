@@ -8,6 +8,8 @@ import java.util.Scanner;
  */
 public final class UserInput {
 
+    private static Scanner in = new Scanner(System.in, "UTF-8");
+
     private UserInput() {
     }
 
@@ -20,11 +22,15 @@ public final class UserInput {
      *         automatically converted to lower case.
      */
     public static String get() {
-        Scanner in = new Scanner(System.in, "UTF-8");
         String input = in.nextLine().toLowerCase();
         while (input.isEmpty()) {
             input = in.nextLine().toLowerCase();
         }
         return input;
+    }
+
+    /** Use for testing purposes. */
+    public static void refreshStream() {
+        in = new Scanner(System.in, "UTF-8");
     }
 }

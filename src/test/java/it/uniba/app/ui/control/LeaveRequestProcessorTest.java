@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import it.uniba.app.match.controller.MatchController;
 import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
+import it.uniba.app.utils.UserInput;
 
 public class LeaveRequestProcessorTest {
 
@@ -45,6 +46,7 @@ public class LeaveRequestProcessorTest {
         String userInput = "y";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         objToTest.execute();
 
@@ -58,6 +60,7 @@ public class LeaveRequestProcessorTest {
         String userInput = "n";
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
+        UserInput.refreshStream();
 
         objToTest.execute();
 
@@ -74,6 +77,7 @@ public class LeaveRequestProcessorTest {
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
+        UserInput.refreshStream();
         System.setOut(stdOut);
     }
 }
