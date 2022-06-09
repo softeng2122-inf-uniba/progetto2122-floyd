@@ -21,16 +21,28 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.user.UserController;
 import it.uniba.app.utils.UserInput;
 
+/** Test LeaveRequestProcessor class. */
 public final class LeaveRequestProcessorTest {
 
+    /** Standard InputStream. */
     private InputStream stdIn;
+
+    /** Standard PrintStream. */
     private PrintStream stdOut;
+
+    /** Test OutputStream. */
     private ByteArrayOutputStream outContent;
 
+    /** UserInterface object. */
     private UserInterface ui;
+
+    /** MatchController object. */
     private MatchController matchController;
+
+    /** Class to test. */
     private LeaveRequestProcessor objToTest;
 
+    /** Setups the test. */
     @BeforeEach
     public void setUp() {
         ui = new UserInterface(new UserController("Wordsmith"));
@@ -40,13 +52,17 @@ public final class LeaveRequestProcessorTest {
         stdIn = System.in;
     }
 
+    /** Test execute method while match is in progress. */
     @Nested
     class MatchInProgress {
+
+        /** Setups the test. */
         @BeforeEach
         public void setUp() {
             matchController.setInProgress(true);
         }
 
+        /** Input y. */
         @Test
         public void testExecute_MatchInProgress_Leave() {
             String userInput = "y";
@@ -60,6 +76,7 @@ public final class LeaveRequestProcessorTest {
             assertFalse(matchController.isInProgress());
         }
 
+        /** Input n. */
         @Test
         public void testExecute_MatchInProgress_DontLeave() {
             String userInput = "n";
@@ -73,6 +90,7 @@ public final class LeaveRequestProcessorTest {
             assertTrue(matchController.isInProgress());
         }
 
+        /** Restores the std I/O streams. */
         @AfterEach
         public void restoreStream() {
             System.setIn(stdIn);
@@ -80,6 +98,11 @@ public final class LeaveRequestProcessorTest {
         }
     }
 
+    /**
+     * Test execute method while match is not in progress.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testExecute_MatchNotInProgress() throws UnsupportedEncodingException {
         outContent = new ByteArrayOutputStream();
