@@ -17,17 +17,23 @@ import org.junit.jupiter.api.Test;
 
 import it.uniba.app.utils.UserInput;
 
+/** Test ConfirmationRequester class. */
 public final class ConfirmationRequesterTest {
 
+    /** Class to test. */
     private ConfirmationRequester objToTest;
+
+    /** Standard InputStream. */
     private InputStream stdIn;
 
+    /** Setups the test. */
     @BeforeEach
     public void setUp() {
         stdIn = System.in;
         objToTest = new ConfirmationRequester();
     }
 
+    /** Test the execute method with a y in input. */
     @Test
     public void testExecute_YesConfirmation() {
         String userInput = "y";
@@ -39,6 +45,7 @@ public final class ConfirmationRequesterTest {
         assertTrue(objToTest.execute());
     }
 
+    /** Test the execute method with a n in input. */
     @Test
     public void testExecute_NoConfirmation() {
         String userInput = "n";
@@ -50,6 +57,11 @@ public final class ConfirmationRequesterTest {
         assertFalse(objToTest.execute());
     }
 
+    /**
+     * Test the execute method with an invalid yy in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testExecute_InvalidConfirmation() throws UnsupportedEncodingException {
         String userInput = "yy";
@@ -69,6 +81,7 @@ public final class ConfirmationRequesterTest {
         System.setOut(stdOut);
     }
 
+    /** Restores the std I/O streams. */
     @AfterEach
     public void restoreStream() {
         System.setIn(stdIn);
