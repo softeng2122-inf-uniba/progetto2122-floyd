@@ -22,12 +22,26 @@ import it.uniba.app.user.UserController;
 import it.uniba.app.utils.UserInput;
 
 public final class UserInterfaceTest {
+    /** UserInterface for wordsmith. */
     private UserInterface uiWordsmith;
+
+    /** UserInterface for player. */
     private UserInterface uiPlayer;
+
+    /** Test OutputStream. */
     private ByteArrayOutputStream outContent;
+
+    /** Standard PrintStream. */
     private PrintStream stdOut;
+
+    /** Standard InputStream. */
     private InputStream stdIn;
 
+    /**
+     * Setups the test.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @BeforeEach
     public void setUp() throws UnsupportedEncodingException {
         uiWordsmith = new UserInterface(new UserController("Wordsmith"));
@@ -38,6 +52,11 @@ public final class UserInterfaceTest {
         System.setOut(new PrintStream(outContent, false, "UTF-8"));
     }
 
+    /**
+     * Tests getCommands as wordsmith with /help in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_Help() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/help");
@@ -52,6 +71,11 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as player with /help in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsPlayer_Help() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/help");
@@ -66,6 +90,12 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as wordsmith with /gioca in input
+     * when there's no secret word set.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_Play_NoSecretWord() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/gioca");
@@ -76,6 +106,11 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as both with /esci in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsBoth_Exit() {
         String userInput = "y";
@@ -99,6 +134,12 @@ public final class UserInterfaceTest {
         UserInput.refreshStream();
     }
 
+    /**
+     * Tests getCommands as wordsmith with /mostra in input
+     * when there's no secret word set.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_ShowSecretWord_Missing() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/mostra");
@@ -107,6 +148,12 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as wordsmith with /mostra in input
+     * when there's a secret word set.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_ShowSecretWord() throws UnsupportedEncodingException {
         uiWordsmith.setLastSecretWord("prova");
@@ -116,12 +163,22 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as wordsmith with /nuova prova in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_NewSecretWord() {
         uiWordsmith.getCommands("/nuova prova");
         assertEquals("prova", uiWordsmith.getLastSecretWord());
     }
 
+    /**
+     * Tests getCommands as wordsmith with /invalid in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_InvalidCommand_WithSlash() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/invalid");
@@ -131,6 +188,11 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as wordsmith with invalid in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_InvalidCommand_WithoutSlash() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("invalid");
@@ -140,6 +202,11 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as player with /invalid in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsPlayer_InvalidCommand_WithSlash() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/invalid");
@@ -149,6 +216,11 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as player with invalid in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsPlayer_InvalidCommand_WithoutSlash() throws UnsupportedEncodingException {
         uiPlayer.getCommands("invalid");
@@ -158,6 +230,12 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as player with /gioca in input
+     * when there's no secret word set.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsPlayer_Play_NoSecretWord() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/gioca");
@@ -166,6 +244,11 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /**
+     * Tests getCommands as player with /mostra in input.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsPlayer_ShowSecretWord() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/mostra");
@@ -175,13 +258,20 @@ public final class UserInterfaceTest {
         assertEquals(expectedOutput, outContent.toString("UTF-8"));
     }
 
+    /** Test getCommands as player with /nuova prova in input. */
     @Nested
     class AsPlayer_NewSecretWord {
+        /** Setups the test. */
         @BeforeEach
         public void setUp() {
             uiPlayer.getCommands("/nuova prova");
         }
 
+        /**
+         * Tests the output to check if meets the expected output.
+         *
+         * @throws UnsupportedEncodingException
+         */
         @Test
         public void testOutput() throws UnsupportedEncodingException {
             String expectedOutput = "Comando non riconosciuto. "
@@ -190,12 +280,19 @@ public final class UserInterfaceTest {
             assertEquals(expectedOutput, outContent.toString("UTF-8"));
         }
 
+        /** Tests that lastSecretWord has not changed. */
         @Test
         public void testLastSecretWord_HasNotChanged() {
             assertNull(uiPlayer.getLastSecretWord());
         }
     }
 
+    /**
+     * Tests getCommands as Wordsmith with /abbandona in input
+     * when there is a match in progress.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_Leave_MatchInProgress() throws UnsupportedEncodingException {
         String userInput = "/abbandona" + System.lineSeparator()
@@ -218,6 +315,12 @@ public final class UserInterfaceTest {
         UserInput.refreshStream();
     }
 
+    /**
+     * Tests getCommands as Wordsmith with /abbandona in input
+     * when there is not a match in progress.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsWordsmith_Leave_NoMatchToLeave() throws UnsupportedEncodingException {
         uiWordsmith.getCommands("/abbandona");
@@ -226,6 +329,12 @@ public final class UserInterfaceTest {
         assertTrue(outContent.toString("UTF-8").contains(expectedOut));
     }
 
+    /**
+     * Tests getCommands as player with /abbandona in input
+     * when there is not a match in progress.
+     *
+     * @throws UnsupportedEncodingException
+     */
     @Test
     public void testGetCommands_AsPlayer_Leave_NoMatchToLeave() throws UnsupportedEncodingException {
         uiPlayer.getCommands("/abbandona");
@@ -234,6 +343,7 @@ public final class UserInterfaceTest {
         assertTrue(outContent.toString("UTF-8").contains(expectedOut));
     }
 
+    /** Restores the std I/O streams. */
     @AfterEach
     public void restoreStream() {
         System.setOut(stdOut);
