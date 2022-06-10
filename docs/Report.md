@@ -229,3 +229,37 @@ Infine, è presente un gruppo di warning riguardante i vari controller, che cons
 ![TestCoverage](./img/fullsize-coveralls.png)
 
 ---
+
+## 7. Manuale utente
+
+<p>
+
+I comandi disponibili come **paroliere** sono i seguenti:<br>
+• /gioca<br>
+• /abbandona<br>
+• /mostra<br>
+• /nuova \<parola><br>
+
+I comandi disponibili come **giocatore** sono i seguenti:<br>
+• /gioca<br>
+• /abbandona<br>
+
+
+Per iniziare una nuova partita, il paroliere deve prima aver impostato una parola segreta tramite il comando **/nuova \<parola\>**<br>
+Le parole valide contengono 5 caratteri alfabetici.<br>
+Una volta impostata la parola segreta sarà possibile eseguire il comando **/gioca** che permetterà di giocare una nuova partita con l'ultima parola segreta impostata.<br>
+Il comando **/gioca** è utilizzabile solo fuori dalla partita.<br>
+
+Il comando **/nuova \<parola>** è utilizzabile anche durante la partita, difatti, la parola segreta verrà aggiornata in tempo reale.
+
+Qualora il paroliere volesse mostrare la parola segreta attualmente impostata, dovrebbe usare il comando **/mostra**
+
+Se il giocatore (o paroliere) volesse abbandonare la partita in corso, dovrebbe usare il comando **/abbandona**<br>
+Il comando **/abbandona** è utilizzabile solo durante una partita.
+
+### Come effettuare un tentativo durante la partita
+Una volta iniziata la partita, il gioco mostrerà una griglia vuota, composta da 6 righe (tentativi) e 5 colonne (lettere del tentativo).<br>
+Per effettuare un tentativo basterà inserire in input la parola con cui si vuole, appunto, effettuare il tentativo.<br>
+È permesso l'utilizzo dei comandi durante la partita.</p>
+
+---
