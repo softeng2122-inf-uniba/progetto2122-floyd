@@ -223,3 +223,9 @@ Infine, ignoriamo un gruppo di warning riguardante la classe ExitAssertions.java
 Infine, è presente un gruppo di warning riguardante i vari controller, che conservano riferimenti a oggetti esterni mutabili, esponendo la loro rappresentazione interna; tuttavia è un comportamento intenzionale, in quanto sono i controller che gestiscono lo stato interno delle entità.</p>
 
 ---
+
+## 6. Riepilogo del test
+
+![TestCoverage](./img/fullsize-coveralls.png)
+
+---
