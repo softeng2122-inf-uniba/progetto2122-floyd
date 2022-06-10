@@ -195,7 +195,12 @@ Diagramma di sequenza se viene invocato /help dentro alla partita
 
 ### Come giocatore voglio effettuare un tentativo per indovinare la parola segreta (#24)
 
+#### Diagrammi allo stato dello sprint 1
 ![ClassDiag4](./img/class_issue%2324.png)
 ![SeqDiag4](./img/seq_issue%2324.png)
+
+#### Diagrammi allo stato dello sprint 2
+![ClassDiag4_v2](./img/class_issue24_v2.png)
+![SeqDiag4_v2](./img/seq_issue24_v2.png)
 
 ---
