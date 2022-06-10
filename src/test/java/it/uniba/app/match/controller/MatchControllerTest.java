@@ -33,7 +33,7 @@ public final class MatchControllerTest {
 
     /** Test startMatch method. */
     @Nested
-    public class TestStartMatch {
+    class TestStartMatch {
         /** Standard InputStream. */
         private InputStream stdIn;
 
