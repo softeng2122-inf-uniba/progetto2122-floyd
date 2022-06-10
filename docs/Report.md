@@ -178,8 +178,13 @@ Diagramma di sequenza se viene invocato /help dentro alla partita
 
 ### Come paroliere voglio impostare una parola segreta manualmente (#18)
 
+#### Diagrammi allo stato dello sprint 1
 ![ClassDiag3](./img/class_issue%2318.png)
 ![SeqDiag3](./img/seq_issue%2318.png)
+
+#### Diagrammi allo stato dello sprint 2
+![ClassDiag3_v2](./img/class_issue18_v2.png)
+![SeqDiag3_v2](./img/seq_issue18_v2.png)
 
 ---
 
