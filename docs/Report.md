@@ -171,8 +171,13 @@ Diagramma di sequenza se viene invocato /help dentro alla partita
 
 ### Come giocatore voglio iniziare una nuova partita (#21)
 
+#### Diagrammi allo stato dello sprint 1
 ![ClassDiag2](./img/class_issue%2321.png)
 ![SeqDiag2](./img/seq_issue%2321.png)
+
+#### Diagrammi allo stato dello sprint 2
+![ClassDiag2_v2](./img/class_issue21_v2.png)
+![SeqDiag2_v2](./img/seq_issue21_v2.png)
 
 ---
 
