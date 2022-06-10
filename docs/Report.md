@@ -264,6 +264,13 @@ Per effettuare un tentativo basterà inserire in input la parola con cui si vuol
 
 ---
 
+## 8. Processo di sviluppo e organizzazione del lavoro
+<p>Abbiamo preferito lavorare ad un issue per volta, in quanto abbiamo ritenuto che diversi issues fossero strettamente correlati tra loro, impedendone, quindi, lo sviluppo parallelo.<br>
+Solitamente ogni issue è stato assegnato ad un singolo componente del gruppo, mentre issue più complessi sono stati assegnati ad al più due componenti ed è stata richiesta la partecipazione di tutto il team per quanto riguarda il processo di review.<br>
+Sono stati effettuati meeting periodici prima dell'inizio di ogni sprint e dopo la loro conclusione e, nel caso di issues più complessi, anche meeting di revisione extra, in cui si è discusso del lavoro svolto e degli eventuali problemi riscontrati.</p>
+
+---
+
 ## 9. Analisi retrospettiva
 ### 9.1 Sprint 1
 
