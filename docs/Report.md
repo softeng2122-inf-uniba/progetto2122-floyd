@@ -203,4 +203,23 @@ Diagramma di sequenza se viene invocato /help dentro alla partita
 ![ClassDiag4_v2](./img/class_issue24_v2.png)
 ![SeqDiag4_v2](./img/seq_issue24_v2.png)
 
+### Decisioni prese
+<p>Per quanto riguarda alcune entità, ritenute più vulnerabili in quanto gestite da più controller contemporaneamente, abbiamo optato per un meccanismo di get e set attraverso l'ausilio di deep copy, ovvero la copia completa di oggetti volta ad evitare eventuali effetti collaterali e ad aumentarne, quindi, la sicurezza.<br>
+Quindi, i getter dei vari oggetti restituiranno una copia dell'oggetto in questione e non il riferimento ad esso.
+Per poter, quindi, confermare e salvare eventuali modifiche, si dovrà ricorrere al setter, il quale effettua un'ulteriore copia che separa il parametro effettivo dal nuovo oggetto "reale" memorizzato nell'entità.</p>
+
+
+#### **CheckStyle main**
+<p>Sono stati ignorati i warning relativi alla lunghezza della riga superiore a 80 caratteri, in quanto avrebbero portato a una frammentazione visiva dell'effettivo codice, introducendo quindi, effetti da noi ritenuti negativi sulla leggibilità dello stesso.<br>
+È stato inoltre tralasciato il warning riguardante la nomenclatura della variabile "printer" che, secondo i principi di Checkstyle, dovrebbe avere la nomenclatura in maiuscolo in quanto variabile statica e costante; tuttavia abbiamo ritenuto che fosse più corretta, per il suo scopo, la nomenclatura in minuscolo.</p>
+
+#### **CheckStyle test**
+<p>Sono stati nuovamente ignorati i warning relativi alla lunghezza della riga per le medesime motivazioni sopracitate.<br>
+Inoltre, sono presenti warning riguardanti la nomenclatura dei metodi che, secondo i principi di Checkstyle, non dovrebbe contenere underscore ("_"); tuttavia, le convenzioni di JUnit e Java, permettono l'utilizzo degli underscore nella nomenclatura dei metodi di test.<br>
+Infine, ignoriamo un gruppo di warning riguardante la classe ExitAssertions.java, in quanto libreria esterna.</p>
+
+#### **SpotBugs main**
+<p>È presente un warning sull'utilizzo del System.exit() che, secondo i principi di SpotBugs, è una "Bad practice", permessa esclusivamente laddove ritenuta appropriata, come nel nostro caso, in quanto requisito funzionale.<br>
+Infine, è presente un gruppo di warning riguardante i vari controller, che conservano riferimenti a oggetti esterni mutabili, esponendo la loro rappresentazione interna; tuttavia è un comportamento intenzionale, in quanto sono i controller che gestiscono lo stato interno delle entità.</p>
+
 ---
