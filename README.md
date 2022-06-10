@@ -1,5 +1,5 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7358406&assignment_repo_type=AssignmentRepo)
-# Wordle [![CI/CD](https://github.com/softeng2122-inf-uniba/progetto2122-floyd/actions/workflows/ingsw2122.yml/badge.svg)](https://github.com/softeng2122-inf-uniba/progetto2122-floyd/actions/workflows/ingsw2122.yml) [![Coverage Status](https://coveralls.io/repos/github/softeng2122-inf-uniba/progetto2122-floyd/badge.svg?t=FNMP3Y)](https://coveralls.io/github/softeng2122-inf-uniba/progetto2122-floyd)
+# Wordle [![CI/CD](https://github.com/softeng2122-inf-uniba/progetto2122-floyd/actions/workflows/ingsw2122.yml/badge.svg)](https://github.com/softeng2122-inf-uniba/progetto2122-floyd/actions/workflows/ingsw2122.yml) [![Coverage Status](https://coveralls.io/repos/github/softeng2122-inf-uniba/progetto2122-floyd/badge.svg?branch=master&t=FNMP3Y)](https://coveralls.io/github/softeng2122-inf-uniba/progetto2122-floyd?branch=master)
 
 
 La struttura della repository si presenta nel seguente modo:
