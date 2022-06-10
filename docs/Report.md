@@ -263,3 +263,8 @@ Per effettuare un tentativo basterà inserire in input la parola con cui si vuol
 È permesso l'utilizzo dei comandi durante la partita.</p>
 
 ---
+
+## 9. Analisi retrospettiva
+### 9.1 Sprint 1
+
+![Retro1](./img/mad-glad-sad.png)
