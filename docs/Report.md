@@ -9,7 +9,15 @@
     <li><strong>3.2.</strong> Requisiti non funzionali</li>
     </ul>
   </li>
-  <li><strong>5</strong>. OO Design</li>
+  <li><strong>5</strong>. OO Design
+  <li><strong>6</strong>. Riepilogo del test
+  <li><strong>7</strong>. Manuale utente
+  <li><strong>8</strong>. Processo di sviluppo e organizzazione del lavoro
+  <li><strong>9</strong>. Analisi retrospettiva
+  <ul>
+    <li><strong>9.1.</strong> Sprint 1</li>
+    </ul>
+  </li>
 </ul>
 
 ---
