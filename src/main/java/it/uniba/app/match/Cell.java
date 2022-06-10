@@ -11,7 +11,7 @@ import it.uniba.app.utils.Resettable;
  * attempt and its colors.
  */
 
-public class Cell implements Resettable {
+public final class Cell implements Resettable {
     /**
      * Contains ANSI escape sequence for background color.
      *
@@ -28,7 +28,8 @@ public class Cell implements Resettable {
     public Cell() {
         reset();
     }
-     /**
+
+    /**
      * Copy constructor. Instantiates a copied cell.
      *
      * @param cell the cell to copy.
@@ -55,7 +56,7 @@ public class Cell implements Resettable {
         this.color = ansi;
     }
 
-   /**
+    /**
      * @return the character contained in the cell.
      */
     public char getCharacter() {

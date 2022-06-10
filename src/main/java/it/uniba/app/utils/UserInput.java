@@ -7,12 +7,11 @@ import java.util.Scanner;
  * Manages the input operations.
  */
 public final class UserInput {
+    /** Scanner where we store the input stream. */
+    private static Scanner in = new Scanner(System.in, "UTF-8");
 
     private UserInput() {
     }
-
-    /** Scanner where we store the input stream. */
-    private static Scanner in = new Scanner(System.in, "UTF-8");
 
     /**
      * Gets a line of input from the user.
@@ -26,5 +25,10 @@ public final class UserInput {
             input = in.nextLine().toLowerCase();
         }
         return input;
+    }
+
+    /** Use for testing purposes. */
+    public static void refreshStream() {
+        in = new Scanner(System.in, "UTF-8");
     }
 }

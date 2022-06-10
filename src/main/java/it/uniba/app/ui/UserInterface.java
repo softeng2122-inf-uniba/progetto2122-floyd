@@ -18,7 +18,6 @@ import it.uniba.app.ui.control.ShowSecretWordProcessor;
  */
 public class UserInterface {
 
-
     /** Responsible of printing messages on console. */
     public static final UIPrinter printer = new UIPrinter();
 
@@ -32,7 +31,7 @@ public class UserInterface {
      * Holds the latest secret word to start
      * new matches with the previous word.
      */
-    private String lastSecretWord = null;
+    private String lastSecretWord;
 
     /**
      * @param userControllerObj the user controller linked to this ui.
@@ -108,7 +107,14 @@ public class UserInterface {
         this.lastSecretWord = str;
     }
 
-     // Takes input for the secret word.
+    /**
+     * @return the latest secret word.
+     */
+    public String getLastSecretWord() {
+        return this.lastSecretWord;
+    }
+
+    // Takes input for the secret word.
     //
     // @deprecated not used because you are not forced
     // to input a secret word when starting a match anymore.

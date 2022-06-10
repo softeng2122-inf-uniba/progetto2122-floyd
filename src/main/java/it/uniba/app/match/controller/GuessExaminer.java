@@ -51,13 +51,11 @@ public class GuessExaminer implements ExecutableTaskString {
 
     /** Transposes the attempt characters to guess cells. */
     private void updateCellsCharacters() {
-        if (!guess.getChosenWord().equals(" ")) {
-            Cell[] guessCells = guess.getCells();
-            for (int i = 0; i < guessCells.length; i++) {
-                guessCells[i].setCharacter(guess.getChosenWord().charAt(i));
-            }
-            guess.setCells(guessCells);
+        Cell[] guessCells = guess.getCells();
+        for (int i = 0; i < guessCells.length; i++) {
+            guessCells[i].setCharacter(guess.getChosenWord().charAt(i));
         }
+        guess.setCells(guessCells);
     }
 
     /**

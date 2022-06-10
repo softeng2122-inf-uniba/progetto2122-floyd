@@ -5,7 +5,7 @@ import it.uniba.app.ui.UserInterface;
 import it.uniba.app.utils.ExecutableTask;
 
 /**
- *  @{literal <<control>>}
+ * {@literal <<control>>}
  * Tries to leave the match, if there's one in progress.
  * Prints error otherwise.
  */
